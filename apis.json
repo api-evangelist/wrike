@@ -1,0 +1,87 @@
+{
+    "name": "Wrike",
+    "description": "Wrike is an online project management software that gives you full visibility and control over your tasks. With the help of our product, managing projects becomes easier. Our project management tools include time tracking, project planning and organiza...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1222-wrike.jpg",
+    "tags": [
+        "have api",
+        "office",
+        "projects",
+        "translations",
+        "webhook implementations"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/wrike\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Wrike",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1222-wrike.jpg",
+            "humanURL": "http:\/\/www.wrike.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/wrike-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/wrike-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "https:\/\/www.wrike.com"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/www.wrike.com\/blog"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.feedburner.com\/feedburner\/wrike_product_blog"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/wrike"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/wrike"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/www.wrike.com\/wiki\/dev\/api3"
+        },
+        {
+            "type": "Email",
+            "url": "marketing@team.wrike.com"
+        },
+        {
+            "type": "Email",
+            "url": "DMCA@team.wrike.com"
+        },
+        {
+            "type": "Email",
+            "url": "support@team.wrike.com"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/wrike"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/developers.wrike.com\/documentation\/webhooks"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.wrike.com"
+        }
+    ]
+}
