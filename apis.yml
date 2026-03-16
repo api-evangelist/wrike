@@ -11,7 +11,7 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - API
 created: '2025-01-08'
-modified: '2025-01-08'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/wrike/refs/heads/main/apis.yml
 specificationVersion: '0.19'
@@ -30,4 +30,4 @@ apis:
         url: https://developers.wrike.com/api/v4/workflows/
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
