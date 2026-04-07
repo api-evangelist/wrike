@@ -8,8 +8,7 @@ type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
+tags: []
 created: '2025-01-08'
 modified: '2026-03-16'
 url: >-
@@ -23,8 +22,7 @@ apis:
       amReadWriteWorkflow, wsReadOnly, wsReadWrite. GET. /workflows. Create
       Workflow. Scopes ...
     humanURL: https://developers.wrike.com/api/v4/workflows/
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: https://developers.wrike.com/api/v4/workflows/
