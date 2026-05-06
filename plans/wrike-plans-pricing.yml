@@ -4,158 +4,235 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Wrike
 providerId: wrike
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Work Management
   - Project Management
   - Collaboration
   - Productivity
-  - Workflow Automation
   - Task Management
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Wrike sells five seat-based subscription tiers (Free, Team, Business, Pinnacle, Apex)
+  plus a set of paid add-ons (Whiteboard, Integrate, Two-Way Sync, Datahub, Lock, AI Elite Action
+  Pack). API access is included with the underlying plan rather than priced separately. Pinnacle
+  and Apex are quote-based; Team and Business have published per-user list prices.
+sources:
+  - https://www.wrike.com/price/
 plans:
   - id: wrike-free
     name: Free
     type: freemium
-    description: Free entry tier for the Wrike API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free seat tier for evaluation and very small teams. Web, desktop, and mobile
+      apps; basic project and task management with board and table views.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://www.wrike.com/api/v4
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://www.wrike.com/api/v4
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Wrike API
-      - name: Wrike DataHub Public API
-      - name: Wrike BI Export API
-      - name: Wrike Cloud Content Connector
-      - name: Wrike MCP Server
-  - id: wrike-pro
-    name: Professional
-    type: paid
-    description: Production tier for Wrike. Provides higher quotas, priority support, and access to the
-      broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://www.wrike.com/api/v4
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://www.wrike.com/api/v4
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Per user / month
+        name: per_user_month
+        type: subscription
+        metric: seat
         limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://www.wrike.com/api/v4
-        unit: 1000
-        price: TBD
-        userMultiplied: false
+        unit: 1
+        price: '$0'
+        userMultiplied: true
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Wrike API
-      - name: Wrike DataHub Public API
-      - name: Wrike BI Export API
-      - name: Wrike Cloud Content Connector
-      - name: Wrike MCP Server
-  - id: wrike-enterprise
-    name: Enterprise
+      - name: Web, desktop, and mobile apps
+      - name: Project and task management
+      - name: Board view
+      - name: Table view
+  - id: wrike-team
+    name: Team
+    type: subscription
+    description: Entry paid tier for small teams (2-15 users). Adds AI Essentials, shareable
+      dashboards, and interactive Gantt charts.
+    entries:
+      - label: Per user / month
+        name: per_user_month
+        type: subscription
+        metric: seat
+        limit: 15
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $10/user/month
+        userMultiplied: true
+    elements:
+      - name: All Free features
+      - name: AI Essentials
+      - name: Shareable dashboards
+      - name: Interactive Gantt charts
+      - name: 2-15 users
+  - id: wrike-business
+    name: Business
+    type: subscription
+    description: Mid-market tier (5-200 users). Adds AI Elite starter pack, workspace templates,
+      and standard integrations.
+    entries:
+      - label: Per user / month
+        name: per_user_month
+        type: subscription
+        metric: seat
+        limit: 200
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $25/user/month
+        userMultiplied: true
+    elements:
+      - name: All Team features
+      - name: AI Elite starter pack
+      - name: Workspace templates
+      - name: Standard integrations
+      - name: 5-200 users
+  - id: wrike-pinnacle
+    name: Pinnacle
     type: enterprise
-    description: Custom-negotiated tier for Wrike. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    description: Quote-based tier with AI Elite actions (3x monthly), advanced resource and
+      capacity planning, budgeting, and advanced reporting / BI.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Per user / month
+        name: per_user_month
+        type: subscription
+        metric: seat
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://www.wrike.com/api/v4
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://www.wrike.com/api/v4
+        price: contact sales
+        userMultiplied: true
+    elements:
+      - name: All Business features
+      - name: AI Elite actions (3x monthly)
+      - name: Advanced resource and capacity planning
+      - name: Budgeting
+      - name: Advanced reporting and BI
+  - id: wrike-apex
+    name: Apex
+    type: enterprise
+    description: Top quote-based tier with AI Elite actions (10x monthly), unlimited Whiteboards,
+      Wrike Integrate, and Wrike Sync bi-directional integrations.
+    entries:
+      - label: Per user / month
+        name: per_user_month
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: true
+    elements:
+      - name: All Pinnacle features
+      - name: AI Elite actions (10x monthly)
+      - name: Unlimited Whiteboards
+      - name: Wrike Integrate
+      - name: Wrike Sync bi-directional integrations
+  - id: wrike-addon-whiteboard
+    name: Wrike Whiteboard add-on
+    type: subscription
+    description: Add-on collaborative whiteboard surface, sold per user per month on top of any
+      base plan.
+    entries:
+      - label: Per user / month
+        name: per_user_month
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $15/user/month
+        userMultiplied: true
+    elements:
+      - name: Wrike Whiteboard
+  - id: wrike-addon-integrate
+    name: Wrike Integrate add-on
+    type: enterprise
+    description: Custom-priced integration platform add-on (low-code automation across hundreds
+      of apps).
+    entries:
+      - label: Add-on subscription
+        name: addon_subscription
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
         unit: 1
         price: custom
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Wrike API
-      - name: Wrike DataHub Public API
-      - name: Wrike BI Export API
-      - name: Wrike Cloud Content Connector
-      - name: Wrike MCP Server
+      - name: Wrike Integrate
+  - id: wrike-addon-two-way-sync
+    name: Wrike Two-Way Sync add-on
+    type: enterprise
+    description: Custom-priced bi-directional integration with external systems.
+    entries:
+      - label: Add-on subscription
+        name: addon_subscription
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Wrike Two-Way Sync
+  - id: wrike-addon-datahub
+    name: Wrike Datahub add-on
+    type: enterprise
+    description: Custom-priced reporting / analytics data lake add-on.
+    entries:
+      - label: Add-on subscription
+        name: addon_subscription
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Wrike Datahub
+  - id: wrike-addon-lock
+    name: Wrike Lock add-on
+    type: enterprise
+    description: Custom-priced customer-managed encryption key add-on.
+    entries:
+      - label: Add-on subscription
+        name: addon_subscription
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Wrike Lock
+  - id: wrike-addon-ai-elite-action-pack
+    name: AI Elite Action Pack add-on
+    type: enterprise
+    description: Custom-priced AI Elite actions top-up sold on top of Pinnacle / Apex.
+    entries:
+      - label: Add-on subscription
+        name: addon_subscription
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: AI Elite Action Pack
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+    url: https://apievangelist.com
