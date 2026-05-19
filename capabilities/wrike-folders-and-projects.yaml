@@ -1,0 +1,338 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wrike API — Folders And Projects
+  description: 'Wrike API — Folders And Projects. 6 operations. Lead operation: List Folders. Self-contained Naftiko capability
+    covering one Wrike business surface.'
+  tags:
+  - Wrike
+  - Folders And Projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WRIKE_API_KEY: WRIKE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wrike-folders-and-projects
+    baseUri: https://www.wrike.com/api/v4
+    description: Wrike API — Folders And Projects business capability. Self-contained, no shared references.
+    resources:
+    - name: folders
+      path: /folders
+      operations:
+      - name: listfolders
+        method: GET
+        description: List Folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: permalink
+          in: query
+          type: string
+          description: Folder permalink, exact match
+        - name: descendants
+          in: query
+          type: boolean
+          description: Adds all descendant folders to search scope
+        - name: metadata
+          in: query
+          type: string
+        - name: customField
+          in: query
+          type: string
+          description: Custom field filter (id/value) as JSON object
+        - name: updatedDate
+          in: query
+          type: string
+          description: Updated date filter range
+        - name: project
+          in: query
+          type: boolean
+          description: Get only projects (true) or only folders (false)
+        - name: deleted
+          in: query
+          type: boolean
+          description: Get folders from Root (false) or Recycle Bin (true)
+        - name: fields
+          in: query
+          type: string
+    - name: folders-folderId
+      path: /folders/{folderId}
+      operations:
+      - name: getfolder
+        method: GET
+        description: Get Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          description: The folder ID
+          required: true
+      - name: updatefolder
+        method: PUT
+        description: Update Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletefolder
+        method: DELETE
+        description: Delete Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+    - name: folders-folderId-folders
+      path: /folders/{folderId}/folders
+      operations:
+      - name: listfoldersubfolders
+        method: GET
+        description: List Folder Subfolders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+        - name: descendants
+          in: query
+          type: boolean
+        - name: metadata
+          in: query
+          type: string
+        - name: project
+          in: query
+          type: boolean
+        - name: fields
+          in: query
+          type: string
+      - name: createfolderinfolder
+        method: POST
+        description: Create Folder In Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WRIKE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wrike-folders-and-projects-rest
+    port: 8080
+    description: REST adapter for Wrike API — Folders And Projects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/folders
+      name: folders
+      description: REST surface for folders.
+      operations:
+      - method: GET
+        name: listfolders
+        description: List Folders
+        call: wrike-folders-and-projects.listfolders
+        with:
+          permalink: rest.permalink
+          descendants: rest.descendants
+          metadata: rest.metadata
+          customField: rest.customField
+          updatedDate: rest.updatedDate
+          project: rest.project
+          deleted: rest.deleted
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/folders/{folderid}
+      name: folders-folderid
+      description: REST surface for folders-folderId.
+      operations:
+      - method: GET
+        name: getfolder
+        description: Get Folder
+        call: wrike-folders-and-projects.getfolder
+        with:
+          folderId: rest.folderId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefolder
+        description: Update Folder
+        call: wrike-folders-and-projects.updatefolder
+        with:
+          folderId: rest.folderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefolder
+        description: Delete Folder
+        call: wrike-folders-and-projects.deletefolder
+        with:
+          folderId: rest.folderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/folders/{folderid}/folders
+      name: folders-folderid-folders
+      description: REST surface for folders-folderId-folders.
+      operations:
+      - method: GET
+        name: listfoldersubfolders
+        description: List Folder Subfolders
+        call: wrike-folders-and-projects.listfoldersubfolders
+        with:
+          folderId: rest.folderId
+          descendants: rest.descendants
+          metadata: rest.metadata
+          project: rest.project
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfolderinfolder
+        description: Create Folder In Folder
+        call: wrike-folders-and-projects.createfolderinfolder
+        with:
+          folderId: rest.folderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wrike-folders-and-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wrike API — Folders And Projects. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-folders
+      description: List Folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-folders-and-projects.listfolders
+      with:
+        permalink: tools.permalink
+        descendants: tools.descendants
+        metadata: tools.metadata
+        customField: tools.customField
+        updatedDate: tools.updatedDate
+        project: tools.project
+        deleted: tools.deleted
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-folder
+      description: Get Folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-folders-and-projects.getfolder
+      with:
+        folderId: tools.folderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-folder
+      description: Update Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wrike-folders-and-projects.updatefolder
+      with:
+        folderId: tools.folderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-folder
+      description: Delete Folder
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wrike-folders-and-projects.deletefolder
+      with:
+        folderId: tools.folderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-folder-subfolders
+      description: List Folder Subfolders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-folders-and-projects.listfoldersubfolders
+      with:
+        folderId: tools.folderId
+        descendants: tools.descendants
+        metadata: tools.metadata
+        project: tools.project
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-folder-folder
+      description: Create Folder In Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wrike-folders-and-projects.createfolderinfolder
+      with:
+        folderId: tools.folderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

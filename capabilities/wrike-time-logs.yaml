@@ -1,0 +1,413 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wrike API — Time Logs
+  description: 'Wrike API — Time Logs. 8 operations. Lead operation: List Account Time Logs. Self-contained Naftiko capability
+    covering one Wrike business surface.'
+  tags:
+  - Wrike
+  - Time Logs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WRIKE_API_KEY: WRIKE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wrike-time-logs
+    baseUri: https://www.wrike.com/api/v4
+    description: Wrike API — Time Logs business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-timelogs
+      path: /accounts/{accountId}/timelogs
+      operations:
+      - name: listaccounttimelogs
+        method: GET
+        description: List Account Time Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+        - name: trackedDate
+          in: query
+          type: string
+    - name: contacts-contactId-timelogs
+      path: /contacts/{contactId}/timelogs
+      operations:
+      - name: listcontacttimelogs
+        method: GET
+        description: List Contact Time Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactId
+          in: path
+          type: string
+          required: true
+        - name: createdDate
+          in: query
+          type: string
+        - name: trackedDate
+          in: query
+          type: string
+        - name: me
+          in: query
+          type: boolean
+    - name: folders-folderId-timelogs
+      path: /folders/{folderId}/timelogs
+      operations:
+      - name: listfoldertimelogs
+        method: GET
+        description: List Folder Time Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+        - name: trackedDate
+          in: query
+          type: string
+    - name: tasks-taskId-timelogs
+      path: /tasks/{taskId}/timelogs
+      operations:
+      - name: listtasktimelogs
+        method: GET
+        description: List Task Time Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskId
+          in: path
+          type: string
+          required: true
+        - name: trackedDate
+          in: query
+          type: string
+    - name: timelogs
+      path: /timelogs
+      operations:
+      - name: listtimelogs
+        method: GET
+        description: List Time Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: createdDate
+          in: query
+          type: string
+        - name: trackedDate
+          in: query
+          type: string
+        - name: me
+          in: query
+          type: boolean
+        - name: descendants
+          in: query
+          type: boolean
+        - name: subTasks
+          in: query
+          type: boolean
+        - name: plainText
+          in: query
+          type: boolean
+    - name: timelogs-timelogId
+      path: /timelogs/{timelogId}
+      operations:
+      - name: gettimelog
+        method: GET
+        description: Get Time Log
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: timelogId
+          in: path
+          type: string
+          required: true
+      - name: updatetimelog
+        method: PUT
+        description: Update Time Log
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: timelogId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletetimelog
+        method: DELETE
+        description: Delete Time Log
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: timelogId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WRIKE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wrike-time-logs-rest
+    port: 8080
+    description: REST adapter for Wrike API — Time Logs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/timelogs
+      name: accounts-accountid-timelogs
+      description: REST surface for accounts-accountId-timelogs.
+      operations:
+      - method: GET
+        name: listaccounttimelogs
+        description: List Account Time Logs
+        call: wrike-time-logs.listaccounttimelogs
+        with:
+          accountId: rest.accountId
+          trackedDate: rest.trackedDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contacts/{contactid}/timelogs
+      name: contacts-contactid-timelogs
+      description: REST surface for contacts-contactId-timelogs.
+      operations:
+      - method: GET
+        name: listcontacttimelogs
+        description: List Contact Time Logs
+        call: wrike-time-logs.listcontacttimelogs
+        with:
+          contactId: rest.contactId
+          createdDate: rest.createdDate
+          trackedDate: rest.trackedDate
+          me: rest.me
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/folders/{folderid}/timelogs
+      name: folders-folderid-timelogs
+      description: REST surface for folders-folderId-timelogs.
+      operations:
+      - method: GET
+        name: listfoldertimelogs
+        description: List Folder Time Logs
+        call: wrike-time-logs.listfoldertimelogs
+        with:
+          folderId: rest.folderId
+          trackedDate: rest.trackedDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks/{taskid}/timelogs
+      name: tasks-taskid-timelogs
+      description: REST surface for tasks-taskId-timelogs.
+      operations:
+      - method: GET
+        name: listtasktimelogs
+        description: List Task Time Logs
+        call: wrike-time-logs.listtasktimelogs
+        with:
+          taskId: rest.taskId
+          trackedDate: rest.trackedDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timelogs
+      name: timelogs
+      description: REST surface for timelogs.
+      operations:
+      - method: GET
+        name: listtimelogs
+        description: List Time Logs
+        call: wrike-time-logs.listtimelogs
+        with:
+          createdDate: rest.createdDate
+          trackedDate: rest.trackedDate
+          me: rest.me
+          descendants: rest.descendants
+          subTasks: rest.subTasks
+          plainText: rest.plainText
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timelogs/{timelogid}
+      name: timelogs-timelogid
+      description: REST surface for timelogs-timelogId.
+      operations:
+      - method: GET
+        name: gettimelog
+        description: Get Time Log
+        call: wrike-time-logs.gettimelog
+        with:
+          timelogId: rest.timelogId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetimelog
+        description: Update Time Log
+        call: wrike-time-logs.updatetimelog
+        with:
+          timelogId: rest.timelogId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetimelog
+        description: Delete Time Log
+        call: wrike-time-logs.deletetimelog
+        with:
+          timelogId: rest.timelogId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wrike-time-logs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wrike API — Time Logs. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-account-time-logs
+      description: List Account Time Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.listaccounttimelogs
+      with:
+        accountId: tools.accountId
+        trackedDate: tools.trackedDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-contact-time-logs
+      description: List Contact Time Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.listcontacttimelogs
+      with:
+        contactId: tools.contactId
+        createdDate: tools.createdDate
+        trackedDate: tools.trackedDate
+        me: tools.me
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-folder-time-logs
+      description: List Folder Time Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.listfoldertimelogs
+      with:
+        folderId: tools.folderId
+        trackedDate: tools.trackedDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-task-time-logs
+      description: List Task Time Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.listtasktimelogs
+      with:
+        taskId: tools.taskId
+        trackedDate: tools.trackedDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-time-logs
+      description: List Time Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.listtimelogs
+      with:
+        createdDate: tools.createdDate
+        trackedDate: tools.trackedDate
+        me: tools.me
+        descendants: tools.descendants
+        subTasks: tools.subTasks
+        plainText: tools.plainText
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-time-log
+      description: Get Time Log
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.gettimelog
+      with:
+        timelogId: tools.timelogId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-time-log
+      description: Update Time Log
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wrike-time-logs.updatetimelog
+      with:
+        timelogId: tools.timelogId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-time-log
+      description: Delete Time Log
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wrike-time-logs.deletetimelog
+      with:
+        timelogId: tools.timelogId
+      outputParameters:
+      - type: object
+        mapping: $.

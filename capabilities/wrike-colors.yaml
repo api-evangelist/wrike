@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wrike API — Colors
+  description: 'Wrike API — Colors. 1 operations. Lead operation: List Colors. Self-contained Naftiko capability covering
+    one Wrike business surface.'
+  tags:
+  - Wrike
+  - Colors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WRIKE_API_KEY: WRIKE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wrike-colors
+    baseUri: https://www.wrike.com/api/v4
+    description: Wrike API — Colors business capability. Self-contained, no shared references.
+    resources:
+    - name: colors
+      path: /colors
+      operations:
+      - name: listcolors
+        method: GET
+        description: List Colors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.WRIKE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wrike-colors-rest
+    port: 8080
+    description: REST adapter for Wrike API — Colors. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/colors
+      name: colors
+      description: REST surface for colors.
+      operations:
+      - method: GET
+        name: listcolors
+        description: List Colors
+        call: wrike-colors.listcolors
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wrike-colors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wrike API — Colors. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-colors
+      description: List Colors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-colors.listcolors
+      outputParameters:
+      - type: object
+        mapping: $.

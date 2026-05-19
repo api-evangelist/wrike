@@ -1,0 +1,408 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wrike API — Tasks
+  description: 'Wrike API — Tasks. 6 operations. Lead operation: List Folder Tasks. Self-contained Naftiko capability covering
+    one Wrike business surface.'
+  tags:
+  - Wrike
+  - Tasks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WRIKE_API_KEY: WRIKE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wrike-tasks
+    baseUri: https://www.wrike.com/api/v4
+    description: Wrike API — Tasks business capability. Self-contained, no shared references.
+    resources:
+    - name: folders-folderId-tasks
+      path: /folders/{folderId}/tasks
+      operations:
+      - name: listfoldertasks
+        method: GET
+        description: List Folder Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+        - name: status
+          in: query
+          type: string
+        - name: importance
+          in: query
+          type: string
+        - name: fields
+          in: query
+          type: string
+        - name: descendants
+          in: query
+          type: boolean
+      - name: createtask
+        method: POST
+        description: Create Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tasks
+      path: /tasks
+      operations:
+      - name: listtasks
+        method: GET
+        description: List Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: title
+          in: query
+          type: string
+          description: Title filter, exact match
+        - name: status
+          in: query
+          type: string
+          description: Status filter
+        - name: importance
+          in: query
+          type: string
+        - name: startDate
+          in: query
+          type: string
+          description: Start date filter range (ISO 8601)
+        - name: dueDate
+          in: query
+          type: string
+          description: Due date filter range (ISO 8601)
+        - name: createdDate
+          in: query
+          type: string
+        - name: updatedDate
+          in: query
+          type: string
+        - name: completedDate
+          in: query
+          type: string
+        - name: authors
+          in: query
+          type: string
+          description: Comma-separated author IDs
+        - name: responsibles
+          in: query
+          type: string
+          description: Comma-separated responsible user IDs
+        - name: permalink
+          in: query
+          type: string
+        - name: type
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: sortField
+          in: query
+          type: string
+        - name: sortOrder
+          in: query
+          type: string
+        - name: subTasks
+          in: query
+          type: boolean
+        - name: metadata
+          in: query
+          type: string
+        - name: customField
+          in: query
+          type: string
+        - name: fields
+          in: query
+          type: string
+        - name: pageSize
+          in: query
+          type: integer
+        - name: nextPageToken
+          in: query
+          type: string
+    - name: tasks-taskId
+      path: /tasks/{taskId}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskId
+          in: path
+          type: string
+          description: Comma-separated list of task IDs (up to 100)
+          required: true
+        - name: fields
+          in: query
+          type: string
+      - name: updatetask
+        method: PUT
+        description: Update Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletetask
+        method: DELETE
+        description: Delete Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WRIKE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: wrike-tasks-rest
+    port: 8080
+    description: REST adapter for Wrike API — Tasks. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/folders/{folderid}/tasks
+      name: folders-folderid-tasks
+      description: REST surface for folders-folderId-tasks.
+      operations:
+      - method: GET
+        name: listfoldertasks
+        description: List Folder Tasks
+        call: wrike-tasks.listfoldertasks
+        with:
+          folderId: rest.folderId
+          status: rest.status
+          importance: rest.importance
+          fields: rest.fields
+          descendants: rest.descendants
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtask
+        description: Create Task
+        call: wrike-tasks.createtask
+        with:
+          folderId: rest.folderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks
+      name: tasks
+      description: REST surface for tasks.
+      operations:
+      - method: GET
+        name: listtasks
+        description: List Tasks
+        call: wrike-tasks.listtasks
+        with:
+          title: rest.title
+          status: rest.status
+          importance: rest.importance
+          startDate: rest.startDate
+          dueDate: rest.dueDate
+          createdDate: rest.createdDate
+          updatedDate: rest.updatedDate
+          completedDate: rest.completedDate
+          authors: rest.authors
+          responsibles: rest.responsibles
+          permalink: rest.permalink
+          type: rest.type
+          limit: rest.limit
+          sortField: rest.sortField
+          sortOrder: rest.sortOrder
+          subTasks: rest.subTasks
+          metadata: rest.metadata
+          customField: rest.customField
+          fields: rest.fields
+          pageSize: rest.pageSize
+          nextPageToken: rest.nextPageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks/{taskid}
+      name: tasks-taskid
+      description: REST surface for tasks-taskId.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get Task
+        call: wrike-tasks.gettask
+        with:
+          taskId: rest.taskId
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetask
+        description: Update Task
+        call: wrike-tasks.updatetask
+        with:
+          taskId: rest.taskId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetask
+        description: Delete Task
+        call: wrike-tasks.deletetask
+        with:
+          taskId: rest.taskId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wrike-tasks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wrike API — Tasks. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-folder-tasks
+      description: List Folder Tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-tasks.listfoldertasks
+      with:
+        folderId: tools.folderId
+        status: tools.status
+        importance: tools.importance
+        fields: tools.fields
+        descendants: tools.descendants
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-task
+      description: Create Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wrike-tasks.createtask
+      with:
+        folderId: tools.folderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tasks
+      description: List Tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-tasks.listtasks
+      with:
+        title: tools.title
+        status: tools.status
+        importance: tools.importance
+        startDate: tools.startDate
+        dueDate: tools.dueDate
+        createdDate: tools.createdDate
+        updatedDate: tools.updatedDate
+        completedDate: tools.completedDate
+        authors: tools.authors
+        responsibles: tools.responsibles
+        permalink: tools.permalink
+        type: tools.type
+        limit: tools.limit
+        sortField: tools.sortField
+        sortOrder: tools.sortOrder
+        subTasks: tools.subTasks
+        metadata: tools.metadata
+        customField: tools.customField
+        fields: tools.fields
+        pageSize: tools.pageSize
+        nextPageToken: tools.nextPageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-task
+      description: Get Task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wrike-tasks.gettask
+      with:
+        taskId: tools.taskId
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-task
+      description: Update Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wrike-tasks.updatetask
+      with:
+        taskId: tools.taskId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-task
+      description: Delete Task
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wrike-tasks.deletetask
+      with:
+        taskId: tools.taskId
+      outputParameters:
+      - type: object
+        mapping: $.
