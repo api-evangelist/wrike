@@ -23,7 +23,7 @@ tags:
   - Workflow Automation
   - Task Management
 created: '2025-01-08'
-modified: '2026-05-03'
+modified: '2026-05-19'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/wrike/refs/heads/main/apis.yml
 specificationVersion: '0.19'
@@ -287,6 +287,9 @@ common:
         description: >-
           Claude, ChatGPT, and Microsoft Copilot Studio connect to Wrike
           via the Wrike MCP Server.
+  - name: MCP Server
+    url: https://github.com/wrike/datahub-mcp
+    type: MCPServer
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
