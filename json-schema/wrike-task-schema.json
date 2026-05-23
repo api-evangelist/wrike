@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Task",
+  "title": "Task",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "briefDescription": {
+      "type": "string"
+    },
+    "parentIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "superParentIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sharedIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "responsibleIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Completed",
+        "Deferred",
+        "Cancelled"
+      ]
+    },
+    "importance": {
+      "type": "string",
+      "enum": [
+        "High",
+        "Normal",
+        "Low"
+      ]
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dates": {
+      "$ref": "#/components/schemas/Dates"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "authorIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "customStatusId": {
+      "type": "string"
+    },
+    "hasAttachments": {
+      "type": "boolean"
+    },
+    "attachmentCount": {
+      "type": "integer"
+    },
+    "permalink": {
+      "type": "string",
+      "format": "uri"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "superTaskIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subTaskIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencyIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metadata"
+      }
+    },
+    "customFields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CustomFieldValue"
+      }
+    }
+  }
+}

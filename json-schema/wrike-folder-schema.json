@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Folder",
+  "title": "Folder",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "childIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "WsFolder",
+        "WsRoot",
+        "RbFolder",
+        "RbRoot",
+        "WsSpace",
+        "WsPrivate"
+      ]
+    },
+    "hasAttachments": {
+      "type": "boolean"
+    },
+    "attachmentCount": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "briefDescription": {
+      "type": "string"
+    },
+    "customColumnIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "project": {
+      "$ref": "#/components/schemas/Project"
+    },
+    "shareds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metadata"
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Contact",
+  "title": "Contact",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique contact identifier"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Person",
+        "Group"
+      ]
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Profile"
+      }
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "deleted": {
+      "type": "boolean"
+    },
+    "me": {
+      "type": "boolean",
+      "description": "True if this contact represents the requesting user"
+    },
+    "title": {
+      "type": "string"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metadata"
+      }
+    }
+  }
+}

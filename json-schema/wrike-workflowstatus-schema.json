@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WorkflowStatus",
+  "title": "WorkflowStatus",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "standardName": {
+      "type": "boolean"
+    },
+    "color": {
+      "type": "string"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Completed",
+        "Deferred",
+        "Cancelled"
+      ]
+    }
+  }
+}

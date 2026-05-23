@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "memberIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "childIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scope": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metadata"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Profile",
+  "title": "Profile",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "User",
+        "Collaborator"
+      ]
+    },
+    "external": {
+      "type": "boolean"
+    },
+    "admin": {
+      "type": "boolean"
+    },
+    "owner": {
+      "type": "boolean"
+    }
+  }
+}

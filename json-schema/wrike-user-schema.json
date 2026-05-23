@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Profile"
+      }
+    },
+    "avatarUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "deleted": {
+      "type": "boolean"
+    },
+    "me": {
+      "type": "boolean"
+    }
+  }
+}

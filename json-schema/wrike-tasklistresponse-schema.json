@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaskListResponse",
+  "title": "TaskListResponse",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "example": "tasks"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Task"
+      }
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Token to retrieve the next page of results"
+    },
+    "responseSize": {
+      "type": "integer"
+    }
+  }
+}

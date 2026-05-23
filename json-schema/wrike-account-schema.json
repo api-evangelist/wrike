@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Account",
+  "title": "Account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "dateFormat": {
+      "type": "string"
+    },
+    "firstDayOfWeek": {
+      "type": "string"
+    },
+    "workDays": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rootFolderId": {
+      "type": "string"
+    },
+    "recycleBinId": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subscription": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "suspended": {
+          "type": "boolean"
+        },
+        "paid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metadata"
+      }
+    }
+  }
+}

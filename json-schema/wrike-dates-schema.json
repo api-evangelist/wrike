@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Dates",
+  "title": "Dates",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Backlog",
+        "Milestone",
+        "Planned"
+      ]
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Duration in minutes"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "due": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

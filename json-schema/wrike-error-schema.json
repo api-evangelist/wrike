@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Error",
+  "title": "Error",
+  "type": "object",
+  "required": [
+    "error",
+    "errorDescription"
+  ],
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "Error code",
+      "example": "not_authorized"
+    },
+    "errorDescription": {
+      "type": "string",
+      "description": "Human-readable error description",
+      "example": "The access token is invalid"
+    }
+  }
+}

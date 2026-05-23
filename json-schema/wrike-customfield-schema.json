@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomField",
+  "title": "CustomField",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Text",
+        "DropDown",
+        "Numeric",
+        "Currency",
+        "Percentage",
+        "Date",
+        "Duration",
+        "Checkbox",
+        "Bulk"
+      ]
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "shareds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "settings": {
+      "type": "object"
+    }
+  }
+}

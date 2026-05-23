@@ -1,0 +1,37 @@
+name: Wrike Domain Vocabulary
+provider: Wrike
+providerId: wrike
+description: Tag-derived vocabulary for the Wrike API surface; sourced from openapi/ tags.
+terms:
+- term: Contacts
+  description: Users and user groups in Wrike accounts
+- term: Users
+  description: User management and profile operations
+- term: Groups
+  description: User group management
+- term: Invitations
+  description: User invitation management
+- term: Accounts
+  description: Account settings and configuration
+- term: Workflows
+  description: Workflow and status management
+- term: Custom Fields
+  description: Custom field definitions and management
+- term: Folders And Projects
+  description: Folder and project hierarchy management
+- term: Tasks
+  description: Task creation, retrieval, updates, and deletion
+- term: Comments
+  description: Task and folder comment management
+- term: Dependencies
+  description: Task dependency management
+- term: Time Logs
+  description: Time tracking and timelog records
+- term: Attachments
+  description: File attachment management
+- term: Webhooks
+  description: Event-driven webhook subscriptions
+- term: Access Roles
+  description: Access role and permission management
+- term: Colors
+  description: Available color palette

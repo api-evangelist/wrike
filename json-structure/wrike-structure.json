@@ -1,0 +1,645 @@
+{
+  "provider": "Wrike",
+  "providerId": "wrike",
+  "kind": "json-structure",
+  "description": "Structural overview of the Wrike API surface; extracted from openapi/.",
+  "schemaCount": 33,
+  "operationCount": 48,
+  "schemas": [
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "error",
+        "errorDescription"
+      ]
+    },
+    {
+      "name": "Profile",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Contact",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "ContactListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "UserResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Group",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "GroupListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "AccountListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "WorkflowStatus",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Workflow",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "WorkflowListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CustomField",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "CustomFieldListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Project",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Folder",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "FolderListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Dates",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Task",
+      "type": "object",
+      "propertyCount": 27,
+      "required": []
+    },
+    {
+      "name": "TaskListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Comment",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "CommentListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Timelog",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "TimelogListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Webhook",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "WebhookListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AccessRole",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "AccessRoleListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Color",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ColorListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Metadata",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CustomFieldValue",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/contacts",
+      "operationId": "listContacts",
+      "summary": "List Contacts",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts/{contactId}",
+      "operationId": "getContact",
+      "summary": "Get Contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/contacts/{contactId}",
+      "operationId": "updateContact",
+      "summary": "Update Contact",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}",
+      "operationId": "getUser",
+      "summary": "Get User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{userId}",
+      "operationId": "updateUser",
+      "summary": "Update User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups",
+      "operationId": "listGroups",
+      "summary": "List Groups",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/groups",
+      "operationId": "createGroup",
+      "summary": "Create Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{groupId}",
+      "operationId": "getGroup",
+      "summary": "Get Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/{groupId}",
+      "operationId": "updateGroup",
+      "summary": "Update Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{groupId}",
+      "operationId": "deleteGroup",
+      "summary": "Delete Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts",
+      "operationId": "listAccounts",
+      "summary": "List Accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/accounts/{accountId}",
+      "operationId": "updateAccount",
+      "summary": "Update Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/workflows",
+      "operationId": "listWorkflows",
+      "summary": "List Workflows",
+      "tags": [
+        "Workflows"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts/{accountId}/workflows",
+      "operationId": "createWorkflow",
+      "summary": "Create Workflow",
+      "tags": [
+        "Workflows"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/accounts/{accountId}/workflows/{workflowId}",
+      "operationId": "updateWorkflow",
+      "summary": "Update Workflow",
+      "tags": [
+        "Workflows"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/customfields",
+      "operationId": "listCustomFields",
+      "summary": "List Custom Fields",
+      "tags": [
+        "Custom Fields"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts/{accountId}/customfields",
+      "operationId": "createCustomField",
+      "summary": "Create Custom Field",
+      "tags": [
+        "Custom Fields"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/folders",
+      "operationId": "listFolders",
+      "summary": "List Folders",
+      "tags": [
+        "Folders And Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/folders/{folderId}",
+      "operationId": "getFolder",
+      "summary": "Get Folder",
+      "tags": [
+        "Folders And Projects"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/folders/{folderId}",
+      "operationId": "updateFolder",
+      "summary": "Update Folder",
+      "tags": [
+        "Folders And Projects"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/folders/{folderId}",
+      "operationId": "deleteFolder",
+      "summary": "Delete Folder",
+      "tags": [
+        "Folders And Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/folders/{folderId}/folders",
+      "operationId": "listFolderSubfolders",
+      "summary": "List Folder Subfolders",
+      "tags": [
+        "Folders And Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/folders/{folderId}/folders",
+      "operationId": "createFolderInFolder",
+      "summary": "Create Folder In Folder",
+      "tags": [
+        "Folders And Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tasks",
+      "operationId": "listTasks",
+      "summary": "List Tasks",
+      "tags": [
+        "Tasks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tasks/{taskId}",
+      "operationId": "getTask",
+      "summary": "Get Task",
+      "tags": [
+        "Tasks"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/tasks/{taskId}",
+      "operationId": "updateTask",
+      "summary": "Update Task",
+      "tags": [
+        "Tasks"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/tasks/{taskId}",
+      "operationId": "deleteTask",
+      "summary": "Delete Task",
+      "tags": [
+        "Tasks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/folders/{folderId}/tasks",
+      "operationId": "listFolderTasks",
+      "summary": "List Folder Tasks",
+      "tags": [
+        "Tasks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/folders/{folderId}/tasks",
+      "operationId": "createTask",
+      "summary": "Create Task",
+      "tags": [
+        "Tasks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/comments",
+      "operationId": "listComments",
+      "summary": "List Comments",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tasks/{taskId}/comments",
+      "operationId": "listTaskComments",
+      "summary": "List Task Comments",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/tasks/{taskId}/comments",
+      "operationId": "createTaskComment",
+      "summary": "Create Task Comment",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/comments/{commentId}",
+      "operationId": "updateComment",
+      "summary": "Update Comment",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/comments/{commentId}",
+      "operationId": "deleteComment",
+      "summary": "Delete Comment",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/timelogs",
+      "operationId": "listTimelogs",
+      "summary": "List Time Logs",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts/{contactId}/timelogs",
+      "operationId": "listContactTimelogs",
+      "summary": "List Contact Time Logs",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/folders/{folderId}/timelogs",
+      "operationId": "listFolderTimelogs",
+      "summary": "List Folder Time Logs",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tasks/{taskId}/timelogs",
+      "operationId": "listTaskTimelogs",
+      "summary": "List Task Time Logs",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/timelogs",
+      "operationId": "listAccountTimelogs",
+      "summary": "List Account Time Logs",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/timelogs/{timelogId}",
+      "operationId": "getTimelog",
+      "summary": "Get Time Log",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/timelogs/{timelogId}",
+      "operationId": "updateTimelog",
+      "summary": "Update Time Log",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/timelogs/{timelogId}",
+      "operationId": "deleteTimelog",
+      "summary": "Delete Time Log",
+      "tags": [
+        "Time Logs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/webhooks",
+      "operationId": "listWebhooks",
+      "summary": "List Webhooks",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts/{accountId}/webhooks",
+      "operationId": "createWebhook",
+      "summary": "Create Webhook",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/webhooks/{webhookId}",
+      "operationId": "updateWebhook",
+      "summary": "Update Webhook",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/webhooks/{webhookId}",
+      "operationId": "deleteWebhook",
+      "summary": "Delete Webhook",
+      "tags": [
+        "Webhooks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/access_roles",
+      "operationId": "listAccessRoles",
+      "summary": "List Access Roles",
+      "tags": [
+        "Access Roles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/colors",
+      "operationId": "listColors",
+      "summary": "List Colors",
+      "tags": [
+        "Colors"
+      ]
+    }
+  ]
+}

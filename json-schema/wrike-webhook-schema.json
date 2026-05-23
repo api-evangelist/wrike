@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Webhook",
+  "title": "Webhook",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "hookUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "spaceId": {
+      "type": "string"
+    },
+    "folderId": {
+      "type": "string"
+    },
+    "externalRequestId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "enabled",
+        "suspended",
+        "disabled"
+      ]
+    },
+    "isPermanent": {
+      "type": "boolean"
+    },
+    "secretKey": {
+      "type": "string"
+    }
+  }
+}
