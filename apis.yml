@@ -261,6 +261,8 @@ common:
   - name: MCP Server
     url: https://github.com/wrike/datahub-mcp
     type: MCPServer
+  - type: LLMsTxt
+    url: https://developers.wrike.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
