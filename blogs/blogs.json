@@ -2,12 +2,17 @@
   "repo": "wrike",
   "feeds": [
     {
-      "source": "https://www.wrike.com/blog/",
+      "source": "https://www.wrike.com/blog/feed/",
       "feed_url": "https://www.wrike.com/blog/feed/",
-      "title": "Blog Wrike",
-      "saved": 37
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://developers.wrike.com/faq/",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 53,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 59,
+  "fetched": "2026-06-01T23:35:02Z"
 }
