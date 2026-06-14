@@ -1,0 +1,1261 @@
+"""
+Wrike GraphQL Schema
+Conceptual schema derived from the Wrike REST API v4.
+Reference: https://developers.wrike.com/api/v4/
+"""
+
+scalar DateTime
+scalar Upload
+scalar JSON
+
+# ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum TaskStatus {
+  ACTIVE
+  COMPLETED
+  DEFERRED
+  CANCELLED
+}
+
+enum TaskImportance {
+  HIGH
+  NORMAL
+  LOW
+}
+
+enum ProjectStatus {
+  GREEN
+  YELLOW
+  RED
+  COMPLETED
+  ON_HOLD
+  CANCELLED
+}
+
+enum DependencyType {
+  START_TO_START
+  START_TO_FINISH
+  FINISH_TO_START
+  FINISH_TO_FINISH
+}
+
+enum ApprovalDecision {
+  APPROVED
+  REJECTED
+  PENDING
+}
+
+enum ActivityType {
+  TASK_CREATED
+  TASK_UPDATED
+  TASK_DELETED
+  COMMENT_ADDED
+  ATTACHMENT_UPLOADED
+  STATUS_CHANGED
+  ASSIGNEE_CHANGED
+  FOLDER_CREATED
+  PROJECT_CREATED
+}
+
+enum UserRole {
+  OWNER
+  ADMIN
+  REGULAR
+  EXTERNAL
+  COLLABORATOR
+}
+
+enum UserType {
+  PERSON
+  USER
+  GROUP
+}
+
+enum SpaceAccess {
+  PUBLIC
+  PRIVATE
+  PERSONAL
+}
+
+enum WebhookStatus {
+  ENABLED
+  DISABLED
+  SUSPENDED
+}
+
+# ─── Account & Auth ──────────────────────────────────────────────────────────
+
+"""Top-level account within Wrike."""
+type Account {
+  id: ID!
+  name: String!
+  dateFormat: String
+  timeFormat: String
+  workdayStartTime: String
+  workdayEndTime: String
+  firstDayOfWeek: String
+  createdDate: DateTime
+  userCount: Int
+  rootFolderIds: [ID!]
+  details: AccountDetails
+  subscriptionType: String
+  metadata: [MetadataEntry!]
+}
+
+"""Extended details for an Account."""
+type AccountDetails {
+  id: ID!
+  name: String!
+  plan: String
+  createdDate: DateTime
+  customStatusCategories: [CustomStatusCategory!]
+  workSchedules: [WorkSchedule!]
+  invitationUrl: String
+  joinedDate: DateTime
+}
+
+"""A key-value metadata entry."""
+type MetadataEntry {
+  key: String!
+  value: String
+}
+
+"""An API key for programmatic access."""
+type APIKey {
+  id: ID!
+  name: String!
+  token: String!
+  createdDate: DateTime
+  expiresDate: DateTime
+  scopes: [String!]
+}
+
+"""An OAuth 2.0 access token record."""
+type Token {
+  accessToken: String!
+  refreshToken: String
+  tokenType: String!
+  expiresIn: Int
+  scope: String
+}
+
+# ─── Users & Contacts ────────────────────────────────────────────────────────
+
+"""A Wrike user within an account."""
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  type: UserType!
+  profiles: [UserProfile!]
+  avatarUrl: String
+  timezone: String
+  locale: String
+  deleted: Boolean
+  me: Boolean
+  memberIds: [ID!]
+  myTeam: Boolean
+  title: String
+  companyName: String
+  phone: String
+  location: String
+  workScheduleId: ID
+  costRate: HourRate
+}
+
+"""Extended details for a User."""
+type UserDetails {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String
+  role: UserRole!
+  type: UserType!
+  accountId: ID!
+  invitationDate: DateTime
+  resolvedDate: DateTime
+  active: Boolean
+  external: Boolean
+  guest: Boolean
+  metadata: [MetadataEntry!]
+}
+
+"""A user profile associated with an account."""
+type UserProfile {
+  accountId: ID!
+  email: String!
+  role: UserRole!
+  external: Boolean
+  admin: Boolean
+  owner: Boolean
+}
+
+"""A contact visible in Wrike (user or group reference)."""
+type Contact {
+  id: ID!
+  firstName: String
+  lastName: String
+  type: UserType!
+  profiles: [UserProfile!]
+  avatarUrl: String
+  timezone: String
+  locale: String
+  deleted: Boolean
+  me: Boolean
+  memberIds: [ID!]
+  myTeam: Boolean
+}
+
+"""A pending invitation to join an account."""
+type Invitation {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  role: UserRole!
+  sentDate: DateTime
+  status: String
+  invitedBy: User
+}
+
+"""A member of a team or group."""
+type TeamMember {
+  userId: ID!
+  user: User
+  role: UserRole
+  joinedDate: DateTime
+}
+
+# ─── Groups & Spaces ─────────────────────────────────────────────────────────
+
+"""A user group within Wrike."""
+type Group {
+  id: ID!
+  title: String!
+  memberIds: [ID!]
+  childIds: [ID!]
+  scope: String
+  avatarUrl: String
+  myTeam: Boolean
+  metadata: [MetadataEntry!]
+  members: [TeamMember!]
+}
+
+"""Extended details for a Group."""
+type GroupDetails {
+  id: ID!
+  title: String!
+  members: [TeamMember!]
+  childIds: [ID!]
+  scope: String
+  createdDate: DateTime
+  modifiedDate: DateTime
+}
+
+"""A Wrike Space (top-level container for folders and projects)."""
+type Space {
+  id: ID!
+  title: String!
+  accessType: SpaceAccess!
+  archived: Boolean
+  description: String
+  avatarUrl: String
+  guestRoleAllowed: Boolean
+  commentUnread: Boolean
+  memberIds: [ID!]
+  members: [TeamMember!]
+}
+
+"""Extended details for a Space."""
+type SpaceDetails {
+  id: ID!
+  title: String!
+  accessType: SpaceAccess!
+  description: String
+  archived: Boolean
+  createdDate: DateTime
+  members: [TeamMember!]
+  defaultProjectWorkflowId: ID
+  defaultTaskWorkflowId: ID
+}
+
+# ─── Folders ─────────────────────────────────────────────────────────────────
+
+"""A Wrike folder."""
+type Folder {
+  id: ID!
+  title: String!
+  color: String
+  childIds: [ID!]
+  scope: String
+  hasAttachments: Boolean
+  attachmentCount: Int
+  permalink: String
+  workflowId: ID
+  metadata: [MetadataEntry!]
+  customFields: [TaskCustomField!]
+  project: ProjectDetails
+  space: Space
+  createdDate: DateTime
+  updatedDate: DateTime
+}
+
+"""Extended details for a Folder."""
+type FolderDetails {
+  id: ID!
+  title: String!
+  description: String
+  color: String
+  parentIds: [ID!]
+  childIds: [ID!]
+  scope: String
+  hasAttachments: Boolean
+  attachmentCount: Int
+  permalink: String
+  workflowId: ID
+  metadata: [MetadataEntry!]
+  customFields: [TaskCustomField!]
+  sharingRoles: [String!]
+  invitationLinks: [String!]
+  createdDate: DateTime
+  updatedDate: DateTime
+}
+
+"""A folder node in a hierarchical tree structure."""
+type FolderTree {
+  id: ID!
+  title: String!
+  children: [FolderTree!]
+  scope: String
+  project: ProjectDetails
+}
+
+"""A blueprint (template) for folders."""
+type FolderTemplate {
+  id: ID!
+  title: String!
+  description: String
+  parentIds: [ID!]
+  scope: String
+  createdDate: DateTime
+}
+
+"""A blueprint template for projects."""
+type BlueprintTemplate {
+  id: ID!
+  title: String!
+  description: String
+  scope: String
+  spaceId: ID
+  workflows: [Workflow!]
+  createdDate: DateTime
+}
+
+# ─── Projects ────────────────────────────────────────────────────────────────
+
+"""A project within Wrike (a folder with project metadata)."""
+type Project {
+  id: ID!
+  title: String!
+  status: ProjectStatus
+  ownerIds: [ID!]
+  owners: [User!]
+  customStatusId: ID
+  startDate: String
+  endDate: String
+  createdDate: DateTime
+  completedDate: DateTime
+  permalink: String
+  workflowId: ID
+  folder: Folder
+}
+
+"""Extended project details."""
+type ProjectDetails {
+  authorId: ID
+  author: User
+  ownerIds: [ID!]
+  owners: [User!]
+  status: ProjectStatus
+  customStatusId: ID
+  startDate: String
+  endDate: String
+  createdDate: DateTime
+  completedDate: DateTime
+}
+
+# ─── Tasks ───────────────────────────────────────────────────────────────────
+
+"""A Wrike task."""
+type Task {
+  id: ID!
+  accountId: ID!
+  title: String!
+  description: String
+  briefDescription: String
+  parentIds: [ID!]
+  superParentIds: [ID!]
+  sharedIds: [ID!]
+  responsibleIds: [ID!]
+  assignees: TaskAssignees
+  status: TaskStatus!
+  importance: TaskImportance!
+  createdDate: DateTime!
+  updatedDate: DateTime!
+  completedDate: DateTime
+  scheduledDate: TaskDate
+  dates: TaskDate
+  scope: String
+  authorIds: [ID!]
+  customStatusId: ID
+  customStatus: TaskCustomStatus
+  hasAttachments: Boolean
+  attachmentCount: Int
+  permalink: String
+  priority: String
+  followedByMe: Boolean
+  followerIds: [ID!]
+  superTaskIds: [ID!]
+  subTaskIds: [ID!]
+  dependencyIds: [ID!]
+  effortAllocation: JSON
+  billingType: String
+  customFields: [TaskCustomField!]
+  metadata: [MetadataEntry!]
+  workflowId: ID
+}
+
+"""Extended task details."""
+type TaskDetails {
+  id: ID!
+  title: String!
+  description: String
+  status: TaskStatus!
+  importance: TaskImportance!
+  dates: TaskDate
+  scope: String
+  customFields: [TaskCustomField!]
+  dependencies: [TaskDependency!]
+  comments: [TaskComment!]
+  attachments: [Attachment!]
+  timesheetEntries: [TimesheetEntry!]
+  approvals: [Approval!]
+  metadata: [MetadataEntry!]
+}
+
+"""Date information associated with a task."""
+type TaskDate {
+  type: String
+  duration: Int
+  start: String
+  due: String
+  workOnWeekends: Boolean
+}
+
+"""Assignees for a task."""
+type TaskAssignees {
+  userIds: [ID!]!
+  users: [User!]
+}
+
+"""A comment attached to a task."""
+type TaskComment {
+  id: ID!
+  authorId: ID!
+  author: User
+  text: String!
+  updatedDate: DateTime
+  createdDate: DateTime
+  taskId: ID!
+}
+
+"""A dependency relationship involving a task."""
+type TaskDependency {
+  id: ID!
+  predecessorId: ID!
+  successorId: ID!
+  relationType: DependencyType!
+  predecessor: Task
+  successor: Task
+}
+
+"""A custom field value on a task."""
+type TaskCustomField {
+  id: ID!
+  value: String
+}
+
+"""A custom status assigned to a task."""
+type TaskCustomStatus {
+  id: ID!
+  name: String!
+  color: String
+  standardName: String
+  hidden: Boolean
+  workflowId: ID
+}
+
+# ─── Workflows & Statuses ────────────────────────────────────────────────────
+
+"""A Wrike workflow defining statuses and transitions."""
+type Workflow {
+  id: ID!
+  name: String!
+  standard: Boolean
+  hidden: Boolean
+  customStatuses: [CustomStatus!]
+}
+
+"""A stage within a workflow."""
+type WorkflowStage {
+  id: ID!
+  name: String!
+  workflowId: ID!
+  group: String
+  color: String
+  hidden: Boolean
+  statuses: [CustomStatus!]
+}
+
+"""A custom status within a workflow."""
+type CustomStatus {
+  id: ID!
+  name: String!
+  standardName: String
+  color: String
+  hidden: Boolean
+  group: String
+  workflowId: ID!
+}
+
+"""A category for grouping custom statuses."""
+type CustomStatusCategory {
+  id: ID!
+  name: String!
+  color: String
+  defaultStatusId: ID
+  hidden: Boolean
+}
+
+"""A valid transition between workflow statuses."""
+type WorkflowTransition {
+  fromStatusId: ID!
+  toStatusId: ID!
+  fromStatus: CustomStatus
+  toStatus: CustomStatus
+}
+
+"""A work schedule definition."""
+type WorkSchedule {
+  id: ID!
+  name: String!
+  isDefault: Boolean
+  workweek: [String!]
+  timeZone: String
+}
+
+# ─── Automation ──────────────────────────────────────────────────────────────
+
+"""An automation rule in Wrike."""
+type AutomationRule {
+  id: ID!
+  title: String!
+  enabled: Boolean!
+  trigger: RuleCondition!
+  actions: [RuleAction!]!
+  scopeId: ID
+  createdDate: DateTime
+  modifiedDate: DateTime
+}
+
+"""A trigger condition for an automation rule."""
+type RuleCondition {
+  id: ID!
+  type: String!
+  field: String
+  operator: String
+  value: String
+}
+
+"""An action executed by an automation rule."""
+type RuleAction {
+  id: ID!
+  type: String!
+  field: String
+  value: String
+  assigneeIds: [ID!]
+  statusId: ID
+}
+
+# ─── Comments ────────────────────────────────────────────────────────────────
+
+"""A comment on a task or folder."""
+type Comment {
+  id: ID!
+  authorId: ID!
+  author: User
+  text: String!
+  updatedDate: DateTime
+  createdDate: DateTime!
+  taskId: ID
+  folderId: ID
+}
+
+"""Extended details for a comment."""
+type CommentDetails {
+  id: ID!
+  authorId: ID!
+  author: User
+  text: String!
+  createdDate: DateTime!
+  updatedDate: DateTime
+  taskId: ID
+  folderId: ID
+  attachments: [Attachment!]
+}
+
+# ─── Attachments ─────────────────────────────────────────────────────────────
+
+"""An attachment on a task or folder."""
+type Attachment {
+  id: ID!
+  authorId: ID!
+  author: User
+  name: String!
+  createdDate: DateTime!
+  version: Int
+  type: String
+  contentType: String
+  size: Int
+  taskId: ID
+  folderId: ID
+  currentAttachmentId: ID
+  isLatest: Boolean
+  url: String
+  previewUrl: String
+}
+
+"""Metadata for an attachment version."""
+type AttachmentMetadata {
+  id: ID!
+  name: String!
+  size: Int
+  contentType: String
+  version: Int
+  createdDate: DateTime
+  attachmentId: ID!
+}
+
+# ─── Timeline & Dependencies ─────────────────────────────────────────────────
+
+"""Generic timeline container."""
+type Timeline {
+  id: ID!
+  type: String!
+  startDate: String
+  endDate: String
+}
+
+"""Timeline entry for a task."""
+type TaskTimeline {
+  taskId: ID!
+  task: Task
+  startDate: String
+  endDate: String
+  duration: Int
+}
+
+"""Timeline entry for a project."""
+type ProjectTimeline {
+  projectId: ID!
+  project: Project
+  startDate: String
+  endDate: String
+  tasks: [TaskTimeline!]
+}
+
+"""A dependency between two tasks."""
+type Dependency {
+  id: ID!
+  predecessorId: ID!
+  successorId: ID!
+  relationType: DependencyType!
+  predecessor: Task
+  successor: Task
+}
+
+# ─── Time Tracking ───────────────────────────────────────────────────────────
+
+"""A single timesheet log entry."""
+type TimesheetEntry {
+  id: ID!
+  taskId: ID!
+  task: Task
+  userId: ID!
+  user: User
+  hours: Float!
+  billingType: String
+  comment: String
+  trackedDate: String!
+  createdDate: DateTime
+  updatedDate: DateTime
+}
+
+"""Aggregated timesheet details for a user and period."""
+type TimesheetDetails {
+  userId: ID!
+  user: User
+  totalHours: Float!
+  billableHours: Float
+  startDate: String!
+  endDate: String!
+  entries: [TimesheetEntry!]
+}
+
+"""An hourly cost or billing rate for a user."""
+type HourRate {
+  id: ID!
+  currency: String!
+  rate: Float!
+  userId: ID
+}
+
+# ─── Reporting & Budget ──────────────────────────────────────────────────────
+
+"""A Wrike report definition."""
+type Report {
+  id: ID!
+  title: String!
+  description: String
+  scope: String
+  createdDate: DateTime
+  modifiedDate: DateTime
+  ownerId: ID
+  sharedUserIds: [ID!]
+}
+
+"""A budget summary for a project."""
+type BudgetSummary {
+  projectId: ID!
+  currency: String!
+  totalBudget: Float
+  spentBudget: Float
+  remainingBudget: Float
+  billableHours: Float
+  totalHours: Float
+}
+
+"""A billing line item."""
+type BillingItem {
+  id: ID!
+  taskId: ID
+  userId: ID
+  description: String
+  quantity: Float
+  rate: Float
+  total: Float
+  currency: String
+  billedDate: String
+}
+
+"""An activity event in the account stream."""
+type Activity {
+  id: ID!
+  type: ActivityType!
+  userId: ID!
+  user: User
+  date: DateTime!
+  taskId: ID
+  folderId: ID
+  commentId: ID
+  data: JSON
+}
+
+"""A filtered activity stream."""
+type Stream {
+  id: ID!
+  title: String
+  filter: StreamFilter
+  activities: [Activity!]
+}
+
+"""Filter criteria for an activity stream."""
+type StreamFilter {
+  userIds: [ID!]
+  folderIds: [ID!]
+  taskIds: [ID!]
+  types: [ActivityType!]
+  startDate: String
+  endDate: String
+}
+
+# ─── Approvals & Reviews ─────────────────────────────────────────────────────
+
+"""An approval workflow attached to a task."""
+type ApprovalWorkflow {
+  id: ID!
+  taskId: ID!
+  title: String
+  approvers: [User!]
+  dueDate: String
+  status: String
+  createdDate: DateTime
+}
+
+"""An approval decision record."""
+type Approval {
+  id: ID!
+  taskId: ID!
+  task: Task
+  approverId: ID!
+  approver: User
+  decision: ApprovalDecision!
+  comment: String
+  decidedDate: DateTime
+  dueDate: String
+}
+
+"""A version of content submitted for review."""
+type ReviewVersion {
+  id: ID!
+  attachmentId: ID!
+  attachment: Attachment
+  version: Int!
+  authorId: ID!
+  author: User
+  createdDate: DateTime!
+  status: String
+  comments: [ReviewComment!]
+}
+
+"""A comment left during a review."""
+type ReviewComment {
+  id: ID!
+  reviewVersionId: ID!
+  authorId: ID!
+  author: User
+  text: String!
+  createdDate: DateTime!
+  x: Float
+  y: Float
+  page: Int
+  resolved: Boolean
+}
+
+# ─── Webhooks ────────────────────────────────────────────────────────────────
+
+"""A webhook subscription in Wrike."""
+type Webhook {
+  id: ID!
+  accountId: ID!
+  hookUrl: String!
+  status: WebhookStatus!
+  isPermanent: Boolean
+  secretKey: String
+  events: [String!]
+  scopeId: ID
+  createdDate: DateTime
+}
+
+# ─── Input Types ─────────────────────────────────────────────────────────────
+
+input CreateTaskInput {
+  title: String!
+  folderId: ID!
+  description: String
+  status: TaskStatus
+  importance: TaskImportance
+  responsibleIds: [ID!]
+  dates: TaskDateInput
+  customFields: [CustomFieldInput!]
+  followerId: [ID!]
+  superTaskIds: [ID!]
+  metadata: [MetadataInput!]
+}
+
+input UpdateTaskInput {
+  title: String
+  description: String
+  status: TaskStatus
+  importance: TaskImportance
+  responsibleIds: [ID!]
+  dates: TaskDateInput
+  customStatusId: ID
+  customFields: [CustomFieldInput!]
+  metadata: [MetadataInput!]
+}
+
+input TaskDateInput {
+  type: String
+  start: String
+  due: String
+  duration: Int
+  workOnWeekends: Boolean
+}
+
+input CustomFieldInput {
+  id: ID!
+  value: String
+}
+
+input MetadataInput {
+  key: String!
+  value: String
+}
+
+input CreateFolderInput {
+  title: String!
+  parentId: ID!
+  description: String
+  sharingUserIds: [ID!]
+  metadata: [MetadataInput!]
+}
+
+input UpdateFolderInput {
+  title: String
+  description: String
+  metadata: [MetadataInput!]
+}
+
+input CreateProjectInput {
+  title: String!
+  parentId: ID!
+  description: String
+  ownerIds: [ID!]
+  status: ProjectStatus
+  startDate: String
+  endDate: String
+  workflowId: ID
+}
+
+input UpdateProjectInput {
+  title: String
+  description: String
+  ownerIds: [ID!]
+  status: ProjectStatus
+  startDate: String
+  endDate: String
+  customStatusId: ID
+}
+
+input TimesheetEntryInput {
+  taskId: ID!
+  hours: Float!
+  trackedDate: String!
+  comment: String
+  billingType: String
+}
+
+input UpdateTimesheetInput {
+  hours: Float
+  trackedDate: String
+  comment: String
+  billingType: String
+}
+
+input WebhookInput {
+  hookUrl: String!
+  events: [String!]
+  scopeId: ID
+  isPermanent: Boolean
+  secretKey: String
+}
+
+input InvitationInput {
+  email: String!
+  firstName: String
+  lastName: String
+  role: UserRole!
+}
+
+input GroupInput {
+  title: String!
+  memberIds: [ID!]
+}
+
+input AutomationRuleInput {
+  title: String!
+  enabled: Boolean!
+  trigger: RuleConditionInput!
+  actions: [RuleActionInput!]!
+  scopeId: ID
+}
+
+input RuleConditionInput {
+  type: String!
+  field: String
+  operator: String
+  value: String
+}
+
+input RuleActionInput {
+  type: String!
+  field: String
+  value: String
+  assigneeIds: [ID!]
+  statusId: ID
+}
+
+# ─── Connection / Pagination ──────────────────────────────────────────────────
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type TaskConnection {
+  edges: [TaskEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type TaskEdge {
+  cursor: String!
+  node: Task!
+}
+
+type FolderConnection {
+  edges: [FolderEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type FolderEdge {
+  cursor: String!
+  node: Folder!
+}
+
+type UserConnection {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
+
+# ─── Root Types ───────────────────────────────────────────────────────────────
+
+type Query {
+  """Fetch the current Wrike account."""
+  account: Account
+
+  """List all users in the account."""
+  users(first: Int, after: String): UserConnection
+
+  """Fetch a single user by ID."""
+  user(id: ID!): User
+
+  """List contacts visible to the authenticated user."""
+  contacts: [Contact!]
+
+  """List groups in the account."""
+  groups: [Group!]
+
+  """Fetch a single group by ID."""
+  group(id: ID!): GroupDetails
+
+  """List spaces available to the authenticated user."""
+  spaces: [Space!]
+
+  """Fetch a single space by ID."""
+  space(id: ID!): SpaceDetails
+
+  """List folders, optionally scoped to a space or parent folder."""
+  folders(spaceId: ID, parentId: ID, first: Int, after: String): FolderConnection
+
+  """Fetch a single folder by ID."""
+  folder(id: ID!): FolderDetails
+
+  """Fetch a folder and its full descendant tree."""
+  folderTree(id: ID!): FolderTree
+
+  """List projects with optional status or space filter."""
+  projects(spaceId: ID, status: ProjectStatus): [Project!]
+
+  """Fetch a single project by ID."""
+  project(id: ID!): Project
+
+  """List tasks with optional filters."""
+  tasks(
+    folderId: ID
+    status: TaskStatus
+    importance: TaskImportance
+    assigneeId: ID
+    customStatusId: ID
+    first: Int
+    after: String
+  ): TaskConnection
+
+  """Fetch a single task by ID."""
+  task(id: ID!): TaskDetails
+
+  """List all workflows in the account."""
+  workflows: [Workflow!]
+
+  """Fetch a single workflow by ID."""
+  workflow(id: ID!): Workflow
+
+  """List comments on a task or folder."""
+  comments(taskId: ID, folderId: ID): [Comment!]
+
+  """List attachments on a task or folder."""
+  attachments(taskId: ID, folderId: ID): [Attachment!]
+
+  """Fetch a single attachment by ID."""
+  attachment(id: ID!): Attachment
+
+  """Query timesheet entries with optional filters."""
+  timesheetEntries(
+    userId: ID
+    taskId: ID
+    startDate: String
+    endDate: String
+  ): [TimesheetEntry!]
+
+  """Fetch aggregated timesheet details for a user and date range."""
+  timesheetDetails(userId: ID!, startDate: String!, endDate: String!): TimesheetDetails
+
+  """List reports available in the account."""
+  reports: [Report!]
+
+  """List approvals for a task."""
+  approvals(taskId: ID!): [Approval!]
+
+  """List webhooks registered for the account."""
+  webhooks: [Webhook!]
+
+  """Fetch a single webhook by ID."""
+  webhook(id: ID!): Webhook
+
+  """List activity entries in a stream."""
+  activities(streamId: ID, filter: StreamFilter): [Activity!]
+
+  """List dependencies for a task."""
+  dependencies(taskId: ID!): [Dependency!]
+
+  """List automation rules in the account."""
+  automationRules: [AutomationRule!]
+
+  """Fetch a single automation rule by ID."""
+  automationRule(id: ID!): AutomationRule
+
+  """List pending invitations."""
+  invitations: [Invitation!]
+
+  """Fetch the project timeline including task timelines."""
+  projectTimeline(projectId: ID!): ProjectTimeline
+
+  """Fetch budget summary for a project."""
+  budgetSummary(projectId: ID!): BudgetSummary
+
+  """Fetch review versions for an attachment."""
+  reviewVersions(attachmentId: ID!): [ReviewVersion!]
+}
+
+type Mutation {
+  """Create a new task in a folder or project."""
+  createTask(input: CreateTaskInput!): Task
+
+  """Update an existing task."""
+  updateTask(id: ID!, input: UpdateTaskInput!): Task
+
+  """Delete a task by ID."""
+  deleteTask(id: ID!): Boolean
+
+  """Create a folder."""
+  createFolder(input: CreateFolderInput!): Folder
+
+  """Update a folder."""
+  updateFolder(id: ID!, input: UpdateFolderInput!): Folder
+
+  """Delete a folder by ID."""
+  deleteFolder(id: ID!): Boolean
+
+  """Create a project."""
+  createProject(input: CreateProjectInput!): Project
+
+  """Update a project."""
+  updateProject(id: ID!, input: UpdateProjectInput!): Project
+
+  """Delete a project by ID."""
+  deleteProject(id: ID!): Boolean
+
+  """Add a comment to a task or folder."""
+  createComment(taskId: ID, folderId: ID, text: String!): Comment
+
+  """Edit an existing comment."""
+  updateComment(id: ID!, text: String!): Comment
+
+  """Delete a comment by ID."""
+  deleteComment(id: ID!): Boolean
+
+  """Upload an attachment to a task or folder."""
+  uploadAttachment(taskId: ID, folderId: ID, file: Upload!): Attachment
+
+  """Delete an attachment by ID."""
+  deleteAttachment(id: ID!): Boolean
+
+  """Log time against a task."""
+  logTime(input: TimesheetEntryInput!): TimesheetEntry
+
+  """Update a time log entry."""
+  updateTimesheetEntry(id: ID!, input: UpdateTimesheetInput!): TimesheetEntry
+
+  """Delete a time log entry."""
+  deleteTimesheetEntry(id: ID!): Boolean
+
+  """Register a new webhook."""
+  createWebhook(input: WebhookInput!): Webhook
+
+  """Update a webhook."""
+  updateWebhook(id: ID!, input: WebhookInput!): Webhook
+
+  """Delete a webhook."""
+  deleteWebhook(id: ID!): Boolean
+
+  """Invite a user to the account."""
+  inviteUser(input: InvitationInput!): Invitation
+
+  """Create a user group."""
+  createGroup(input: GroupInput!): Group
+
+  """Update a user group."""
+  updateGroup(id: ID!, input: GroupInput!): Group
+
+  """Delete a user group."""
+  deleteGroup(id: ID!): Boolean
+
+  """Create an automation rule."""
+  createAutomationRule(input: AutomationRuleInput!): AutomationRule
+
+  """Update an automation rule."""
+  updateAutomationRule(id: ID!, input: AutomationRuleInput!): AutomationRule
+
+  """Delete an automation rule."""
+  deleteAutomationRule(id: ID!): Boolean
+
+  """Submit an approval decision on a task."""
+  submitApproval(taskId: ID!, decision: ApprovalDecision!, comment: String): Approval
+}
+
+type Subscription {
+  """Fires when a task is created, updated, or deleted within a folder."""
+  taskUpdated(folderId: ID): Task
+
+  """Fires when a comment is added to a task."""
+  commentAdded(taskId: ID!): Comment
+
+  """Fires when an attachment is uploaded to a task."""
+  attachmentUploaded(taskId: ID!): Attachment
+
+  """Fires when an approval decision changes on a task."""
+  approvalUpdated(taskId: ID!): Approval
+
+  """Proxies Wrike webhook events as GraphQL subscription payloads."""
+  webhookEvent(accountId: ID!): JSON
+}
