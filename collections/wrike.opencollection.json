@@ -1,0 +1,1622 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/contacts",
+            "params": [
+              {
+                "name": "me",
+                "value": "",
+                "type": "query",
+                "description": "If present, only contact info of the requesting user is returned"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Metadata filter, exact match for metadata key or key-value pair"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON string array of optional fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Returns a list of contacts of all users and user groups in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Get Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated list of contact IDs (up to 100)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON string array of optional fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Returns contact information for specified users and user groups."
+        },
+        {
+          "info": {
+            "name": "Update Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "The contact ID"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "metadata",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates contact information. Only the contact whose API token is being used may be updated."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user ID"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific user."
+        },
+        {
+          "info": {
+            "name": "Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The user ID"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "role",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates user profile information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/groups",
+            "params": [
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Metadata filter"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON string array of optional fields"
+              }
+            ]
+          },
+          "docs": "Returns a list of all user groups in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Create Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/groups",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "memberIds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new user group in the account."
+        },
+        {
+          "info": {
+            "name": "Get Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The group ID"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific user group."
+        },
+        {
+          "info": {
+            "name": "Update Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "addMemberIds",
+                  "value": ""
+                },
+                {
+                  "name": "removeMemberIds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a user group."
+        },
+        {
+          "info": {
+            "name": "Delete Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a user group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/accounts",
+            "params": [
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all accounts accessible to the current user."
+        },
+        {
+          "info": {
+            "name": "Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "metadata",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates account settings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/workflows",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The account ID"
+              }
+            ]
+          },
+          "docs": "Returns all workflows in the specified account. Workflows define the status stages for tasks within the account."
+        },
+        {
+          "info": {
+            "name": "Create Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/workflows",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new workflow in the account."
+        },
+        {
+          "info": {
+            "name": "Update Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/workflows/:workflowId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "hidden",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates an existing workflow."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Custom Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/customfields",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all custom field definitions in the account."
+        },
+        {
+          "info": {
+            "name": "Create Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/customfields",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new custom field definition in the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Folders And Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders",
+            "params": [
+              {
+                "name": "permalink",
+                "value": "",
+                "type": "query",
+                "description": "Folder permalink, exact match"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query",
+                "description": "Adds all descendant folders to search scope"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customField",
+                "value": "",
+                "type": "query",
+                "description": "Custom field filter (id/value) as JSON object"
+              },
+              {
+                "name": "updatedDate",
+                "value": "",
+                "type": "query",
+                "description": "Updated date filter range"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Get only projects (true) or only folders (false)"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query",
+                "description": "Get folders from Root (false) or Recycle Bin (true)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns list of entries required to build a folder tree for all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Get Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path",
+                "description": "The folder ID"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific folder or project."
+        },
+        {
+          "info": {
+            "name": "Update Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                },
+                {
+                  "name": "addShareds",
+                  "value": ""
+                },
+                {
+                  "name": "removeShareds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a folder or project."
+        },
+        {
+          "info": {
+            "name": "Delete Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a folder or project, moving it to the Recycle Bin."
+        },
+        {
+          "info": {
+            "name": "List Folder Subfolders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/folders",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns folder tree entries for the subtree of this folder."
+        },
+        {
+          "info": {
+            "name": "Create Folder In Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/folders",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                },
+                {
+                  "name": "project",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new folder inside the specified parent folder."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Title filter, exact match"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status filter"
+              },
+              {
+                "name": "importance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date filter range (ISO 8601)"
+              },
+              {
+                "name": "dueDate",
+                "value": "",
+                "type": "query",
+                "description": "Due date filter range (ISO 8601)"
+              },
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updatedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "completedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "authors",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated author IDs"
+              },
+              {
+                "name": "responsibles",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated responsible user IDs"
+              },
+              {
+                "name": "permalink",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subTasks",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextPageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches among all tasks in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Get Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated list of task IDs (up to 100)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns complete information about one or more tasks."
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                },
+                {
+                  "name": "importance",
+                  "value": ""
+                },
+                {
+                  "name": "dates",
+                  "value": ""
+                },
+                {
+                  "name": "responsibles",
+                  "value": ""
+                },
+                {
+                  "name": "addResponsibles",
+                  "value": ""
+                },
+                {
+                  "name": "removeResponsibles",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                },
+                {
+                  "name": "customStatus",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a task's properties."
+        },
+        {
+          "info": {
+            "name": "Delete Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a task, moving it to the Recycle Bin."
+        },
+        {
+          "info": {
+            "name": "List Folder Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/tasks",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "importance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all tasks within the specified folder or project."
+        },
+        {
+          "info": {
+            "name": "Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/tasks",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                },
+                {
+                  "name": "importance",
+                  "value": ""
+                },
+                {
+                  "name": "dates",
+                  "value": ""
+                },
+                {
+                  "name": "responsibles",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                },
+                {
+                  "name": "customStatus",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new task in the specified folder or project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/comments",
+            "params": [
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "plainText",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all comments in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "List Task Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId/comments",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "plainText",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all comments on a specific task."
+        },
+        {
+          "info": {
+            "name": "Create Task Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId/comments",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "text",
+                  "value": ""
+                },
+                {
+                  "name": "plainText",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a comment to a task."
+        },
+        {
+          "info": {
+            "name": "Update Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/comments/:commentId",
+            "params": [
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "text",
+                  "value": ""
+                },
+                {
+                  "name": "plainText",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates an existing comment."
+        },
+        {
+          "info": {
+            "name": "Delete Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/comments/:commentId",
+            "params": [
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a comment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Time Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/timelogs",
+            "params": [
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "me",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subTasks",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "plainText",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "List Contact Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/contacts/:contactId/timelogs",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "me",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records created by a specific user."
+        },
+        {
+          "info": {
+            "name": "List Folder Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/timelogs",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records for a folder."
+        },
+        {
+          "info": {
+            "name": "List Task Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId/timelogs",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records for a task."
+        },
+        {
+          "info": {
+            "name": "List Account Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/timelogs",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records in a specific account."
+        },
+        {
+          "info": {
+            "name": "Get Time Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/timelogs/:timelogId",
+            "params": [
+              {
+                "name": "timelogId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a specific timelog record."
+        },
+        {
+          "info": {
+            "name": "Update Time Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/timelogs/:timelogId",
+            "params": [
+              {
+                "name": "timelogId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "comment",
+                  "value": ""
+                },
+                {
+                  "name": "hours",
+                  "value": ""
+                },
+                {
+                  "name": "trackedDate",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a timelog record."
+        },
+        {
+          "info": {
+            "name": "Delete Time Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/timelogs/:timelogId",
+            "params": [
+              {
+                "name": "timelogId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a timelog record."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/webhooks",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all webhooks defined in the account."
+        },
+        {
+          "info": {
+            "name": "Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/webhooks",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "hookUrl",
+                  "value": ""
+                },
+                {
+                  "name": "events",
+                  "value": ""
+                },
+                {
+                  "name": "secretKey",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new webhook subscription for account-wide events."
+        },
+        {
+          "info": {
+            "name": "Update Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "hookUrl",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates an existing webhook."
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/webhooks/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a webhook subscription."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Access Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Access Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/access_roles",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+              "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns all access roles available in accessible accounts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Colors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Colors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/colors"
+          },
+          "docs": "Returns all available colors in the Wrike color palette."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
