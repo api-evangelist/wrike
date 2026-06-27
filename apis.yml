@@ -113,7 +113,7 @@ common:
   url: https://www.linkedin.com/company/wrike
 - type: DeveloperPortal
   url: https://developers.wrike.com/
-- type: SignUp
+- type: Signup
   url: https://www.wrike.com/free-trial/
 - type: Pricing
   url: https://www.wrike.com/price/
@@ -253,7 +253,7 @@ common:
 - name: MCP Server
   url: https://github.com/wrike/datahub-mcp
   type: MCPServer
-- type: LLMsTxt
+- type: LlmsText
   url: https://developers.wrike.com/llms.txt
 maintainers:
 - FN: Kin Lane

@@ -2,17 +2,20 @@
   "repo": "wrike",
   "feeds": [
     {
-      "source": "https://www.wrike.com/blog/",
+      "source": "https://www.wrike.com/blog/feed/",
       "feed_url": "https://www.wrike.com/blog/feed/",
       "title": "",
-      "saved": 2,
-      "method": "discovered"
+      "saved": 3,
+      "method": "feed"
     },
     {
       "source": "https://developers.wrike.com/faq/",
-      "error": "HTTPError"
+      "feed_url": "https://developers.wrike.com/faq/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 62,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 66,
+  "fetched": "2026-06-27T12:03:07Z"
 }
