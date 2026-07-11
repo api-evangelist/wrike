@@ -109,6 +109,10 @@ apis:
   - type: Documentation
     url: https://developers.wrike.com/mcp-server/
 common:
+- type: VulnerabilityDisclosure
+  url: security/wrike-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/wrike-domain-security.yml
 - type: Authentication
   url: authentication/wrike-authentication.yml
 - type: OAuthScopes

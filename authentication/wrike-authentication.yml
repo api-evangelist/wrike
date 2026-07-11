@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wrike-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.wrike.com/oauth2/authorize
+    tokenUrl: https://www.wrike.com/oauth2/token
+    scopes: 6
+  description: OAuth 2.0 authorization code flow
+  sources:
+  - openapi/wrike-openapi.yml
+- name: bearerToken
+  type: http
+  scheme: bearer
+  description: Permanent access token (legacy authentication)
+  sources:
+  - openapi/wrike-openapi.yml
