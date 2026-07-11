@@ -1,0 +1,48 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wrike-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/wrike-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.wrike.com/oauth2/authorize
+    tokenUrl: https://www.wrike.com/oauth2/token
+  description: OAuth 2.0 authorization code flow
+scopes:
+- scope: Default
+  description: Default access scope
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wrike-openapi.yml
+- scope: amReadOnlyAccessRole
+  description: Read-only access to access roles
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wrike-openapi.yml
+- scope: amReadOnlyWorkflow
+  description: Read-only access to workflows
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wrike-openapi.yml
+- scope: amReadWriteWorkflow
+  description: Read-write access to workflows
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wrike-openapi.yml
+- scope: wsReadOnly
+  description: Read-only workspace access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wrike-openapi.yml
+- scope: wsReadWrite
+  description: Read-write workspace access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/wrike-openapi.yml

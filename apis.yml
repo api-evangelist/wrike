@@ -109,6 +109,10 @@ apis:
   - type: Documentation
     url: https://developers.wrike.com/mcp-server/
 common:
+- type: Authentication
+  url: authentication/wrike-authentication.yml
+- type: OAuthScopes
+  url: scopes/wrike-scopes.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/wrike
 - type: DeveloperPortal
