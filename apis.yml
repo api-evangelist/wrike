@@ -109,6 +109,8 @@ apis:
   - type: Documentation
     url: https://developers.wrike.com/mcp-server/
 common:
+- type: AgenticAccess
+  url: agentic-access/wrike-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/wrike-vulnerability-disclosure.yml
 - type: DomainSecurity
