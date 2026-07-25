@@ -1,0 +1,234 @@
+openapi: 3.0.3
+info:
+  title: Wrike Access Roles Webhooks API
+  description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+servers:
+- url: https://www.wrike.com/api/v4
+  description: Wrike REST API v4
+security:
+- oauth2: []
+- bearerToken: []
+tags:
+- name: Webhooks
+  description: Event-driven webhook subscriptions
+paths:
+  /accounts/{accountId}/webhooks:
+    get:
+      operationId: listWebhooks
+      summary: List Webhooks
+      description: Returns all webhooks defined in the account.
+      tags:
+      - Webhooks
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWebhook
+      summary: Create Webhook
+      description: Creates a new webhook subscription for account-wide events.
+      tags:
+      - Webhooks
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - hookUrl
+              properties:
+                hookUrl:
+                  type: string
+                  format: uri
+                  description: The URL to which Wrike sends webhook payloads
+                events:
+                  type: string
+                  description: Comma-separated list of event types to subscribe to
+                secretKey:
+                  type: string
+                  description: Secret key for HMAC signature verification
+      responses:
+        '200':
+          description: Created webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /webhooks/{webhookId}:
+    put:
+      operationId: updateWebhook
+      summary: Update Webhook
+      description: Updates an existing webhook.
+      tags:
+      - Webhooks
+      parameters:
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                hookUrl:
+                  type: string
+                  format: uri
+                status:
+                  type: string
+                  enum:
+                  - enabled
+                  - disabled
+      responses:
+        '200':
+          description: Updated webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteWebhook
+      summary: Delete Webhook
+      description: Deletes a webhook subscription.
+      tags:
+      - Webhooks
+      parameters:
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        hookUrl:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        spaceId:
+          type: string
+        folderId:
+          type: string
+        externalRequestId:
+          type: string
+        status:
+          type: string
+          enum:
+          - enabled
+          - suspended
+          - disabled
+        isPermanent:
+          type: boolean
+        secretKey:
+          type: string
+    WebhookListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: webhooks
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com

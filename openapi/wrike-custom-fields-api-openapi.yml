@@ -1,0 +1,184 @@
+openapi: 3.0.3
+info:
+  title: Wrike Access Roles Custom Fields API
+  description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+servers:
+- url: https://www.wrike.com/api/v4
+  description: Wrike REST API v4
+security:
+- oauth2: []
+- bearerToken: []
+tags:
+- name: Custom Fields
+  description: Custom field definitions and management
+paths:
+  /accounts/{accountId}/customfields:
+    get:
+      operationId: listCustomFields
+      summary: List Custom Fields
+      description: Returns all custom field definitions in the account.
+      tags:
+      - Custom Fields
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of custom fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCustomField
+      summary: Create Custom Field
+      description: Creates a new custom field definition in the account.
+      tags:
+      - Custom Fields
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - title
+              - type
+              properties:
+                title:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - Text
+                  - DropDown
+                  - Numeric
+                  - Currency
+                  - Percentage
+                  - Date
+                  - Duration
+                  - Checkbox
+                  - Bulk
+                shareds:
+                  type: string
+                  description: Comma-separated list of shared user/group IDs
+      responses:
+        '200':
+          description: Created custom field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    CustomFieldListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: customfields
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    CustomField:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+          enum:
+          - Text
+          - DropDown
+          - Numeric
+          - Currency
+          - Percentage
+          - Date
+          - Duration
+          - Checkbox
+          - Bulk
+        hidden:
+          type: boolean
+        shareds:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com

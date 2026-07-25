@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Wrike Access Roles API
+  description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+servers:
+- url: https://www.wrike.com/api/v4
+  description: Wrike REST API v4
+security:
+- oauth2: []
+- bearerToken: []
+tags:
+- name: Access Roles
+  description: Access role and permission management
+paths:
+  /access_roles:
+    get:
+      operationId: listAccessRoles
+      summary: List Access Roles
+      description: Returns all access roles available in accessible accounts.
+      tags:
+      - Access Roles
+      security:
+      - oauth2:
+        - amReadOnlyAccessRole
+      - bearerToken: []
+      responses:
+        '200':
+          description: List of access roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRoleListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    AccessRole:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        isDefault:
+          type: boolean
+        sharedItemPermissions:
+          type: array
+          items:
+            type: string
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    AccessRoleListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: access_roles
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessRole'
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com

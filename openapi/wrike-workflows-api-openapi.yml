@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: Wrike Access Roles Workflows API
+  description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+servers:
+- url: https://www.wrike.com/api/v4
+  description: Wrike REST API v4
+security:
+- oauth2: []
+- bearerToken: []
+tags:
+- name: Workflows
+  description: Workflow and status management
+paths:
+  /accounts/{accountId}/workflows:
+    get:
+      operationId: listWorkflows
+      summary: List Workflows
+      description: Returns all workflows in the specified account. Workflows define the status stages for tasks within the account.
+      tags:
+      - Workflows
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: The account ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of workflows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWorkflow
+      summary: Create Workflow
+      description: Creates a new workflow in the account.
+      tags:
+      - Workflows
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: Workflow name
+      responses:
+        '200':
+          description: Created workflow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /accounts/{accountId}/workflows/{workflowId}:
+    put:
+      operationId: updateWorkflow
+      summary: Update Workflow
+      description: Updates an existing workflow.
+      tags:
+      - Workflows
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                hidden:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated workflow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    WorkflowListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: workflows
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+    Workflow:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        standard:
+          type: boolean
+        hidden:
+          type: boolean
+        customStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStatus'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    WorkflowStatus:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        standardName:
+          type: boolean
+        color:
+          type: string
+        hidden:
+          type: boolean
+        group:
+          type: string
+          enum:
+          - Active
+          - Completed
+          - Deferred
+          - Cancelled
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com

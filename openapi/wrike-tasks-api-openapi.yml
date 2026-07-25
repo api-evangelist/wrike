@@ -1,0 +1,592 @@
+openapi: 3.0.3
+info:
+  title: Wrike Access Roles Tasks API
+  description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+servers:
+- url: https://www.wrike.com/api/v4
+  description: Wrike REST API v4
+security:
+- oauth2: []
+- bearerToken: []
+tags:
+- name: Tasks
+  description: Task creation, retrieval, updates, and deletion
+paths:
+  /tasks:
+    get:
+      operationId: listTasks
+      summary: List Tasks
+      description: Searches among all tasks in all accessible accounts.
+      tags:
+      - Tasks
+      parameters:
+      - name: title
+        in: query
+        description: Title filter, exact match
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Status filter
+        required: false
+        schema:
+          type: string
+          enum:
+          - Active
+          - Completed
+          - Deferred
+          - Cancelled
+      - name: importance
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - High
+          - Normal
+          - Low
+      - name: startDate
+        in: query
+        description: Start date filter range (ISO 8601)
+        required: false
+        schema:
+          type: string
+      - name: dueDate
+        in: query
+        description: Due date filter range (ISO 8601)
+        required: false
+        schema:
+          type: string
+      - name: createdDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: updatedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: completedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: authors
+        in: query
+        description: Comma-separated author IDs
+        required: false
+        schema:
+          type: string
+      - name: responsibles
+        in: query
+        description: Comma-separated responsible user IDs
+        required: false
+        schema:
+          type: string
+      - name: permalink
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - Backlog
+          - Milestone
+          - Planned
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+      - name: sortField
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - CreatedDate
+          - UpdatedDate
+          - CompletedDate
+          - DueDate
+          - Status
+          - Importance
+          - Title
+      - name: sortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - Asc
+          - Desc
+      - name: subTasks
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: metadata
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: customField
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: nextPageToken
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tasks/{taskId}:
+    get:
+      operationId: getTask
+      summary: Get Task
+      description: Returns complete information about one or more tasks.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        description: Comma-separated list of task IDs (up to 100)
+        schema:
+          type: string
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateTask
+      summary: Update Task
+      description: Updates a task's properties.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                  - Active
+                  - Completed
+                  - Deferred
+                  - Cancelled
+                importance:
+                  type: string
+                  enum:
+                  - High
+                  - Normal
+                  - Low
+                dates:
+                  type: string
+                  description: JSON object with start/due dates
+                responsibles:
+                  type: string
+                addResponsibles:
+                  type: string
+                removeResponsibles:
+                  type: string
+                metadata:
+                  type: string
+                customFields:
+                  type: string
+                customStatus:
+                  type: string
+      responses:
+        '200':
+          description: Updated task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteTask
+      summary: Delete Task
+      description: Deletes a task, moving it to the Recycle Bin.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /folders/{folderId}/tasks:
+    get:
+      operationId: listFolderTasks
+      summary: List Folder Tasks
+      description: Returns all tasks within the specified folder or project.
+      tags:
+      - Tasks
+      parameters:
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: importance
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: descendants
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of tasks in folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTask
+      summary: Create Task
+      description: Creates a new task in the specified folder or project.
+      tags:
+      - Tasks
+      parameters:
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - title
+              properties:
+                title:
+                  type: string
+                  description: Task title
+                description:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                  - Active
+                  - Completed
+                  - Deferred
+                  - Cancelled
+                importance:
+                  type: string
+                  enum:
+                  - High
+                  - Normal
+                  - Low
+                dates:
+                  type: string
+                  description: JSON object with type, duration, start, and due fields
+                responsibles:
+                  type: string
+                  description: Comma-separated list of responsible user IDs
+                shareds:
+                  type: string
+                  description: Comma-separated list of shared user IDs
+                type:
+                  type: string
+                  enum:
+                  - Backlog
+                  - Milestone
+                  - Planned
+                metadata:
+                  type: string
+                customFields:
+                  type: string
+                customStatus:
+                  type: string
+      responses:
+        '200':
+          description: Created task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Dates:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Backlog
+          - Milestone
+          - Planned
+        duration:
+          type: integer
+          description: Duration in minutes
+        start:
+          type: string
+          format: date-time
+        due:
+          type: string
+          format: date-time
+    TaskListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: tasks
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        nextPageToken:
+          type: string
+          description: Token to retrieve the next page of results
+        responseSize:
+          type: integer
+    CustomFieldValue:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: string
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        briefDescription:
+          type: string
+        parentIds:
+          type: array
+          items:
+            type: string
+        superParentIds:
+          type: array
+          items:
+            type: string
+        sharedIds:
+          type: array
+          items:
+            type: string
+        responsibleIds:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - Active
+          - Completed
+          - Deferred
+          - Cancelled
+        importance:
+          type: string
+          enum:
+          - High
+          - Normal
+          - Low
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        dates:
+          $ref: '#/components/schemas/Dates'
+        scope:
+          type: string
+        authorIds:
+          type: array
+          items:
+            type: string
+        customStatusId:
+          type: string
+        hasAttachments:
+          type: boolean
+        attachmentCount:
+          type: integer
+        permalink:
+          type: string
+          format: uri
+        priority:
+          type: string
+        superTaskIds:
+          type: array
+          items:
+            type: string
+        subTaskIds:
+          type: array
+          items:
+            type: string
+        dependencyIds:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+        customFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com

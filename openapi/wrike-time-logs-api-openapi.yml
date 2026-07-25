@@ -1,0 +1,348 @@
+openapi: 3.0.3
+info:
+  title: Wrike Access Roles Time Logs API
+  description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+servers:
+- url: https://www.wrike.com/api/v4
+  description: Wrike REST API v4
+security:
+- oauth2: []
+- bearerToken: []
+tags:
+- name: Time Logs
+  description: Time tracking and timelog records
+paths:
+  /timelogs:
+    get:
+      operationId: listTimelogs
+      summary: List Time Logs
+      description: Returns all timelog records in all accessible accounts.
+      tags:
+      - Time Logs
+      parameters:
+      - name: createdDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: trackedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: me
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: descendants
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: subTasks
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: plainText
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contacts/{contactId}/timelogs:
+    get:
+      operationId: listContactTimelogs
+      summary: List Contact Time Logs
+      description: Returns all timelog records created by a specific user.
+      tags:
+      - Time Logs
+      parameters:
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: createdDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: trackedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: me
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: List of contact timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /folders/{folderId}/timelogs:
+    get:
+      operationId: listFolderTimelogs
+      summary: List Folder Time Logs
+      description: Returns all timelog records for a folder.
+      tags:
+      - Time Logs
+      parameters:
+      - name: folderId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: trackedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of folder timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tasks/{taskId}/timelogs:
+    get:
+      operationId: listTaskTimelogs
+      summary: List Task Time Logs
+      description: Returns all timelog records for a task.
+      tags:
+      - Time Logs
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: trackedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of task timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /accounts/{accountId}/timelogs:
+    get:
+      operationId: listAccountTimelogs
+      summary: List Account Time Logs
+      description: Returns all timelog records in a specific account.
+      tags:
+      - Time Logs
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: trackedDate
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of account timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /timelogs/{timelogId}:
+    get:
+      operationId: getTimelog
+      summary: Get Time Log
+      description: Returns a specific timelog record.
+      tags:
+      - Time Logs
+      parameters:
+      - name: timelogId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Timelog record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateTimelog
+      summary: Update Time Log
+      description: Updates a timelog record.
+      tags:
+      - Time Logs
+      parameters:
+      - name: timelogId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                hours:
+                  type: number
+                trackedDate:
+                  type: string
+      responses:
+        '200':
+          description: Updated timelog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteTimelog
+      summary: Delete Time Log
+      description: Deletes a timelog record.
+      tags:
+      - Time Logs
+      parameters:
+      - name: timelogId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    TimelogListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: timelogs
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Timelog'
+    Timelog:
+      type: object
+      properties:
+        id:
+          type: string
+        taskId:
+          type: string
+        userId:
+          type: string
+        hours:
+          type: number
+          format: float
+          description: Number of hours logged
+        createdDate:
+          type: string
+          format: date-time
+        trackedDate:
+          type: string
+          format: date
+          description: Date the time was tracked
+        comment:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com
