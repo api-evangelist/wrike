@@ -10,9 +10,22 @@ description: Wrike is a collaborative work management platform used by 30,000+ o
   and Microsoft Copilot Studio. Authentication is handled via OAuth 2.0 or permanent
   access tokens.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wrike.png
 tags:
 - Work Management
 - Project Management
@@ -25,42 +38,11 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/wrike/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: wrike:wrike
-  name: Wrike API
-  description: The Wrike REST API v4 enables developers to build integrations and
-    automations for Wrike. The API provides programmatic access to tasks, folders,
-    projects, contacts, workflows, time tracking, timesheets, custom fields, audit
-    logs, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens,
-    and the base URL is https://www.wrike.com/api/v4.
-  humanURL: https://developers.wrike.com/api/v4/
-  baseURL: https://www.wrike.com/api/v4
-  tags:
-  - REST API
-  - Work Management
-  - Project Management
-  - Tasks
-  - Workflows
-  - Webhooks
-  properties:
-  - type: Documentation
-    url: https://developers.wrike.com/
-  - type: APIReference
-    url: https://developers.wrike.com/api/v4/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/wrike/refs/heads/main/openapi/wrike-openapi.yml
-  - type: Authentication
-    url: https://developers.wrike.com/oauth-2-0-authorization
-  - type: GettingStarted
-    url: https://developers.wrike.com/getting-started/
-  - type: ChangeLog
-    url: https://developers.wrike.com/changelog/
-  - url: graphql/wrike-graphql.md
-    type: GraphQL
 - aid: wrike:datahub
   name: Wrike DataHub Public API
-  description: The Wrike DataHub Public API provides programmatic access to raw analytical
-    data from Wrike, enabling custom reporting and integration with downstream analytics
-    platforms.
+  description: >-
+    The Wrike DataHub Public API provides programmatic access to raw analytical data from Wrike, enabling
+    custom reporting and integration with downstream analytics platforms.
   humanURL: https://developers.wrike.com/datahub-public-api/
   tags:
   - Analytics
@@ -71,9 +53,9 @@ apis:
     url: https://developers.wrike.com/datahub-public-api/
 - aid: wrike:bi-export
   name: Wrike BI Export API
-  description: The Wrike BI Export API lets you export Wrike data into business intelligence
-    tools such as Tableau, Power BI, and Looker for enterprise-grade reporting and
-    analysis.
+  description: >-
+    The Wrike BI Export API lets you export Wrike data into business intelligence tools such as Tableau,
+    Power BI, and Looker for enterprise-grade reporting and analysis.
   humanURL: https://developers.wrike.com/bi-export-api/
   tags:
   - Business Intelligence
@@ -84,9 +66,9 @@ apis:
     url: https://developers.wrike.com/bi-export-api/
 - aid: wrike:cloud-content-connector
   name: Wrike Cloud Content Connector
-  description: The Wrike Cloud Content Connector enables management of cloud-based
-    content assets within Wrike workflows, integrating external content providers
-    with Wrike tasks and projects.
+  description: >-
+    The Wrike Cloud Content Connector enables management of cloud-based content assets within Wrike workflows,
+    integrating external content providers with Wrike tasks and projects.
   humanURL: https://developers.wrike.com/cloud-content-connector/
   tags:
   - Content Management
@@ -97,9 +79,9 @@ apis:
     url: https://developers.wrike.com/cloud-content-connector/
 - aid: wrike:mcp-server
   name: Wrike MCP Server
-  description: The Wrike MCP Server connects Wrike directly to AI assistants such
-    as Claude, ChatGPT, and Microsoft Copilot Studio using the Model Context Protocol,
-    enabling AI-driven workflows over Wrike data.
+  description: >-
+    The Wrike MCP Server connects Wrike directly to AI assistants such as Claude, ChatGPT, and Microsoft
+    Copilot Studio using the Model Context Protocol, enabling AI-driven workflows over Wrike data.
   humanURL: https://developers.wrike.com/mcp-server/
   tags:
   - MCP
@@ -108,7 +90,295 @@ apis:
   properties:
   - type: Documentation
     url: https://developers.wrike.com/mcp-server/
+- aid: wrike:wrike-access-roles-api
+  name: Wrike Access Roles API
+  description: Access role and permission management
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Access Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-access-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-accounts-api
+  name: Wrike Accounts API
+  description: Account settings and configuration
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-colors-api
+  name: Wrike Colors API
+  description: Available color palette
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Colors
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-colors-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-comments-api
+  name: Wrike Comments API
+  description: Task and folder comment management
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-contacts-api
+  name: Wrike Contacts API
+  description: Users and user groups in Wrike accounts
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-custom-fields-api
+  name: Wrike Custom Fields API
+  description: Custom field definitions and management
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Custom Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-custom-fields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-folders-and-projects-api
+  name: Wrike Folders And Projects API
+  description: Folder and project hierarchy management
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Folders And Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-folders-and-projects-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-groups-api
+  name: Wrike Groups API
+  description: User group management
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-tasks-api
+  name: Wrike Tasks API
+  description: Task creation, retrieval, updates, and deletion
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-time-logs-api
+  name: Wrike Time Logs API
+  description: Time tracking and timelog records
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Time Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-time-logs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-users-api
+  name: Wrike Users API
+  description: User management and profile operations
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-webhooks-api
+  name: Wrike Webhooks API
+  description: Event-driven webhook subscriptions
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
+- aid: wrike:wrike-workflows-api
+  name: Wrike Workflows API
+  description: Workflow and status management
+  humanURL: https://developers.wrike.com/api/v4/
+  baseURL: https://www.wrike.com/api/v4
+  tags:
+  - Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/wrike-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://developers.wrike.com/
+  - type: APIReference
+    url: https://developers.wrike.com/api/v4/
+  - type: Authentication
+    url: https://developers.wrike.com/oauth-2-0-authorization
+  - type: GettingStarted
+    url: https://developers.wrike.com/getting-started/
+  - type: ChangeLog
+    url: https://developers.wrike.com/changelog/
+  - type: GraphQL
+    url: graphql/wrike-graphql.md
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/wrike/overview
 - type: AgenticAccess
   url: agentic-access/wrike-agentic-access.yml
 - type: VulnerabilityDisclosure
