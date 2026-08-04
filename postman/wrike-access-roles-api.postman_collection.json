@@ -1,0 +1,194 @@
+{
+  "info": {
+    "_postman_id": "a1188ea0-c6d5-42ad-8800-6f427be9bd0c",
+    "name": "Wrike Access Roles API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:06.000Z",
+    "updatedAt": "2026-07-28T03:33:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a1188ea0-c6d5-42ad-8800-6f427be9bd0c"
+  },
+  "item": [
+    {
+      "name": "access_roles",
+      "item": [
+        {
+          "name": "List Access Roles",
+          "id": "cd8486c2-24b9-4c3d-a872-43cfb6a0b6e0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.wrike.com/oauth2/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.wrike.com/oauth2/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/access_roles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "access_roles"
+              ]
+            },
+            "description": "Returns all access roles available in accessible accounts."
+          },
+          "response": [
+            {
+              "id": "590869e8-3bc6-44cb-92b7-76316fecd7a1",
+              "name": "List of access roles",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/access_roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "access_roles"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"isDefault\": \"<boolean>\",\n      \"sharedItemPermissions\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"isDefault\": \"<boolean>\",\n      \"sharedItemPermissions\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:06.000Z",
+              "updatedAt": "2026-07-28T03:33:06.000Z",
+              "uid": "35240-590869e8-3bc6-44cb-92b7-76316fecd7a1"
+            },
+            {
+              "id": "bccb5266-9e4a-4655-9214-aee18c4ba7a5",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/access_roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "access_roles"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:06.000Z",
+              "updatedAt": "2026-07-28T03:33:06.000Z",
+              "uid": "35240-bccb5266-9e4a-4655-9214-aee18c4ba7a5"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:06.000Z",
+          "updatedAt": "2026-07-28T03:33:06.000Z",
+          "uid": "35240-cd8486c2-24b9-4c3d-a872-43cfb6a0b6e0"
+        }
+      ],
+      "id": "91ad19d6-d227-4c2f-ba5b-9d4fcdc00b18",
+      "createdAt": "2026-07-28T03:33:06.000Z",
+      "updatedAt": "2026-07-28T03:33:06.000Z",
+      "uid": "35240-91ad19d6-d227-4c2f-ba5b-9d4fcdc00b18"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

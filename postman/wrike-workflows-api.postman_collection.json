@@ -1,0 +1,669 @@
+{
+  "info": {
+    "_postman_id": "9bc9a3df-4442-4b39-b9ba-ea573568e691",
+    "name": "Wrike Access Roles Workflows API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:49.000Z",
+    "updatedAt": "2026-07-28T03:33:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9bc9a3df-4442-4b39-b9ba-ea573568e691"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "workflows",
+              "item": [
+                {
+                  "name": "{workflowId}",
+                  "item": [
+                    {
+                      "name": "Update Workflow",
+                      "id": "d78d90a5-1797-4b98-a9f3-a706e86e222d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "hidden",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/workflows/:workflowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "workflows",
+                            ":workflowId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fffd5d0e-304a-4ffc-8d22-a53240440190",
+                              "key": "accountId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "a2bdb8ef-4060-4c2c-b996-9034977d90a3",
+                              "key": "workflowId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing workflow."
+                      },
+                      "response": [
+                        {
+                          "id": "756a4f03-1bfd-40d3-bc86-5a2f79293cb0",
+                          "name": "Updated workflow",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "hidden",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/workflows/:workflowId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "workflows",
+                                ":workflowId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "workflowId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"standard\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"customStatuses\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Completed\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Active\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"standard\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"customStatuses\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Deferred\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Cancelled\"\n        }\n      ]\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:33:50.000Z",
+                          "updatedAt": "2026-07-28T03:33:50.000Z",
+                          "uid": "35240-756a4f03-1bfd-40d3-bc86-5a2f79293cb0"
+                        },
+                        {
+                          "id": "46502037-7e8d-456e-bbe4-fadf17dbdc37",
+                          "name": "Authentication required or token invalid",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "hidden",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountId/workflows/:workflowId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountId",
+                                "workflows",
+                                ":workflowId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountId"
+                                },
+                                {
+                                  "key": "workflowId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:33:50.000Z",
+                          "updatedAt": "2026-07-28T03:33:50.000Z",
+                          "uid": "35240-46502037-7e8d-456e-bbe4-fadf17dbdc37"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:33:50.000Z",
+                      "updatedAt": "2026-07-28T03:33:50.000Z",
+                      "uid": "35240-d78d90a5-1797-4b98-a9f3-a706e86e222d"
+                    }
+                  ],
+                  "id": "de23f3ee-093f-4361-9191-eed64b812bbd",
+                  "createdAt": "2026-07-28T03:33:50.000Z",
+                  "updatedAt": "2026-07-28T03:33:50.000Z",
+                  "uid": "35240-de23f3ee-093f-4361-9191-eed64b812bbd"
+                },
+                {
+                  "name": "List Workflows",
+                  "id": "8fd3e802-31ee-43bb-95d8-c71b975288d5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "workflows"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4526a2b0-0149-49bd-b213-1a9151d6effa",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) The account ID"
+                        }
+                      ]
+                    },
+                    "description": "Returns all workflows in the specified account. Workflows define the status stages for tasks within the account."
+                  },
+                  "response": [
+                    {
+                      "id": "ffd6c6b9-a0d5-4aa6-bcc8-17a0dcf33051",
+                      "name": "List of workflows",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"standard\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"customStatuses\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Completed\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Active\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"standard\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"customStatuses\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Deferred\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Cancelled\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:50.000Z",
+                      "updatedAt": "2026-07-28T03:33:50.000Z",
+                      "uid": "35240-ffd6c6b9-a0d5-4aa6-bcc8-17a0dcf33051"
+                    },
+                    {
+                      "id": "c1a057d7-925d-4dcc-9418-067a31ba4816",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:50.000Z",
+                      "updatedAt": "2026-07-28T03:33:50.000Z",
+                      "uid": "35240-c1a057d7-925d-4dcc-9418-067a31ba4816"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:50.000Z",
+                  "updatedAt": "2026-07-28T03:33:50.000Z",
+                  "uid": "35240-8fd3e802-31ee-43bb-95d8-c71b975288d5"
+                },
+                {
+                  "name": "Create Workflow",
+                  "id": "1920b467-1a7f-400a-ae2b-50b3a0e2f819",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Workflow name",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "workflows"
+                      ],
+                      "variable": [
+                        {
+                          "id": "da91a26d-69f7-4e3d-bb65-d69309d7561f",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates a new workflow in the account."
+                  },
+                  "response": [
+                    {
+                      "id": "6ed45c7b-2d72-4133-8cff-fdf4abb76758",
+                      "name": "Created workflow",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Workflow name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"standard\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"customStatuses\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Completed\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Active\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"standard\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"customStatuses\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Deferred\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"standardName\": \"<boolean>\",\n          \"color\": \"<string>\",\n          \"hidden\": \"<boolean>\",\n          \"group\": \"Cancelled\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:50.000Z",
+                      "updatedAt": "2026-07-28T03:33:50.000Z",
+                      "uid": "35240-6ed45c7b-2d72-4133-8cff-fdf4abb76758"
+                    },
+                    {
+                      "id": "b522cdfb-eae5-495d-8200-26a69bc12ded",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Workflow name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:50.000Z",
+                      "updatedAt": "2026-07-28T03:33:50.000Z",
+                      "uid": "35240-b522cdfb-eae5-495d-8200-26a69bc12ded"
+                    },
+                    {
+                      "id": "24b0ff8e-3b83-412c-8e5c-8c7b3e10a74f",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Workflow name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/workflows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "workflows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:50.000Z",
+                      "updatedAt": "2026-07-28T03:33:50.000Z",
+                      "uid": "35240-24b0ff8e-3b83-412c-8e5c-8c7b3e10a74f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:50.000Z",
+                  "updatedAt": "2026-07-28T03:33:50.000Z",
+                  "uid": "35240-1920b467-1a7f-400a-ae2b-50b3a0e2f819"
+                }
+              ],
+              "id": "398e022a-13f0-49c6-844a-fb2f1e96db83",
+              "createdAt": "2026-07-28T03:33:50.000Z",
+              "updatedAt": "2026-07-28T03:33:50.000Z",
+              "uid": "35240-398e022a-13f0-49c6-844a-fb2f1e96db83"
+            }
+          ],
+          "id": "cb891bd9-da76-4380-8b67-9e9baebbd888",
+          "createdAt": "2026-07-28T03:33:50.000Z",
+          "updatedAt": "2026-07-28T03:33:50.000Z",
+          "uid": "35240-cb891bd9-da76-4380-8b67-9e9baebbd888"
+        }
+      ],
+      "id": "82bb4173-7d26-421a-a180-45d0f9c934b8",
+      "createdAt": "2026-07-28T03:33:50.000Z",
+      "updatedAt": "2026-07-28T03:33:50.000Z",
+      "uid": "35240-82bb4173-7d26-421a-a180-45d0f9c934b8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

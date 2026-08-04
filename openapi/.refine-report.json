@@ -1,0 +1,38 @@
+{
+  "provider": "wrike",
+  "sources": [
+    "wrike-access-roles-api-openapi.yml",
+    "wrike-accounts-api-openapi.yml",
+    "wrike-colors-api-openapi.yml",
+    "wrike-comments-api-openapi.yml",
+    "wrike-contacts-api-openapi.yml",
+    "wrike-custom-fields-api-openapi.yml",
+    "wrike-folders-and-projects-api-openapi.yml",
+    "wrike-groups-api-openapi.yml",
+    "wrike-tasks-api-openapi.yml",
+    "wrike-time-logs-api-openapi.yml",
+    "wrike-users-api-openapi.yml",
+    "wrike-webhooks-api-openapi.yml",
+    "wrike-workflows-api-openapi.yml"
+  ],
+  "outputs": [
+    "wrike-access-roles-api-openapi.yml",
+    "wrike-accounts-api-openapi.yml",
+    "wrike-colors-api-openapi.yml",
+    "wrike-comments-api-openapi.yml",
+    "wrike-contacts-api-openapi.yml",
+    "wrike-custom-fields-api-openapi.yml",
+    "wrike-folders-and-projects-api-openapi.yml",
+    "wrike-groups-api-openapi.yml",
+    "wrike-tasks-api-openapi.yml",
+    "wrike-time-logs-api-openapi.yml",
+    "wrike-users-api-openapi.yml",
+    "wrike-webhooks-api-openapi.yml",
+    "wrike-workflows-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,1022 @@
+{
+  "info": {
+    "_postman_id": "ad2331a9-7783-405e-b306-574a1c373458",
+    "name": "Wrike Access Roles Groups API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:12.000Z",
+    "updatedAt": "2026-07-28T03:33:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ad2331a9-7783-405e-b306-574a1c373458"
+  },
+  "item": [
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "Get Group",
+              "id": "f134cefa-d8c2-43cf-bf80-cc0c63ffa08f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:groupId?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":groupId"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "56a71b34-9986-449c-a1cc-690a1df10268",
+                      "key": "groupId",
+                      "value": "<string>",
+                      "description": "(Required) The group ID"
+                    }
+                  ]
+                },
+                "description": "Returns information about a specific user group."
+              },
+              "response": [
+                {
+                  "id": "f9f119e1-0b6f-44fd-ad20-478250b1a5f6",
+                  "name": "Group details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-f9f119e1-0b6f-44fd-ad20-478250b1a5f6"
+                },
+                {
+                  "id": "6f645490-e115-4cea-96e2-72a447040af7",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-6f645490-e115-4cea-96e2-72a447040af7"
+                },
+                {
+                  "id": "de1d5cea-7165-4527-bf10-8eefd64b07cc",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-de1d5cea-7165-4527-bf10-8eefd64b07cc"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-f134cefa-d8c2-43cf-bf80-cc0c63ffa08f"
+            },
+            {
+              "name": "Update Group",
+              "id": "30cadbd9-723d-437d-9025-9952cf4e4262",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "addMemberIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "removeMemberIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:groupId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":groupId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "87e5e683-eec9-4266-b70e-7e7b9312877a",
+                      "key": "groupId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates a user group."
+              },
+              "response": [
+                {
+                  "id": "3882ebcc-6a6e-43dd-bfc5-034d63582f2c",
+                  "name": "Updated group",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "title",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "addMemberIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "removeMemberIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-3882ebcc-6a6e-43dd-bfc5-034d63582f2c"
+                },
+                {
+                  "id": "f72a88cb-b848-410d-9737-3fda033dcd0c",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "title",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "addMemberIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "removeMemberIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-f72a88cb-b848-410d-9737-3fda033dcd0c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-30cadbd9-723d-437d-9025-9952cf4e4262"
+            },
+            {
+              "name": "Delete Group",
+              "id": "d6a8e0f4-c579-4333-8178-e8ab4ab414a5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:groupId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":groupId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a34079e6-f83b-4918-a2d5-15a7f0a10836",
+                      "key": "groupId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes a user group."
+              },
+              "response": [
+                {
+                  "id": "1533eaad-5dac-46b9-b9c0-696a8b22316d",
+                  "name": "Successfully deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-1533eaad-5dac-46b9-b9c0-696a8b22316d"
+                },
+                {
+                  "id": "8a327fc1-e5d6-4682-814a-67c68dcc2d6a",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:13.000Z",
+                  "updatedAt": "2026-07-28T03:33:13.000Z",
+                  "uid": "35240-8a327fc1-e5d6-4682-814a-67c68dcc2d6a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-d6a8e0f4-c579-4333-8178-e8ab4ab414a5"
+            }
+          ],
+          "id": "7a2b7a46-1b19-4a07-b558-d1785c4a1086",
+          "createdAt": "2026-07-28T03:33:13.000Z",
+          "updatedAt": "2026-07-28T03:33:13.000Z",
+          "uid": "35240-7a2b7a46-1b19-4a07-b558-d1785c4a1086"
+        },
+        {
+          "name": "List Groups",
+          "id": "9dfd57e6-c72d-44ff-8181-c3d234f6f721",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/groups?metadata=<string>&fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ],
+              "query": [
+                {
+                  "description": "Metadata filter",
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "description": "JSON string array of optional fields",
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of all user groups in all accessible accounts."
+          },
+          "response": [
+            {
+              "id": "be69ec31-9f86-405b-a8de-464144002953",
+              "name": "List of groups",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups?metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Metadata filter",
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON string array of optional fields",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-be69ec31-9f86-405b-a8de-464144002953"
+            },
+            {
+              "id": "cb0d2cdb-595d-4cf7-ad6f-864a71900441",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups?metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "Metadata filter",
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON string array of optional fields",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-cb0d2cdb-595d-4cf7-ad6f-864a71900441"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:13.000Z",
+          "updatedAt": "2026-07-28T03:33:13.000Z",
+          "uid": "35240-9dfd57e6-c72d-44ff-8181-c3d234f6f721"
+        },
+        {
+          "name": "Create Group",
+          "id": "a384255b-0226-454e-bc04-9bc8055a9940",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) Group title",
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of member user IDs",
+                  "key": "memberIds",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Metadata key-value pairs",
+                  "key": "metadata",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ]
+            },
+            "description": "Creates a new user group in the account."
+          },
+          "response": [
+            {
+              "id": "8ddfc215-d053-4e6e-b8a7-f4dbabab9018",
+              "name": "Created group",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group title",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of member user IDs",
+                      "key": "memberIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metadata key-value pairs",
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"memberIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"childIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"scope\": \"<string>\",\n      \"avatarUrl\": \"<uri>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-8ddfc215-d053-4e6e-b8a7-f4dbabab9018"
+            },
+            {
+              "id": "04eb9687-81f1-4399-9b3b-6329ee430616",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group title",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of member user IDs",
+                      "key": "memberIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metadata key-value pairs",
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-04eb9687-81f1-4399-9b3b-6329ee430616"
+            },
+            {
+              "id": "b3f05760-9dd4-4534-b2a4-917da595c5a9",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Group title",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of member user IDs",
+                      "key": "memberIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metadata key-value pairs",
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:13.000Z",
+              "updatedAt": "2026-07-28T03:33:13.000Z",
+              "uid": "35240-b3f05760-9dd4-4534-b2a4-917da595c5a9"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:13.000Z",
+          "updatedAt": "2026-07-28T03:33:13.000Z",
+          "uid": "35240-a384255b-0226-454e-bc04-9bc8055a9940"
+        }
+      ],
+      "id": "7246b13f-25a8-49af-9ade-cde95233f70b",
+      "createdAt": "2026-07-28T03:33:13.000Z",
+      "updatedAt": "2026-07-28T03:33:13.000Z",
+      "uid": "35240-7246b13f-25a8-49af-9ade-cde95233f70b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

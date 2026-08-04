@@ -1,0 +1,425 @@
+{
+  "info": {
+    "_postman_id": "de1b35d4-3e8f-4168-9434-72e707976475",
+    "name": "Wrike Access Roles Users API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:15.000Z",
+    "updatedAt": "2026-07-28T03:33:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-de1b35d4-3e8f-4168-9434-72e707976475"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "Get User",
+              "id": "d3995c08-96c9-453b-8c20-58d738e1db2a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:userId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9838b66a-be07-4e85-9e12-56c8c438defb",
+                      "key": "userId",
+                      "value": "<string>",
+                      "description": "(Required) The user ID"
+                    }
+                  ]
+                },
+                "description": "Returns information about a specific user."
+              },
+              "response": [
+                {
+                  "id": "36904410-b984-4839-8ab9-49afaab6d874",
+                  "name": "User details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"User\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:16.000Z",
+                  "updatedAt": "2026-07-28T03:33:16.000Z",
+                  "uid": "35240-36904410-b984-4839-8ab9-49afaab6d874"
+                },
+                {
+                  "id": "bde4d4e4-98f7-431e-a699-e509613a6fc2",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:16.000Z",
+                  "updatedAt": "2026-07-28T03:33:16.000Z",
+                  "uid": "35240-bde4d4e4-98f7-431e-a699-e509613a6fc2"
+                },
+                {
+                  "id": "c233eb9b-e0d3-4048-9f1a-0db37cc43a74",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:16.000Z",
+                  "updatedAt": "2026-07-28T03:33:16.000Z",
+                  "uid": "35240-c233eb9b-e0d3-4048-9f1a-0db37cc43a74"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:16.000Z",
+              "updatedAt": "2026-07-28T03:33:16.000Z",
+              "uid": "35240-d3995c08-96c9-453b-8c20-58d738e1db2a"
+            },
+            {
+              "name": "Update User",
+              "id": "d07a289f-83f4-4825-b30f-3bf817d02b89",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "User role in the account",
+                      "key": "role",
+                      "value": "Collaborator"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/:userId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "84ee8a84-22dd-4df4-98df-25e053e4fa05",
+                      "key": "userId",
+                      "value": "<string>",
+                      "description": "(Required) The user ID"
+                    }
+                  ]
+                },
+                "description": "Updates user profile information."
+              },
+              "response": [
+                {
+                  "id": "dd9403cb-3ae5-42ed-b1f4-8ac6d936aacc",
+                  "name": "Updated user",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "User role in the account",
+                          "key": "role",
+                          "value": "Collaborator"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"<string>\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"User\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:16.000Z",
+                  "updatedAt": "2026-07-28T03:33:16.000Z",
+                  "uid": "35240-dd9403cb-3ae5-42ed-b1f4-8ac6d936aacc"
+                },
+                {
+                  "id": "36d3bd0a-2dd6-4558-8bf7-edd139b22979",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "User role in the account",
+                          "key": "role",
+                          "value": "Collaborator"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:16.000Z",
+                  "updatedAt": "2026-07-28T03:33:16.000Z",
+                  "uid": "35240-36d3bd0a-2dd6-4558-8bf7-edd139b22979"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:16.000Z",
+              "updatedAt": "2026-07-28T03:33:16.000Z",
+              "uid": "35240-d07a289f-83f4-4825-b30f-3bf817d02b89"
+            }
+          ],
+          "id": "08c246c2-ed0e-4834-a942-f63105e54a2b",
+          "createdAt": "2026-07-28T03:33:16.000Z",
+          "updatedAt": "2026-07-28T03:33:16.000Z",
+          "uid": "35240-08c246c2-ed0e-4834-a942-f63105e54a2b"
+        }
+      ],
+      "id": "ca9dc36d-6dc5-476a-84cc-6ba6e38a8192",
+      "createdAt": "2026-07-28T03:33:16.000Z",
+      "updatedAt": "2026-07-28T03:33:16.000Z",
+      "uid": "35240-ca9dc36d-6dc5-476a-84cc-6ba6e38a8192"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

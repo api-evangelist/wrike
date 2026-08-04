@@ -1,0 +1,383 @@
+{
+  "info": {
+    "_postman_id": "8aef1dd8-0d2a-4cfa-a0df-a1c887adab87",
+    "name": "Wrike Access Roles Accounts API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:06.000Z",
+    "updatedAt": "2026-07-28T03:33:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8aef1dd8-0d2a-4cfa-a0df-a1c887adab87"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "Update Account",
+              "id": "1c5aa031-3d1b-4828-aba9-8aac26c9b178",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5a715daa-c398-430d-9ff0-2c7c511ead7c",
+                      "key": "accountId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates account settings."
+              },
+              "response": [
+                {
+                  "id": "c8496e81-f5f6-4a78-a2cc-4f4eb1342e75",
+                  "name": "Updated account",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dateFormat\": \"<string>\",\n      \"firstDayOfWeek\": \"<string>\",\n      \"workDays\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"rootFolderId\": \"<string>\",\n      \"recycleBinId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"subscription\": {\n        \"type\": \"<string>\",\n        \"suspended\": \"<boolean>\",\n        \"paid\": \"<boolean>\"\n      },\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dateFormat\": \"<string>\",\n      \"firstDayOfWeek\": \"<string>\",\n      \"workDays\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"rootFolderId\": \"<string>\",\n      \"recycleBinId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"subscription\": {\n        \"type\": \"<string>\",\n        \"suspended\": \"<boolean>\",\n        \"paid\": \"<boolean>\"\n      },\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:07.000Z",
+                  "updatedAt": "2026-07-28T03:33:07.000Z",
+                  "uid": "35240-c8496e81-f5f6-4a78-a2cc-4f4eb1342e75"
+                },
+                {
+                  "id": "f12163f8-b7be-4ec4-adfa-31d43cbbd9fb",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:07.000Z",
+                  "updatedAt": "2026-07-28T03:33:07.000Z",
+                  "uid": "35240-f12163f8-b7be-4ec4-adfa-31d43cbbd9fb"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:07.000Z",
+              "updatedAt": "2026-07-28T03:33:07.000Z",
+              "uid": "35240-1c5aa031-3d1b-4828-aba9-8aac26c9b178"
+            }
+          ],
+          "id": "3a32e4bf-c137-4c5f-a931-2548638d3332",
+          "createdAt": "2026-07-28T03:33:07.000Z",
+          "updatedAt": "2026-07-28T03:33:07.000Z",
+          "uid": "35240-3a32e4bf-c137-4c5f-a931-2548638d3332"
+        },
+        {
+          "name": "List Accounts",
+          "id": "f33a70c3-f954-4bfe-89fb-e6e6c1deb6a7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accounts?metadata=<string>&fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts"
+              ],
+              "query": [
+                {
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns all accounts accessible to the current user."
+          },
+          "response": [
+            {
+              "id": "f2235c30-bdcb-44f1-8e53-4dcc4bd65179",
+              "name": "List of accounts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts?metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dateFormat\": \"<string>\",\n      \"firstDayOfWeek\": \"<string>\",\n      \"workDays\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"rootFolderId\": \"<string>\",\n      \"recycleBinId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"subscription\": {\n        \"type\": \"<string>\",\n        \"suspended\": \"<boolean>\",\n        \"paid\": \"<boolean>\"\n      },\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dateFormat\": \"<string>\",\n      \"firstDayOfWeek\": \"<string>\",\n      \"workDays\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"rootFolderId\": \"<string>\",\n      \"recycleBinId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"subscription\": {\n        \"type\": \"<string>\",\n        \"suspended\": \"<boolean>\",\n        \"paid\": \"<boolean>\"\n      },\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:07.000Z",
+              "updatedAt": "2026-07-28T03:33:07.000Z",
+              "uid": "35240-f2235c30-bdcb-44f1-8e53-4dcc4bd65179"
+            },
+            {
+              "id": "8238f861-9009-4ad1-8785-f02fbcad7890",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts?metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:07.000Z",
+              "updatedAt": "2026-07-28T03:33:07.000Z",
+              "uid": "35240-8238f861-9009-4ad1-8785-f02fbcad7890"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:07.000Z",
+          "updatedAt": "2026-07-28T03:33:07.000Z",
+          "uid": "35240-f33a70c3-f954-4bfe-89fb-e6e6c1deb6a7"
+        }
+      ],
+      "id": "4a2aa2a7-030f-4c56-a0d5-1c91baa7852d",
+      "createdAt": "2026-07-28T03:33:07.000Z",
+      "updatedAt": "2026-07-28T03:33:07.000Z",
+      "uid": "35240-4a2aa2a7-030f-4c56-a0d5-1c91baa7852d"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

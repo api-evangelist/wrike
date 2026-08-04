@@ -1,0 +1,2427 @@
+openapi: 3.0.3
+info:
+  title: Wrike API
+  description: >-
+    The Wrike REST API v4 enables developers to build integrations and
+    automations for Wrike, a collaborative work management platform used by
+    20,000+ organizations. The API provides access to tasks, folders, projects,
+    contacts, workflows, time tracking, webhooks, and more. Authentication uses
+    OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub
+    Public API for analytics, BI Export, Cloud Content Connector, and an MCP
+    Server for AI assistant integration.
+  version: '4.0'
+  termsOfService: https://www.wrike.com/developer-terms/
+  contact:
+    name: Wrike Developer Support
+    url: https://developers.wrike.com
+  license:
+    name: Wrike API Terms
+    url: https://www.wrike.com/developer-terms/
+externalDocs:
+  description: Wrike Developer Documentation
+  url: https://developers.wrike.com
+
+servers:
+  - url: https://www.wrike.com/api/v4
+    description: Wrike REST API v4
+
+security:
+  - oauth2: []
+  - bearerToken: []
+
+tags:
+  - name: Contacts
+    description: Users and user groups in Wrike accounts
+  - name: Users
+    description: User management and profile operations
+  - name: Groups
+    description: User group management
+  - name: Invitations
+    description: User invitation management
+  - name: Accounts
+    description: Account settings and configuration
+  - name: Workflows
+    description: Workflow and status management
+  - name: Custom Fields
+    description: Custom field definitions and management
+  - name: Folders And Projects
+    description: Folder and project hierarchy management
+  - name: Tasks
+    description: Task creation, retrieval, updates, and deletion
+  - name: Comments
+    description: Task and folder comment management
+  - name: Dependencies
+    description: Task dependency management
+  - name: Time Logs
+    description: Time tracking and timelog records
+  - name: Attachments
+    description: File attachment management
+  - name: Webhooks
+    description: Event-driven webhook subscriptions
+  - name: Access Roles
+    description: Access role and permission management
+  - name: Colors
+    description: Available color palette
+
+paths:
+  /contacts:
+    get:
+      operationId: listContacts
+      summary: List Contacts
+      description: >-
+        Returns a list of contacts of all users and user groups in all
+        accessible accounts.
+      tags:
+        - Contacts
+      parameters:
+        - name: me
+          in: query
+          description: If present, only contact info of the requesting user is returned
+          required: false
+          schema:
+            type: boolean
+        - name: metadata
+          in: query
+          description: Metadata filter, exact match for metadata key or key-value pair
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: JSON string array of optional fields to include in the response
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /contacts/{contactId}:
+    get:
+      operationId: getContact
+      summary: Get Contact
+      description: Returns contact information for specified users and user groups.
+      tags:
+        - Contacts
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          description: Comma-separated list of contact IDs (up to 100)
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: JSON string array of optional fields to include in the response
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Contact details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateContact
+      summary: Update Contact
+      description: >-
+        Updates contact information. Only the contact whose API token is being
+        used may be updated.
+      tags:
+        - Contacts
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          description: The contact ID
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                metadata:
+                  type: string
+                  description: Metadata key-value pairs to update
+      responses:
+        '200':
+          description: Updated contact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Get User
+      description: Returns information about a specific user.
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The user ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateUser
+      summary: Update User
+      description: Updates user profile information.
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The user ID
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+                  enum: [User, Collaborator]
+                  description: User role in the account
+      responses:
+        '200':
+          description: Updated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /groups:
+    get:
+      operationId: listGroups
+      summary: List Groups
+      description: Returns a list of all user groups in all accessible accounts.
+      tags:
+        - Groups
+      parameters:
+        - name: metadata
+          in: query
+          description: Metadata filter
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: JSON string array of optional fields
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createGroup
+      summary: Create Group
+      description: Creates a new user group in the account.
+      tags:
+        - Groups
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - title
+              properties:
+                title:
+                  type: string
+                  description: Group title
+                memberIds:
+                  type: string
+                  description: Comma-separated list of member user IDs
+                metadata:
+                  type: string
+                  description: Metadata key-value pairs
+      responses:
+        '200':
+          description: Created group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get Group
+      description: Returns information about a specific user group.
+      tags:
+        - Groups
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          description: The group ID
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Group details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateGroup
+      summary: Update Group
+      description: Updates a user group.
+      tags:
+        - Groups
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                addMemberIds:
+                  type: string
+                removeMemberIds:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Updated group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteGroup
+      summary: Delete Group
+      description: Deletes a user group.
+      tags:
+        - Groups
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts:
+    get:
+      operationId: listAccounts
+      summary: List Accounts
+      description: Returns all accounts accessible to the current user.
+      tags:
+        - Accounts
+      parameters:
+        - name: metadata
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of accounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts/{accountId}:
+    put:
+      operationId: updateAccount
+      summary: Update Account
+      description: Updates account settings.
+      tags:
+        - Accounts
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Updated account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts/{accountId}/workflows:
+    get:
+      operationId: listWorkflows
+      summary: List Workflows
+      description: >-
+        Returns all workflows in the specified account. Workflows define the
+        status stages for tasks within the account.
+      tags:
+        - Workflows
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: The account ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of workflows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWorkflow
+      summary: Create Workflow
+      description: Creates a new workflow in the account.
+      tags:
+        - Workflows
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: Workflow name
+      responses:
+        '200':
+          description: Created workflow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts/{accountId}/workflows/{workflowId}:
+    put:
+      operationId: updateWorkflow
+      summary: Update Workflow
+      description: Updates an existing workflow.
+      tags:
+        - Workflows
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                hidden:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated workflow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts/{accountId}/customfields:
+    get:
+      operationId: listCustomFields
+      summary: List Custom Fields
+      description: Returns all custom field definitions in the account.
+      tags:
+        - Custom Fields
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of custom fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCustomField
+      summary: Create Custom Field
+      description: Creates a new custom field definition in the account.
+      tags:
+        - Custom Fields
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - title
+                - type
+              properties:
+                title:
+                  type: string
+                type:
+                  type: string
+                  enum: [Text, DropDown, Numeric, Currency, Percentage, Date, Duration, Checkbox, Bulk]
+                shareds:
+                  type: string
+                  description: Comma-separated list of shared user/group IDs
+      responses:
+        '200':
+          description: Created custom field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /folders:
+    get:
+      operationId: listFolders
+      summary: List Folders
+      description: >-
+        Returns list of entries required to build a folder tree for all
+        accessible accounts.
+      tags:
+        - Folders And Projects
+      parameters:
+        - name: permalink
+          in: query
+          description: Folder permalink, exact match
+          required: false
+          schema:
+            type: string
+        - name: descendants
+          in: query
+          description: Adds all descendant folders to search scope
+          required: false
+          schema:
+            type: boolean
+        - name: metadata
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: customField
+          in: query
+          description: Custom field filter (id/value) as JSON object
+          required: false
+          schema:
+            type: string
+        - name: updatedDate
+          in: query
+          description: Updated date filter range
+          required: false
+          schema:
+            type: string
+        - name: project
+          in: query
+          description: Get only projects (true) or only folders (false)
+          required: false
+          schema:
+            type: boolean
+        - name: deleted
+          in: query
+          description: Get folders from Root (false) or Recycle Bin (true)
+          required: false
+          schema:
+            type: boolean
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of folders and projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /folders/{folderId}:
+    get:
+      operationId: getFolder
+      summary: Get Folder
+      description: Returns information about a specific folder or project.
+      tags:
+        - Folders And Projects
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          description: The folder ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Folder details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateFolder
+      summary: Update Folder
+      description: Updates a folder or project.
+      tags:
+        - Folders And Projects
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                shareds:
+                  type: string
+                addShareds:
+                  type: string
+                removeShareds:
+                  type: string
+                metadata:
+                  type: string
+                customFields:
+                  type: string
+      responses:
+        '200':
+          description: Updated folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteFolder
+      summary: Delete Folder
+      description: Deletes a folder or project, moving it to the Recycle Bin.
+      tags:
+        - Folders And Projects
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /folders/{folderId}/folders:
+    get:
+      operationId: listFolderSubfolders
+      summary: List Folder Subfolders
+      description: Returns folder tree entries for the subtree of this folder.
+      tags:
+        - Folders And Projects
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: descendants
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: metadata
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: project
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of subfolders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createFolderInFolder
+      summary: Create Folder In Folder
+      description: Creates a new folder inside the specified parent folder.
+      tags:
+        - Folders And Projects
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - title
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                shareds:
+                  type: string
+                metadata:
+                  type: string
+                customFields:
+                  type: string
+                project:
+                  type: string
+                  description: JSON object with project settings
+      responses:
+        '200':
+          description: Created folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /tasks:
+    get:
+      operationId: listTasks
+      summary: List Tasks
+      description: Searches among all tasks in all accessible accounts.
+      tags:
+        - Tasks
+      parameters:
+        - name: title
+          in: query
+          description: Title filter, exact match
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Status filter
+          required: false
+          schema:
+            type: string
+            enum: [Active, Completed, Deferred, Cancelled]
+        - name: importance
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [High, Normal, Low]
+        - name: startDate
+          in: query
+          description: Start date filter range (ISO 8601)
+          required: false
+          schema:
+            type: string
+        - name: dueDate
+          in: query
+          description: Due date filter range (ISO 8601)
+          required: false
+          schema:
+            type: string
+        - name: createdDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: updatedDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: completedDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: authors
+          in: query
+          description: Comma-separated author IDs
+          required: false
+          schema:
+            type: string
+        - name: responsibles
+          in: query
+          description: Comma-separated responsible user IDs
+          required: false
+          schema:
+            type: string
+        - name: permalink
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [Backlog, Milestone, Planned]
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            maximum: 1000
+        - name: sortField
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [CreatedDate, UpdatedDate, CompletedDate, DueDate, Status, Importance, Title]
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [Asc, Desc]
+        - name: subTasks
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: metadata
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: customField
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: nextPageToken
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /tasks/{taskId}:
+    get:
+      operationId: getTask
+      summary: Get Task
+      description: Returns complete information about one or more tasks.
+      tags:
+        - Tasks
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: Comma-separated list of task IDs (up to 100)
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateTask
+      summary: Update Task
+      description: Updates a task's properties.
+      tags:
+        - Tasks
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                status:
+                  type: string
+                  enum: [Active, Completed, Deferred, Cancelled]
+                importance:
+                  type: string
+                  enum: [High, Normal, Low]
+                dates:
+                  type: string
+                  description: JSON object with start/due dates
+                responsibles:
+                  type: string
+                addResponsibles:
+                  type: string
+                removeResponsibles:
+                  type: string
+                metadata:
+                  type: string
+                customFields:
+                  type: string
+                customStatus:
+                  type: string
+      responses:
+        '200':
+          description: Updated task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteTask
+      summary: Delete Task
+      description: Deletes a task, moving it to the Recycle Bin.
+      tags:
+        - Tasks
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /folders/{folderId}/tasks:
+    get:
+      operationId: listFolderTasks
+      summary: List Folder Tasks
+      description: Returns all tasks within the specified folder or project.
+      tags:
+        - Tasks
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: importance
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: descendants
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of tasks in folder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTask
+      summary: Create Task
+      description: Creates a new task in the specified folder or project.
+      tags:
+        - Tasks
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - title
+              properties:
+                title:
+                  type: string
+                  description: Task title
+                description:
+                  type: string
+                status:
+                  type: string
+                  enum: [Active, Completed, Deferred, Cancelled]
+                importance:
+                  type: string
+                  enum: [High, Normal, Low]
+                dates:
+                  type: string
+                  description: JSON object with type, duration, start, and due fields
+                responsibles:
+                  type: string
+                  description: Comma-separated list of responsible user IDs
+                shareds:
+                  type: string
+                  description: Comma-separated list of shared user IDs
+                type:
+                  type: string
+                  enum: [Backlog, Milestone, Planned]
+                metadata:
+                  type: string
+                customFields:
+                  type: string
+                customStatus:
+                  type: string
+      responses:
+        '200':
+          description: Created task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /comments:
+    get:
+      operationId: listComments
+      summary: List Comments
+      description: Returns all comments in all accessible accounts.
+      tags:
+        - Comments
+      parameters:
+        - name: createdDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: plainText
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of comments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /tasks/{taskId}/comments:
+    get:
+      operationId: listTaskComments
+      summary: List Task Comments
+      description: Returns all comments on a specific task.
+      tags:
+        - Comments
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: plainText
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of task comments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTaskComment
+      summary: Create Task Comment
+      description: Adds a comment to a task.
+      tags:
+        - Comments
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - text
+              properties:
+                text:
+                  type: string
+                  description: Comment text (supports HTML)
+                plainText:
+                  type: boolean
+                  description: Create comment in plain text (no HTML)
+      responses:
+        '200':
+          description: Created comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /comments/{commentId}:
+    put:
+      operationId: updateComment
+      summary: Update Comment
+      description: Updates an existing comment.
+      tags:
+        - Comments
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - text
+              properties:
+                text:
+                  type: string
+                plainText:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteComment
+      summary: Delete Comment
+      description: Deletes a comment.
+      tags:
+        - Comments
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /timelogs:
+    get:
+      operationId: listTimelogs
+      summary: List Time Logs
+      description: Returns all timelog records in all accessible accounts.
+      tags:
+        - Time Logs
+      parameters:
+        - name: createdDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: trackedDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: me
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: descendants
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: subTasks
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: plainText
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /contacts/{contactId}/timelogs:
+    get:
+      operationId: listContactTimelogs
+      summary: List Contact Time Logs
+      description: Returns all timelog records created by a specific user.
+      tags:
+        - Time Logs
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: createdDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: trackedDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: me
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of contact timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /folders/{folderId}/timelogs:
+    get:
+      operationId: listFolderTimelogs
+      summary: List Folder Time Logs
+      description: Returns all timelog records for a folder.
+      tags:
+        - Time Logs
+      parameters:
+        - name: folderId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: trackedDate
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of folder timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /tasks/{taskId}/timelogs:
+    get:
+      operationId: listTaskTimelogs
+      summary: List Task Time Logs
+      description: Returns all timelog records for a task.
+      tags:
+        - Time Logs
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: trackedDate
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of task timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts/{accountId}/timelogs:
+    get:
+      operationId: listAccountTimelogs
+      summary: List Account Time Logs
+      description: Returns all timelog records in a specific account.
+      tags:
+        - Time Logs
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: trackedDate
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of account timelog records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /timelogs/{timelogId}:
+    get:
+      operationId: getTimelog
+      summary: Get Time Log
+      description: Returns a specific timelog record.
+      tags:
+        - Time Logs
+      parameters:
+        - name: timelogId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Timelog record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateTimelog
+      summary: Update Time Log
+      description: Updates a timelog record.
+      tags:
+        - Time Logs
+      parameters:
+        - name: timelogId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                hours:
+                  type: number
+                trackedDate:
+                  type: string
+      responses:
+        '200':
+          description: Updated timelog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteTimelog
+      summary: Delete Time Log
+      description: Deletes a timelog record.
+      tags:
+        - Time Logs
+      parameters:
+        - name: timelogId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelogListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /accounts/{accountId}/webhooks:
+    get:
+      operationId: listWebhooks
+      summary: List Webhooks
+      description: Returns all webhooks defined in the account.
+      tags:
+        - Webhooks
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWebhook
+      summary: Create Webhook
+      description: Creates a new webhook subscription for account-wide events.
+      tags:
+        - Webhooks
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - hookUrl
+              properties:
+                hookUrl:
+                  type: string
+                  format: uri
+                  description: The URL to which Wrike sends webhook payloads
+                events:
+                  type: string
+                  description: Comma-separated list of event types to subscribe to
+                secretKey:
+                  type: string
+                  description: Secret key for HMAC signature verification
+      responses:
+        '200':
+          description: Created webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /webhooks/{webhookId}:
+    put:
+      operationId: updateWebhook
+      summary: Update Webhook
+      description: Updates an existing webhook.
+      tags:
+        - Webhooks
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                hookUrl:
+                  type: string
+                  format: uri
+                status:
+                  type: string
+                  enum: [enabled, disabled]
+      responses:
+        '200':
+          description: Updated webhook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteWebhook
+      summary: Delete Webhook
+      description: Deletes a webhook subscription.
+      tags:
+        - Webhooks
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /access_roles:
+    get:
+      operationId: listAccessRoles
+      summary: List Access Roles
+      description: Returns all access roles available in accessible accounts.
+      tags:
+        - Access Roles
+      security:
+        - oauth2: [amReadOnlyAccessRole]
+        - bearerToken: []
+      responses:
+        '200':
+          description: List of access roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRoleListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /colors:
+    get:
+      operationId: listColors
+      summary: List Colors
+      description: Returns all available colors in the Wrike color palette.
+      tags:
+        - Colors
+      responses:
+        '200':
+          description: List of colors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColorListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wrike.com/oauth2/authorize
+          tokenUrl: https://www.wrike.com/oauth2/token
+          scopes:
+            Default: Default access scope
+            amReadOnlyWorkflow: Read-only access to workflows
+            amReadWriteWorkflow: Read-write access to workflows
+            wsReadOnly: Read-only workspace access
+            wsReadWrite: Read-write workspace access
+            amReadOnlyAccessRole: Read-only access to access roles
+    bearerToken:
+      type: http
+      scheme: bearer
+      description: Permanent access token (legacy authentication)
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      required:
+        - error
+        - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+
+    Profile:
+      type: object
+      properties:
+        accountId:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum: [User, Collaborator]
+        external:
+          type: boolean
+        admin:
+          type: boolean
+        owner:
+          type: boolean
+
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique contact identifier
+        firstName:
+          type: string
+        lastName:
+          type: string
+        type:
+          type: string
+          enum: [Person, Group]
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Profile'
+        avatarUrl:
+          type: string
+          format: uri
+        timezone:
+          type: string
+        locale:
+          type: string
+        deleted:
+          type: boolean
+        me:
+          type: boolean
+          description: True if this contact represents the requesting user
+        title:
+          type: string
+        companyName:
+          type: string
+        phone:
+          type: string
+        location:
+          type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+
+    ContactListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: contacts
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        type:
+          type: string
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Profile'
+        avatarUrl:
+          type: string
+          format: uri
+        timezone:
+          type: string
+        locale:
+          type: string
+        deleted:
+          type: boolean
+        me:
+          type: boolean
+
+    UserResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: users
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        memberIds:
+          type: array
+          items:
+            type: string
+        childIds:
+          type: array
+          items:
+            type: string
+        scope:
+          type: string
+        avatarUrl:
+          type: string
+          format: uri
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+
+    GroupListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: groups
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        dateFormat:
+          type: string
+        firstDayOfWeek:
+          type: string
+        workDays:
+          type: array
+          items:
+            type: string
+        rootFolderId:
+          type: string
+        recycleBinId:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        subscription:
+          type: object
+          properties:
+            type:
+              type: string
+            suspended:
+              type: boolean
+            paid:
+              type: boolean
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+
+    AccountListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: accounts
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+
+    WorkflowStatus:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        standardName:
+          type: boolean
+        color:
+          type: string
+        hidden:
+          type: boolean
+        group:
+          type: string
+          enum: [Active, Completed, Deferred, Cancelled]
+
+    Workflow:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        standard:
+          type: boolean
+        hidden:
+          type: boolean
+        customStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStatus'
+
+    WorkflowListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: workflows
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+
+    CustomField:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+          enum: [Text, DropDown, Numeric, Currency, Percentage, Date, Duration, Checkbox, Bulk]
+        hidden:
+          type: boolean
+        shareds:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+
+    CustomFieldListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: customfields
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+
+    Project:
+      type: object
+      properties:
+        authorId:
+          type: string
+        ownerIds:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [Green, Yellow, Red, Completed, OnHold, Cancelled]
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        createdDate:
+          type: string
+          format: date-time
+
+    Folder:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        color:
+          type: string
+        childIds:
+          type: array
+          items:
+            type: string
+        scope:
+          type: string
+          enum: [WsFolder, WsRoot, RbFolder, RbRoot, WsSpace, WsPrivate]
+        hasAttachments:
+          type: boolean
+        attachmentCount:
+          type: integer
+        description:
+          type: string
+        briefDescription:
+          type: string
+        customColumnIds:
+          type: array
+          items:
+            type: string
+        project:
+          $ref: '#/components/schemas/Project'
+        shareds:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+
+    FolderListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: folders
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Folder'
+
+    Dates:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [Backlog, Milestone, Planned]
+        duration:
+          type: integer
+          description: Duration in minutes
+        start:
+          type: string
+          format: date-time
+        due:
+          type: string
+          format: date-time
+
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        briefDescription:
+          type: string
+        parentIds:
+          type: array
+          items:
+            type: string
+        superParentIds:
+          type: array
+          items:
+            type: string
+        sharedIds:
+          type: array
+          items:
+            type: string
+        responsibleIds:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [Active, Completed, Deferred, Cancelled]
+        importance:
+          type: string
+          enum: [High, Normal, Low]
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        dates:
+          $ref: '#/components/schemas/Dates'
+        scope:
+          type: string
+        authorIds:
+          type: array
+          items:
+            type: string
+        customStatusId:
+          type: string
+        hasAttachments:
+          type: boolean
+        attachmentCount:
+          type: integer
+        permalink:
+          type: string
+          format: uri
+        priority:
+          type: string
+        superTaskIds:
+          type: array
+          items:
+            type: string
+        subTaskIds:
+          type: array
+          items:
+            type: string
+        dependencyIds:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+        customFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
+
+    TaskListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: tasks
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        nextPageToken:
+          type: string
+          description: Token to retrieve the next page of results
+        responseSize:
+          type: integer
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+        authorId:
+          type: string
+        text:
+          type: string
+        updatedDate:
+          type: string
+          format: date-time
+        createdDate:
+          type: string
+          format: date-time
+        taskId:
+          type: string
+        folderId:
+          type: string
+
+    CommentListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: comments
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+
+    Timelog:
+      type: object
+      properties:
+        id:
+          type: string
+        taskId:
+          type: string
+        userId:
+          type: string
+        hours:
+          type: number
+          format: float
+          description: Number of hours logged
+        createdDate:
+          type: string
+          format: date-time
+        trackedDate:
+          type: string
+          format: date
+          description: Date the time was tracked
+        comment:
+          type: string
+
+    TimelogListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: timelogs
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Timelog'
+
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        hookUrl:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        spaceId:
+          type: string
+        folderId:
+          type: string
+        externalRequestId:
+          type: string
+        status:
+          type: string
+          enum: [enabled, suspended, disabled]
+        isPermanent:
+          type: boolean
+        secretKey:
+          type: string
+
+    WebhookListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: webhooks
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+
+    AccessRole:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        isDefault:
+          type: boolean
+        sharedItemPermissions:
+          type: array
+          items:
+            type: string
+
+    AccessRoleListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: access_roles
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessRole'
+
+    Color:
+      type: object
+      properties:
+        name:
+          type: string
+        hex:
+          type: string
+          pattern: '^#[0-9A-Fa-f]{6}$'
+
+    ColorListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: colors
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Color'
+
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+
+    CustomFieldValue:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: string

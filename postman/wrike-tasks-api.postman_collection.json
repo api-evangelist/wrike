@@ -1,0 +1,1732 @@
+{
+  "info": {
+    "_postman_id": "df4a9f88-8ff3-4500-b6f7-51ee066e5c62",
+    "name": "Wrike Access Roles Tasks API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:13.000Z",
+    "updatedAt": "2026-07-28T03:33:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-df4a9f88-8ff3-4500-b6f7-51ee066e5c62"
+  },
+  "item": [
+    {
+      "name": "tasks",
+      "item": [
+        {
+          "name": "{taskId}",
+          "item": [
+            {
+              "name": "Get Task",
+              "id": "53f57900-e9e1-4d7a-930e-b204dd508a12",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks/:taskId?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "57674bda-c7d5-468b-b444-6d6d7936fc01",
+                      "key": "taskId",
+                      "value": "<string>",
+                      "description": "(Required) Comma-separated list of task IDs (up to 100)"
+                    }
+                  ]
+                },
+                "description": "Returns complete information about one or more tasks."
+              },
+              "response": [
+                {
+                  "id": "2c89106c-d081-429e-a1cc-0bc523fb119c",
+                  "name": "Task details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Completed\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Backlog\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Active\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Milestone\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"responseSize\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-2c89106c-d081-429e-a1cc-0bc523fb119c"
+                },
+                {
+                  "id": "92c8264b-da59-49f7-a15b-44b3822206cc",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-92c8264b-da59-49f7-a15b-44b3822206cc"
+                },
+                {
+                  "id": "927abb49-1367-4ffc-b72c-d1332e4b9fe8",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-927abb49-1367-4ffc-b72c-d1332e4b9fe8"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-53f57900-e9e1-4d7a-930e-b204dd508a12"
+            },
+            {
+              "name": "Update Task",
+              "id": "6faf3598-6c65-454f-8b25-715b2561d556",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "Completed"
+                    },
+                    {
+                      "key": "importance",
+                      "value": "High"
+                    },
+                    {
+                      "description": "JSON object with start/due dates",
+                      "key": "dates",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "responsibles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "addResponsibles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "removeResponsibles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customStatus",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tasks/:taskId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c491ff1f-0782-45ac-b0bd-f1dbcb9c6fd4",
+                      "key": "taskId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates a task's properties."
+              },
+              "response": [
+                {
+                  "id": "664ce17e-7fb1-49d6-aa55-8338dd636f9c",
+                  "name": "Updated task",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "title",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "description",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "Completed"
+                        },
+                        {
+                          "key": "importance",
+                          "value": "High"
+                        },
+                        {
+                          "description": "JSON object with start/due dates",
+                          "key": "dates",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "responsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "addResponsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "removeResponsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "customFields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "customStatus",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Completed\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Backlog\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Active\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Milestone\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"responseSize\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-664ce17e-7fb1-49d6-aa55-8338dd636f9c"
+                },
+                {
+                  "id": "4435dbc9-cd3d-4a9f-9e90-c79db275cd95",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "title",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "description",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "Completed"
+                        },
+                        {
+                          "key": "importance",
+                          "value": "High"
+                        },
+                        {
+                          "description": "JSON object with start/due dates",
+                          "key": "dates",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "responsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "addResponsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "removeResponsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "customFields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "customStatus",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-4435dbc9-cd3d-4a9f-9e90-c79db275cd95"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-6faf3598-6c65-454f-8b25-715b2561d556"
+            },
+            {
+              "name": "Delete Task",
+              "id": "0096ee25-274f-44d5-8511-52df6911a491",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks/:taskId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "07d90049-f5f2-403e-baac-20d9272b4f63",
+                      "key": "taskId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes a task, moving it to the Recycle Bin."
+              },
+              "response": [
+                {
+                  "id": "652d7f34-0b86-467b-953b-6fc56eba0d47",
+                  "name": "Successfully deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Completed\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Backlog\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Active\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Milestone\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"responseSize\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-652d7f34-0b86-467b-953b-6fc56eba0d47"
+                },
+                {
+                  "id": "893f527b-e2ad-4ff3-b928-c87173caa62f",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-893f527b-e2ad-4ff3-b928-c87173caa62f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-0096ee25-274f-44d5-8511-52df6911a491"
+            }
+          ],
+          "id": "78128caf-90f9-4864-be7e-fd0366ac2e4b",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-78128caf-90f9-4864-be7e-fd0366ac2e4b"
+        },
+        {
+          "name": "List Tasks",
+          "id": "9415cd65-7007-4dbd-ae44-e23aec5728a5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tasks?title=<string>&status=Active&importance=Normal&startDate=<string>&dueDate=<string>&createdDate=<string>&updatedDate=<string>&completedDate=<string>&authors=<string>&responsibles=<string>&permalink=<string>&type=Backlog&limit=<integer>&sortField=Status&sortOrder=Desc&subTasks=<boolean>&metadata=<string>&customField=<string>&fields=<string>&pageSize=<integer>&nextPageToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "description": "Title filter, exact match",
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Status filter",
+                  "key": "status",
+                  "value": "Active"
+                },
+                {
+                  "key": "importance",
+                  "value": "Normal"
+                },
+                {
+                  "description": "Start date filter range (ISO 8601)",
+                  "key": "startDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Due date filter range (ISO 8601)",
+                  "key": "dueDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "createdDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "updatedDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "completedDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated author IDs",
+                  "key": "authors",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated responsible user IDs",
+                  "key": "responsibles",
+                  "value": "<string>"
+                },
+                {
+                  "key": "permalink",
+                  "value": "<string>"
+                },
+                {
+                  "key": "type",
+                  "value": "Backlog"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "sortField",
+                  "value": "Status"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "Desc"
+                },
+                {
+                  "key": "subTasks",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "key": "customField",
+                  "value": "<string>"
+                },
+                {
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "nextPageToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Searches among all tasks in all accessible accounts."
+          },
+          "response": [
+            {
+              "id": "2c27f9f7-5108-4e1a-b7ac-2690da1ac57b",
+              "name": "List of tasks",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks?title=<string>&status=Active&importance=Normal&startDate=<string>&dueDate=<string>&createdDate=<string>&updatedDate=<string>&completedDate=<string>&authors=<string>&responsibles=<string>&permalink=<string>&type=Backlog&limit=<integer>&sortField=Status&sortOrder=Desc&subTasks=<boolean>&metadata=<string>&customField=<string>&fields=<string>&pageSize=<integer>&nextPageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "description": "Title filter, exact match",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Status filter",
+                      "key": "status",
+                      "value": "Active"
+                    },
+                    {
+                      "key": "importance",
+                      "value": "Normal"
+                    },
+                    {
+                      "description": "Start date filter range (ISO 8601)",
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Due date filter range (ISO 8601)",
+                      "key": "dueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "completedDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated author IDs",
+                      "key": "authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated responsible user IDs",
+                      "key": "responsibles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "permalink",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "Backlog"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "Status"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Desc"
+                    },
+                    {
+                      "key": "subTasks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextPageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Completed\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Backlog\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Active\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Milestone\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"responseSize\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-2c27f9f7-5108-4e1a-b7ac-2690da1ac57b"
+            },
+            {
+              "id": "5e94b087-c1d8-4d50-a7e0-7b3bc810df94",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tasks?title=<string>&status=Active&importance=Normal&startDate=<string>&dueDate=<string>&createdDate=<string>&updatedDate=<string>&completedDate=<string>&authors=<string>&responsibles=<string>&permalink=<string>&type=Backlog&limit=<integer>&sortField=Status&sortOrder=Desc&subTasks=<boolean>&metadata=<string>&customField=<string>&fields=<string>&pageSize=<integer>&nextPageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "description": "Title filter, exact match",
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Status filter",
+                      "key": "status",
+                      "value": "Active"
+                    },
+                    {
+                      "key": "importance",
+                      "value": "Normal"
+                    },
+                    {
+                      "description": "Start date filter range (ISO 8601)",
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Due date filter range (ISO 8601)",
+                      "key": "dueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "completedDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated author IDs",
+                      "key": "authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated responsible user IDs",
+                      "key": "responsibles",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "permalink",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "Backlog"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "Status"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "Desc"
+                    },
+                    {
+                      "key": "subTasks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "nextPageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-5e94b087-c1d8-4d50-a7e0-7b3bc810df94"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-9415cd65-7007-4dbd-ae44-e23aec5728a5"
+        }
+      ],
+      "id": "d4066b3b-930d-4efd-b65e-5438d693a79a",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-d4066b3b-930d-4efd-b65e-5438d693a79a"
+    },
+    {
+      "name": "folders",
+      "item": [
+        {
+          "name": "{folderId}",
+          "item": [
+            {
+              "name": "tasks",
+              "item": [
+                {
+                  "name": "List Folder Tasks",
+                  "id": "55eb0330-8ee2-41dd-aa97-3e84e60399f7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folderId/tasks?status=<string>&importance=<string>&fields=<string>&descendants=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folderId",
+                        "tasks"
+                      ],
+                      "query": [
+                        {
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "importance",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "descendants",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e6dd29ba-b4e9-45c8-8626-ba7b8832329c",
+                          "key": "folderId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all tasks within the specified folder or project."
+                  },
+                  "response": [
+                    {
+                      "id": "ae20907a-04a9-4ab3-a4e5-97e6a1c211e7",
+                      "name": "List of tasks in folder",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/tasks?status=<string>&importance=<string>&fields=<string>&descendants=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "tasks"
+                          ],
+                          "query": [
+                            {
+                              "key": "status",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "importance",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "descendants",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Completed\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Backlog\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Active\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Milestone\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"responseSize\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:33:14.000Z",
+                      "updatedAt": "2026-07-28T03:33:14.000Z",
+                      "uid": "35240-ae20907a-04a9-4ab3-a4e5-97e6a1c211e7"
+                    },
+                    {
+                      "id": "3bbded8b-a42b-41f4-9928-68d93bd4db2e",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/tasks?status=<string>&importance=<string>&fields=<string>&descendants=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "tasks"
+                          ],
+                          "query": [
+                            {
+                              "key": "status",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "importance",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "descendants",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:14.000Z",
+                      "updatedAt": "2026-07-28T03:33:14.000Z",
+                      "uid": "35240-3bbded8b-a42b-41f4-9928-68d93bd4db2e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-55eb0330-8ee2-41dd-aa97-3e84e60399f7"
+                },
+                {
+                  "name": "Create Task",
+                  "id": "34aeb18c-0312-4ee4-b172-0ecb322bf2db",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Task title",
+                          "key": "title",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "description",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "Deferred"
+                        },
+                        {
+                          "key": "importance",
+                          "value": "Low"
+                        },
+                        {
+                          "description": "JSON object with type, duration, start, and due fields",
+                          "key": "dates",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of responsible user IDs",
+                          "key": "responsibles",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of shared user IDs",
+                          "key": "shareds",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "type",
+                          "value": "Planned"
+                        },
+                        {
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "customFields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "customStatus",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folderId/tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folderId",
+                        "tasks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c77eae87-b35e-4bf7-8bfc-5cb078bb9c0d",
+                          "key": "folderId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates a new task in the specified folder or project."
+                  },
+                  "response": [
+                    {
+                      "id": "409f0b8d-c8dc-4e24-87ad-51b2cfa168b2",
+                      "name": "Created task",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Task title",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "description",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "Deferred"
+                            },
+                            {
+                              "key": "importance",
+                              "value": "Low"
+                            },
+                            {
+                              "description": "JSON object with type, duration, start, and due fields",
+                              "key": "dates",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of responsible user IDs",
+                              "key": "responsibles",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of shared user IDs",
+                              "key": "shareds",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "type",
+                              "value": "Planned"
+                            },
+                            {
+                              "key": "metadata",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "customFields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "customStatus",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Completed\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Backlog\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"briefDescription\": \"<string>\",\n      \"parentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"superParentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"sharedIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"responsibleIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"Active\",\n      \"importance\": \"Low\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"dates\": {\n        \"type\": \"Milestone\",\n        \"duration\": \"<integer>\",\n        \"start\": \"<dateTime>\",\n        \"due\": \"<dateTime>\"\n      },\n      \"scope\": \"<string>\",\n      \"authorIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customStatusId\": \"<string>\",\n      \"hasAttachments\": \"<boolean>\",\n      \"attachmentCount\": \"<integer>\",\n      \"permalink\": \"<uri>\",\n      \"priority\": \"<string>\",\n      \"superTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subTaskIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dependencyIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"customFields\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"responseSize\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:33:14.000Z",
+                      "updatedAt": "2026-07-28T03:33:14.000Z",
+                      "uid": "35240-409f0b8d-c8dc-4e24-87ad-51b2cfa168b2"
+                    },
+                    {
+                      "id": "f079dc76-50ca-4a79-946d-cd38876b1987",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Task title",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "description",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "Deferred"
+                            },
+                            {
+                              "key": "importance",
+                              "value": "Low"
+                            },
+                            {
+                              "description": "JSON object with type, duration, start, and due fields",
+                              "key": "dates",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of responsible user IDs",
+                              "key": "responsibles",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of shared user IDs",
+                              "key": "shareds",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "type",
+                              "value": "Planned"
+                            },
+                            {
+                              "key": "metadata",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "customFields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "customStatus",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:14.000Z",
+                      "updatedAt": "2026-07-28T03:33:14.000Z",
+                      "uid": "35240-f079dc76-50ca-4a79-946d-cd38876b1987"
+                    },
+                    {
+                      "id": "7ed41148-5a8d-4917-84d9-0b3944072a7a",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Task title",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "description",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "Deferred"
+                            },
+                            {
+                              "key": "importance",
+                              "value": "Low"
+                            },
+                            {
+                              "description": "JSON object with type, duration, start, and due fields",
+                              "key": "dates",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of responsible user IDs",
+                              "key": "responsibles",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of shared user IDs",
+                              "key": "shareds",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "type",
+                              "value": "Planned"
+                            },
+                            {
+                              "key": "metadata",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "customFields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "customStatus",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:14.000Z",
+                      "updatedAt": "2026-07-28T03:33:14.000Z",
+                      "uid": "35240-7ed41148-5a8d-4917-84d9-0b3944072a7a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:14.000Z",
+                  "updatedAt": "2026-07-28T03:33:14.000Z",
+                  "uid": "35240-34aeb18c-0312-4ee4-b172-0ecb322bf2db"
+                }
+              ],
+              "id": "0df5e4a4-2961-4c3d-b68a-8935bda6ae0a",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-0df5e4a4-2961-4c3d-b68a-8935bda6ae0a"
+            }
+          ],
+          "id": "937f645f-db09-4d68-92b5-8df3f6695342",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-937f645f-db09-4d68-92b5-8df3f6695342"
+        }
+      ],
+      "id": "a388d5e5-66a1-4a85-8cb5-2096d1a936cd",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-a388d5e5-66a1-4a85-8cb5-2096d1a936cd"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "info": {
+    "_postman_id": "39ea44eb-884c-4266-a7bc-cdf6182ccb4e",
+    "name": "Wrike Access Roles Custom Fields API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:10.000Z",
+    "updatedAt": "2026-07-28T03:33:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-39ea44eb-884c-4266-a7bc-cdf6182ccb4e"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "customfields",
+              "item": [
+                {
+                  "name": "List Custom Fields",
+                  "id": "31e54169-d218-4216-baa9-1b1637c092aa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "customfields"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b322cf43-675e-4d8d-8317-4d433d280674",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all custom field definitions in the account."
+                  },
+                  "response": [
+                    {
+                      "id": "0e63f55b-b1bb-4993-9768-051f95135112",
+                      "name": "List of custom fields",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "customfields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"Checkbox\",\n      \"hidden\": \"<boolean>\",\n      \"shareds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"settings\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"Text\",\n      \"hidden\": \"<boolean>\",\n      \"shareds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"settings\": {}\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:11.000Z",
+                      "updatedAt": "2026-07-28T03:33:11.000Z",
+                      "uid": "35240-0e63f55b-b1bb-4993-9768-051f95135112"
+                    },
+                    {
+                      "id": "d093dcca-c4d9-48e2-b2c7-c76c8318c4d4",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "customfields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:11.000Z",
+                      "updatedAt": "2026-07-28T03:33:11.000Z",
+                      "uid": "35240-d093dcca-c4d9-48e2-b2c7-c76c8318c4d4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:11.000Z",
+                  "updatedAt": "2026-07-28T03:33:11.000Z",
+                  "uid": "35240-31e54169-d218-4216-baa9-1b1637c092aa"
+                },
+                {
+                  "name": "Create Custom Field",
+                  "id": "fa8c8140-bfe3-4d1b-887d-e4051fd18b20",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "title",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "type",
+                          "value": "Checkbox"
+                        },
+                        {
+                          "description": "Comma-separated list of shared user/group IDs",
+                          "key": "shareds",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "customfields"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9a5ca2b1-6aa2-435d-bd16-557861c257fa",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates a new custom field definition in the account."
+                  },
+                  "response": [
+                    {
+                      "id": "1fd70da2-5845-4095-97d6-b85610096e5b",
+                      "name": "Created custom field",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "Checkbox"
+                            },
+                            {
+                              "description": "Comma-separated list of shared user/group IDs",
+                              "key": "shareds",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "customfields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"Checkbox\",\n      \"hidden\": \"<boolean>\",\n      \"shareds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"settings\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"Text\",\n      \"hidden\": \"<boolean>\",\n      \"shareds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"settings\": {}\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:11.000Z",
+                      "updatedAt": "2026-07-28T03:33:11.000Z",
+                      "uid": "35240-1fd70da2-5845-4095-97d6-b85610096e5b"
+                    },
+                    {
+                      "id": "7ad4b33b-88d2-4b89-9870-818c145f40ae",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "Checkbox"
+                            },
+                            {
+                              "description": "Comma-separated list of shared user/group IDs",
+                              "key": "shareds",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "customfields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:11.000Z",
+                      "updatedAt": "2026-07-28T03:33:11.000Z",
+                      "uid": "35240-7ad4b33b-88d2-4b89-9870-818c145f40ae"
+                    },
+                    {
+                      "id": "d873611b-6498-4508-9e8c-174e5f9086fb",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "type",
+                              "value": "Checkbox"
+                            },
+                            {
+                              "description": "Comma-separated list of shared user/group IDs",
+                              "key": "shareds",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/customfields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "customfields"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:11.000Z",
+                      "updatedAt": "2026-07-28T03:33:11.000Z",
+                      "uid": "35240-d873611b-6498-4508-9e8c-174e5f9086fb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:11.000Z",
+                  "updatedAt": "2026-07-28T03:33:11.000Z",
+                  "uid": "35240-fa8c8140-bfe3-4d1b-887d-e4051fd18b20"
+                }
+              ],
+              "id": "a3fa9f36-34a3-4ca0-926a-f9722d55559b",
+              "createdAt": "2026-07-28T03:33:11.000Z",
+              "updatedAt": "2026-07-28T03:33:11.000Z",
+              "uid": "35240-a3fa9f36-34a3-4ca0-926a-f9722d55559b"
+            }
+          ],
+          "id": "1f52afa8-b510-483d-895b-b9618328efba",
+          "createdAt": "2026-07-28T03:33:11.000Z",
+          "updatedAt": "2026-07-28T03:33:11.000Z",
+          "uid": "35240-1f52afa8-b510-483d-895b-b9618328efba"
+        }
+      ],
+      "id": "d3e2bef7-067d-44e7-83fa-dd3295d254c0",
+      "createdAt": "2026-07-28T03:33:11.000Z",
+      "updatedAt": "2026-07-28T03:33:11.000Z",
+      "uid": "35240-d3e2bef7-067d-44e7-83fa-dd3295d254c0"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

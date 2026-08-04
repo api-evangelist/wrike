@@ -1,0 +1,795 @@
+{
+  "info": {
+    "_postman_id": "49243a61-f6bb-40cc-b658-d01fd47a355b",
+    "name": "Wrike Access Roles Contacts API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:09.000Z",
+    "updatedAt": "2026-07-28T03:33:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-49243a61-f6bb-40cc-b658-d01fd47a355b"
+  },
+  "item": [
+    {
+      "name": "contacts",
+      "item": [
+        {
+          "name": "{contactId}",
+          "item": [
+            {
+              "name": "Get Contact",
+              "id": "04824629-bc0b-4bdf-8c36-0ff400983ba4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts/:contactId?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "query": [
+                    {
+                      "description": "JSON string array of optional fields to include in the response",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "2ee10203-71d8-4e61-b0a6-3dd529d8cfd5",
+                      "key": "contactId",
+                      "value": "<string>",
+                      "description": "(Required) Comma-separated list of contact IDs (up to 100)"
+                    }
+                  ]
+                },
+                "description": "Returns contact information for specified users and user groups."
+              },
+              "response": [
+                {
+                  "id": "6b935529-20db-4099-9481-01dc8352dc51",
+                  "name": "Contact details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "query": [
+                        {
+                          "description": "JSON string array of optional fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"Group\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"location\": \"<string>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"Group\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"User\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"location\": \"<string>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-6b935529-20db-4099-9481-01dc8352dc51"
+                },
+                {
+                  "id": "0a2fe083-5cc7-43ea-aaa4-67e8276a6612",
+                  "name": "Bad request - invalid parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "query": [
+                        {
+                          "description": "JSON string array of optional fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-0a2fe083-5cc7-43ea-aaa4-67e8276a6612"
+                },
+                {
+                  "id": "aada5085-e837-4703-965c-c192542944b0",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "query": [
+                        {
+                          "description": "JSON string array of optional fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-aada5085-e837-4703-965c-c192542944b0"
+                },
+                {
+                  "id": "96d40016-4e65-458b-bed1-dddd456df9d8",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "query": [
+                        {
+                          "description": "JSON string array of optional fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-96d40016-4e65-458b-bed1-dddd456df9d8"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:10.000Z",
+              "updatedAt": "2026-07-28T03:33:10.000Z",
+              "uid": "35240-04824629-bc0b-4bdf-8c36-0ff400983ba4"
+            },
+            {
+              "name": "Update Contact",
+              "id": "55adde34-a8bd-4758-af92-3ebf30d705f8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Metadata key-value pairs to update",
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contacts/:contactId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0eaf06e8-aeb9-4726-8210-025ffbc28617",
+                      "key": "contactId",
+                      "value": "<string>",
+                      "description": "(Required) The contact ID"
+                    }
+                  ]
+                },
+                "description": "Updates contact information. Only the contact whose API token is being used may be updated."
+              },
+              "response": [
+                {
+                  "id": "43954508-0c6e-4e4b-ab4f-55149bebd741",
+                  "name": "Updated contact",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Metadata key-value pairs to update",
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"Group\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"location\": \"<string>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"Group\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"User\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"location\": \"<string>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-43954508-0c6e-4e4b-ab4f-55149bebd741"
+                },
+                {
+                  "id": "fab4469d-5da7-4752-8cf7-27e9b63c1f0c",
+                  "name": "Bad request - invalid parameters",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Metadata key-value pairs to update",
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-fab4469d-5da7-4752-8cf7-27e9b63c1f0c"
+                },
+                {
+                  "id": "1d9897e9-406c-46be-81ff-4f3e3eeb0c82",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "Metadata key-value pairs to update",
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contactId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:10.000Z",
+                  "updatedAt": "2026-07-28T03:33:10.000Z",
+                  "uid": "35240-1d9897e9-406c-46be-81ff-4f3e3eeb0c82"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:10.000Z",
+              "updatedAt": "2026-07-28T03:33:10.000Z",
+              "uid": "35240-55adde34-a8bd-4758-af92-3ebf30d705f8"
+            }
+          ],
+          "id": "db9b046a-49d6-4dc3-b1e8-32350e79e370",
+          "createdAt": "2026-07-28T03:33:10.000Z",
+          "updatedAt": "2026-07-28T03:33:10.000Z",
+          "uid": "35240-db9b046a-49d6-4dc3-b1e8-32350e79e370"
+        },
+        {
+          "name": "List Contacts",
+          "id": "c48e3c2a-dd3b-42a9-b595-f9f9feed1642",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contacts?me=<boolean>&metadata=<string>&fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contacts"
+              ],
+              "query": [
+                {
+                  "description": "If present, only contact info of the requesting user is returned",
+                  "key": "me",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Metadata filter, exact match for metadata key or key-value pair",
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "description": "JSON string array of optional fields to include in the response",
+                  "key": "fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of contacts of all users and user groups in all accessible accounts."
+          },
+          "response": [
+            {
+              "id": "ec7ab77f-67b8-4135-92d1-ce855acf49ac",
+              "name": "List of contacts",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?me=<boolean>&metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "If present, only contact info of the requesting user is returned",
+                      "key": "me",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Metadata filter, exact match for metadata key or key-value pair",
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON string array of optional fields to include in the response",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"Group\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"location\": \"<string>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"type\": \"Group\",\n      \"profiles\": [\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"Collaborator\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        },\n        {\n          \"accountId\": \"<string>\",\n          \"email\": \"<email>\",\n          \"role\": \"User\",\n          \"external\": \"<boolean>\",\n          \"admin\": \"<boolean>\",\n          \"owner\": \"<boolean>\"\n        }\n      ],\n      \"avatarUrl\": \"<uri>\",\n      \"timezone\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"me\": \"<boolean>\",\n      \"title\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"location\": \"<string>\",\n      \"metadata\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:10.000Z",
+              "updatedAt": "2026-07-28T03:33:10.000Z",
+              "uid": "35240-ec7ab77f-67b8-4135-92d1-ce855acf49ac"
+            },
+            {
+              "id": "8f3b6542-b2d2-4ef6-8f96-b7a756825fde",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?me=<boolean>&metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "If present, only contact info of the requesting user is returned",
+                      "key": "me",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Metadata filter, exact match for metadata key or key-value pair",
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON string array of optional fields to include in the response",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:10.000Z",
+              "updatedAt": "2026-07-28T03:33:10.000Z",
+              "uid": "35240-8f3b6542-b2d2-4ef6-8f96-b7a756825fde"
+            },
+            {
+              "id": "fe88ab2f-88d9-418b-9710-e2efeff0a2e3",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contacts?me=<boolean>&metadata=<string>&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contacts"
+                  ],
+                  "query": [
+                    {
+                      "description": "If present, only contact info of the requesting user is returned",
+                      "key": "me",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Metadata filter, exact match for metadata key or key-value pair",
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON string array of optional fields to include in the response",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:10.000Z",
+              "updatedAt": "2026-07-28T03:33:10.000Z",
+              "uid": "35240-fe88ab2f-88d9-418b-9710-e2efeff0a2e3"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:10.000Z",
+          "updatedAt": "2026-07-28T03:33:10.000Z",
+          "uid": "35240-c48e3c2a-dd3b-42a9-b595-f9f9feed1642"
+        }
+      ],
+      "id": "1e6c818e-0639-4906-b87e-2db19008b208",
+      "createdAt": "2026-07-28T03:33:10.000Z",
+      "updatedAt": "2026-07-28T03:33:10.000Z",
+      "uid": "35240-1e6c818e-0639-4906-b87e-2db19008b208"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

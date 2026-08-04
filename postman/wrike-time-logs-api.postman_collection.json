@@ -1,0 +1,1535 @@
+{
+  "info": {
+    "_postman_id": "e649a597-22a4-4050-80d7-aadf0b1cdc70",
+    "name": "Wrike Access Roles Time Logs API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:14.000Z",
+    "updatedAt": "2026-07-28T03:33:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e649a597-22a4-4050-80d7-aadf0b1cdc70"
+  },
+  "item": [
+    {
+      "name": "timelogs",
+      "item": [
+        {
+          "name": "{timelogId}",
+          "item": [
+            {
+              "name": "Get Time Log",
+              "id": "b14ddc1c-4e23-4b33-ada4-de9d77a964cb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/timelogs/:timelogId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timelogs",
+                    ":timelogId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e3bfe57f-7fb8-4573-ada9-afe3b91714ae",
+                      "key": "timelogId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns a specific timelog record."
+              },
+              "response": [
+                {
+                  "id": "98c7c4cc-feda-45c1-8663-a6437ee5af11",
+                  "name": "Timelog record",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-98c7c4cc-feda-45c1-8663-a6437ee5af11"
+                },
+                {
+                  "id": "7835d78b-7483-4b47-88d2-9d53153e8d32",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-7835d78b-7483-4b47-88d2-9d53153e8d32"
+                },
+                {
+                  "id": "c2151ad8-531b-4eee-a939-559b94d0a689",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-c2151ad8-531b-4eee-a939-559b94d0a689"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:15.000Z",
+              "updatedAt": "2026-07-28T03:33:15.000Z",
+              "uid": "35240-b14ddc1c-4e23-4b33-ada4-de9d77a964cb"
+            },
+            {
+              "name": "Update Time Log",
+              "id": "90cee909-59e0-49b5-9ec6-f23e83e748ce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "comment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hours",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "trackedDate",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/timelogs/:timelogId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timelogs",
+                    ":timelogId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "be77e614-f176-4868-af24-eab756df72d6",
+                      "key": "timelogId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates a timelog record."
+              },
+              "response": [
+                {
+                  "id": "ee3e848e-8a4f-446b-b1ad-bda4f6b39577",
+                  "name": "Updated timelog",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "comment",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "hours",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "trackedDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-ee3e848e-8a4f-446b-b1ad-bda4f6b39577"
+                },
+                {
+                  "id": "6b5fb607-1002-4bc7-ba79-030162279219",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "comment",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "hours",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "trackedDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-6b5fb607-1002-4bc7-ba79-030162279219"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:15.000Z",
+              "updatedAt": "2026-07-28T03:33:15.000Z",
+              "uid": "35240-90cee909-59e0-49b5-9ec6-f23e83e748ce"
+            },
+            {
+              "name": "Delete Time Log",
+              "id": "dd221017-a507-447b-b372-7094254607bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/timelogs/:timelogId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timelogs",
+                    ":timelogId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "55a71628-430e-451b-91d3-537c4d1594b8",
+                      "key": "timelogId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes a timelog record."
+              },
+              "response": [
+                {
+                  "id": "870bc1d5-393c-4941-9e3b-ae112ed6e6fc",
+                  "name": "Successfully deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-870bc1d5-393c-4941-9e3b-ae112ed6e6fc"
+                },
+                {
+                  "id": "93c3164f-7b45-477b-86ed-b5d055038a80",
+                  "name": "Authentication required or token invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timelogs/:timelogId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timelogs",
+                        ":timelogId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "timelogId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-93c3164f-7b45-477b-86ed-b5d055038a80"
+                }
+              ],
+              "createdAt": "2026-07-28T03:33:15.000Z",
+              "updatedAt": "2026-07-28T03:33:15.000Z",
+              "uid": "35240-dd221017-a507-447b-b372-7094254607bf"
+            }
+          ],
+          "id": "ddb1ca12-801f-4612-8893-393b5e68e7c2",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-ddb1ca12-801f-4612-8893-393b5e68e7c2"
+        },
+        {
+          "name": "List Time Logs",
+          "id": "fd0e3e96-f80c-41fc-a9af-1fab19f20424",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/timelogs?createdDate=<string>&trackedDate=<string>&me=<boolean>&descendants=<boolean>&subTasks=<boolean>&plainText=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "timelogs"
+              ],
+              "query": [
+                {
+                  "key": "createdDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "trackedDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "me",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "descendants",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "subTasks",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "plainText",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Returns all timelog records in all accessible accounts."
+          },
+          "response": [
+            {
+              "id": "657aba63-e2a2-4973-b8bf-e3a0eef7b1cf",
+              "name": "List of timelog records",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/timelogs?createdDate=<string>&trackedDate=<string>&me=<boolean>&descendants=<boolean>&subTasks=<boolean>&plainText=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timelogs"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trackedDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "me",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "descendants",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "subTasks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "plainText",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:15.000Z",
+              "updatedAt": "2026-07-28T03:33:15.000Z",
+              "uid": "35240-657aba63-e2a2-4973-b8bf-e3a0eef7b1cf"
+            },
+            {
+              "id": "ae850d1d-c558-49cb-8308-8dd1cdb933f2",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/timelogs?createdDate=<string>&trackedDate=<string>&me=<boolean>&descendants=<boolean>&subTasks=<boolean>&plainText=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timelogs"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trackedDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "me",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "descendants",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "subTasks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "plainText",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:15.000Z",
+              "updatedAt": "2026-07-28T03:33:15.000Z",
+              "uid": "35240-ae850d1d-c558-49cb-8308-8dd1cdb933f2"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:15.000Z",
+          "updatedAt": "2026-07-28T03:33:15.000Z",
+          "uid": "35240-fd0e3e96-f80c-41fc-a9af-1fab19f20424"
+        }
+      ],
+      "id": "1b96097e-ada3-401d-a97f-c6ff85bf4eed",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-1b96097e-ada3-401d-a97f-c6ff85bf4eed"
+    },
+    {
+      "name": "contacts",
+      "item": [
+        {
+          "name": "{contactId}",
+          "item": [
+            {
+              "name": "timelogs",
+              "item": [
+                {
+                  "name": "List Contact Time Logs",
+                  "id": "56307ab1-6bd0-44ac-ad12-e21996384ddd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contacts/:contactId/timelogs?createdDate=<string>&trackedDate=<string>&me=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contacts",
+                        ":contactId",
+                        "timelogs"
+                      ],
+                      "query": [
+                        {
+                          "key": "createdDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "trackedDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "me",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f397af0f-a0d8-4d94-a2c8-6ba4242589d1",
+                          "key": "contactId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all timelog records created by a specific user."
+                  },
+                  "response": [
+                    {
+                      "id": "13a5052c-3dd6-41fd-a46b-9c55db5cc431",
+                      "name": "List of contact timelog records",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/contacts/:contactId/timelogs?createdDate=<string>&trackedDate=<string>&me=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contacts",
+                            ":contactId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "createdDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "me",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "contactId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-13a5052c-3dd6-41fd-a46b-9c55db5cc431"
+                    },
+                    {
+                      "id": "989f8aa7-6563-4152-96e6-3bac81e70b75",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/contacts/:contactId/timelogs?createdDate=<string>&trackedDate=<string>&me=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contacts",
+                            ":contactId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "createdDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "me",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "contactId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-989f8aa7-6563-4152-96e6-3bac81e70b75"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-56307ab1-6bd0-44ac-ad12-e21996384ddd"
+                }
+              ],
+              "id": "b951a0f9-37c4-44fd-af7f-2da8aaa9dcc9",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-b951a0f9-37c4-44fd-af7f-2da8aaa9dcc9"
+            }
+          ],
+          "id": "64ffda25-3a10-44ca-9c93-d67b2a3d655f",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-64ffda25-3a10-44ca-9c93-d67b2a3d655f"
+        }
+      ],
+      "id": "7ecd17d4-6a96-49ef-9061-30a1527c5c6e",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-7ecd17d4-6a96-49ef-9061-30a1527c5c6e"
+    },
+    {
+      "name": "folders",
+      "item": [
+        {
+          "name": "{folderId}",
+          "item": [
+            {
+              "name": "timelogs",
+              "item": [
+                {
+                  "name": "List Folder Time Logs",
+                  "id": "4901eebe-25f5-4b44-af2a-3ab92488ea3b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/folders/:folderId/timelogs?trackedDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "folders",
+                        ":folderId",
+                        "timelogs"
+                      ],
+                      "query": [
+                        {
+                          "key": "trackedDate",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a7c827fc-4563-4c2a-aaf7-a1850c067df4",
+                          "key": "folderId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all timelog records for a folder."
+                  },
+                  "response": [
+                    {
+                      "id": "30be2d71-8bd4-4c37-abae-66171d8e2319",
+                      "name": "List of folder timelog records",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/timelogs?trackedDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-30be2d71-8bd4-4c37-abae-66171d8e2319"
+                    },
+                    {
+                      "id": "0d538412-6e31-418a-ab54-1eec536361a7",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/folders/:folderId/timelogs?trackedDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "folders",
+                            ":folderId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "folderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-0d538412-6e31-418a-ab54-1eec536361a7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-4901eebe-25f5-4b44-af2a-3ab92488ea3b"
+                }
+              ],
+              "id": "5bc41986-8a92-400a-8abd-99cca568e427",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-5bc41986-8a92-400a-8abd-99cca568e427"
+            }
+          ],
+          "id": "e2b15b17-d6be-46be-a91f-df7a7f93c3f1",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-e2b15b17-d6be-46be-a91f-df7a7f93c3f1"
+        }
+      ],
+      "id": "9be9fb9a-7843-4045-ba22-5464e06455c6",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-9be9fb9a-7843-4045-ba22-5464e06455c6"
+    },
+    {
+      "name": "tasks",
+      "item": [
+        {
+          "name": "{taskId}",
+          "item": [
+            {
+              "name": "timelogs",
+              "item": [
+                {
+                  "name": "List Task Time Logs",
+                  "id": "34234c5c-7a14-4857-ab5f-52647976d8d4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tasks/:taskId/timelogs?trackedDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tasks",
+                        ":taskId",
+                        "timelogs"
+                      ],
+                      "query": [
+                        {
+                          "key": "trackedDate",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "0f4484cb-973b-4df0-a6c4-ae8a142e1d71",
+                          "key": "taskId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all timelog records for a task."
+                  },
+                  "response": [
+                    {
+                      "id": "84d8e16f-eff4-4017-a9fd-85e376701229",
+                      "name": "List of task timelog records",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tasks/:taskId/timelogs?trackedDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tasks",
+                            ":taskId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "taskId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-84d8e16f-eff4-4017-a9fd-85e376701229"
+                    },
+                    {
+                      "id": "20da1461-53dc-47ee-b2da-a3274a281c22",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tasks/:taskId/timelogs?trackedDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tasks",
+                            ":taskId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "taskId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-20da1461-53dc-47ee-b2da-a3274a281c22"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-34234c5c-7a14-4857-ab5f-52647976d8d4"
+                }
+              ],
+              "id": "0cc1c92d-31fd-4dbd-a1dd-9b11571e3972",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-0cc1c92d-31fd-4dbd-a1dd-9b11571e3972"
+            }
+          ],
+          "id": "1aee716c-09d5-4dcd-a405-09cd6b4abf49",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-1aee716c-09d5-4dcd-a405-09cd6b4abf49"
+        }
+      ],
+      "id": "604ea662-058b-4e39-be6c-d79ad3f4e800",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-604ea662-058b-4e39-be6c-d79ad3f4e800"
+    },
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "timelogs",
+              "item": [
+                {
+                  "name": "List Account Time Logs",
+                  "id": "3f3491fc-7fa7-4c1b-87a6-8fdb36e29843",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId/timelogs?trackedDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId",
+                        "timelogs"
+                      ],
+                      "query": [
+                        {
+                          "key": "trackedDate",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f1b755cb-d571-4e4b-a536-430cddd55db1",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all timelog records in a specific account."
+                  },
+                  "response": [
+                    {
+                      "id": "41777687-0a66-4d32-9298-939a86f9d0b2",
+                      "name": "List of account timelog records",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/timelogs?trackedDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"hours\": \"<float>\",\n      \"createdDate\": \"<dateTime>\",\n      \"trackedDate\": \"<date>\",\n      \"comment\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-41777687-0a66-4d32-9298-939a86f9d0b2"
+                    },
+                    {
+                      "id": "0da9d623-0232-49a5-b940-9b60befc96d3",
+                      "name": "Authentication required or token invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountId/timelogs?trackedDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountId",
+                            "timelogs"
+                          ],
+                          "query": [
+                            {
+                              "key": "trackedDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:33:15.000Z",
+                      "updatedAt": "2026-07-28T03:33:15.000Z",
+                      "uid": "35240-0da9d623-0232-49a5-b940-9b60befc96d3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:33:15.000Z",
+                  "updatedAt": "2026-07-28T03:33:15.000Z",
+                  "uid": "35240-3f3491fc-7fa7-4c1b-87a6-8fdb36e29843"
+                }
+              ],
+              "id": "870209d0-c65c-4792-aa19-71617c0e06a4",
+              "createdAt": "2026-07-28T03:33:14.000Z",
+              "updatedAt": "2026-07-28T03:33:14.000Z",
+              "uid": "35240-870209d0-c65c-4792-aa19-71617c0e06a4"
+            }
+          ],
+          "id": "6ff3e1a1-05de-42bf-9353-4b589e893bc0",
+          "createdAt": "2026-07-28T03:33:14.000Z",
+          "updatedAt": "2026-07-28T03:33:14.000Z",
+          "uid": "35240-6ff3e1a1-05de-42bf-9353-4b589e893bc0"
+        }
+      ],
+      "id": "3968ca40-bd95-4dcd-b36d-adff41d8976d",
+      "createdAt": "2026-07-28T03:33:14.000Z",
+      "updatedAt": "2026-07-28T03:33:14.000Z",
+      "uid": "35240-3968ca40-bd95-4dcd-b36d-adff41d8976d"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "b5a3fb2f-e969-4a0e-b4a9-84a67aa4bcae",
+    "name": "Wrike Access Roles Colors API",
+    "description": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:33:07.000Z",
+    "updatedAt": "2026-07-28T03:33:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5a3fb2f-e969-4a0e-b4a9-84a67aa4bcae"
+  },
+  "item": [
+    {
+      "name": "colors",
+      "item": [
+        {
+          "name": "List Colors",
+          "id": "1a3368e4-4ead-471a-a2b6-8d15cd5ac6a0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/colors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "colors"
+              ]
+            },
+            "description": "Returns all available colors in the Wrike color palette."
+          },
+          "response": [
+            {
+              "id": "f1ae5ba6-632a-42a5-94b3-08812c79cd08",
+              "name": "List of colors",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/colors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "colors"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"hex\": \"#f3BceF\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"hex\": \"#2f7D8a\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:33:08.000Z",
+              "updatedAt": "2026-07-28T03:33:08.000Z",
+              "uid": "35240-f1ae5ba6-632a-42a5-94b3-08812c79cd08"
+            },
+            {
+              "id": "88086c46-c3e8-434b-a1c6-133e712fb299",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/colors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "colors"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errorDescription\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:33:08.000Z",
+              "updatedAt": "2026-07-28T03:33:08.000Z",
+              "uid": "35240-88086c46-c3e8-434b-a1c6-133e712fb299"
+            }
+          ],
+          "createdAt": "2026-07-28T03:33:08.000Z",
+          "updatedAt": "2026-07-28T03:33:08.000Z",
+          "uid": "35240-1a3368e4-4ead-471a-a2b6-8d15cd5ac6a0"
+        }
+      ],
+      "id": "4d4e544e-96aa-4665-be29-1995f33e1ca4",
+      "createdAt": "2026-07-28T03:33:08.000Z",
+      "updatedAt": "2026-07-28T03:33:08.000Z",
+      "uid": "35240-4d4e544e-96aa-4665-be29-1995f33e1ca4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wrike.com/api/v4"
+    }
+  ]
+}
