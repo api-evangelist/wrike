@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike Access Roles Groups API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/groups",
+            "params": [
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Metadata filter"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON string array of optional fields"
+              }
+            ]
+          },
+          "docs": "Returns a list of all user groups in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Create Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/groups",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "memberIds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new user group in the account."
+        },
+        {
+          "info": {
+            "name": "Get Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The group ID"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific user group."
+        },
+        {
+          "info": {
+            "name": "Update Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "addMemberIds",
+                  "value": ""
+                },
+                {
+                  "name": "removeMemberIds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a user group."
+        },
+        {
+          "info": {
+            "name": "Delete Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a user group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

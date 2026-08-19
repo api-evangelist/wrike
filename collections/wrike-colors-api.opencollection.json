@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike Access Roles Colors API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Colors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Colors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/colors"
+          },
+          "docs": "Returns all available colors in the Wrike color palette."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

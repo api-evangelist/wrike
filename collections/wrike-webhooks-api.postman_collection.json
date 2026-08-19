@@ -1,0 +1,871 @@
+{
+  "item": [
+    {
+      "id": "b9f79a93-7933-4191-ba69-cb519283193a",
+      "name": "Webhooks",
+      "description": {
+        "content": "Event-driven webhook subscriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95f67e6b-e4bc-477d-bca6-314ff6542bc2",
+          "name": "List Webhooks",
+          "request": {
+            "name": "List Webhooks",
+            "description": {
+              "content": "Returns all webhooks defined in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cda9c3ed-f481-4c56-8d6f-705a129ce96e",
+              "name": "List of webhooks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"webhooks\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"http://cPCeJuIssylRJgZjrbyQrMapvtE.kjuftNin5zwCFic6dk.eQRyoS8G0jyehNSdpzfPLPQrbn4-UYk.NaGkfySwfgIoZ\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"suspended\",\n      \"isPermanent\": true,\n      \"secretKey\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"http://szco.hmovER4MAykwvTtHCPEnsjSlteSAN2yvSMHvfM8-.WsBZj3\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"suspended\",\n      \"isPermanent\": false,\n      \"secretKey\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aa17154-36b9-4f07-afe5-ceae51b8eff1",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_authorized\",\n  \"errorDescription\": \"The access token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "342e20bc-5d3c-4871-90ee-571e34f72f6a",
+          "name": "Create Webhook",
+          "request": {
+            "name": "Create Webhook",
+            "description": {
+              "content": "Creates a new webhook subscription for account-wide events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":accountId",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "hookUrl",
+                  "value": "<uri>",
+                  "description": "(Required) The URL to which Wrike sends webhook payloads"
+                },
+                {
+                  "disabled": false,
+                  "key": "events",
+                  "value": "<string>",
+                  "description": "Comma-separated list of event types to subscribe to"
+                },
+                {
+                  "disabled": false,
+                  "key": "secretKey",
+                  "value": "<string>",
+                  "description": "Secret key for HMAC signature verification"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f1a31726-9e9a-4348-9f6d-a8d2567b12cf",
+              "name": "Created webhook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to which Wrike sends webhook payloads",
+                        "type": "text/plain"
+                      },
+                      "key": "hookUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated list of event types to subscribe to",
+                        "type": "text/plain"
+                      },
+                      "key": "events",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Secret key for HMAC signature verification",
+                        "type": "text/plain"
+                      },
+                      "key": "secretKey",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"webhooks\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"https://ZpvXV.hhDUUEiUZ-v8kcu1myWRdPlUZEzLcR8OPSfRlijXNj06HSdTh-ApKl\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"disabled\",\n      \"isPermanent\": true,\n      \"secretKey\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"http://iwfeiph.lodep0o7pYeqqypzz77vnkeruEpjl.fCQbOUOLUQZUa9kGVPxrOQiWQibRfL\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"suspended\",\n      \"isPermanent\": false,\n      \"secretKey\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b54ad339-f5f3-47f8-9146-1711019c9054",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to which Wrike sends webhook payloads",
+                        "type": "text/plain"
+                      },
+                      "key": "hookUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated list of event types to subscribe to",
+                        "type": "text/plain"
+                      },
+                      "key": "events",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Secret key for HMAC signature verification",
+                        "type": "text/plain"
+                      },
+                      "key": "secretKey",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_authorized\",\n  \"errorDescription\": \"The access token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43e10807-95ab-4a17-a86c-edc5ae36c09a",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":accountId",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The URL to which Wrike sends webhook payloads",
+                        "type": "text/plain"
+                      },
+                      "key": "hookUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated list of event types to subscribe to",
+                        "type": "text/plain"
+                      },
+                      "key": "events",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Secret key for HMAC signature verification",
+                        "type": "text/plain"
+                      },
+                      "key": "secretKey",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_authorized\",\n  \"errorDescription\": \"The access token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab734dc5-06c2-4c95-8a9e-d862f0eccad5",
+          "name": "Update Webhook",
+          "request": {
+            "name": "Update Webhook",
+            "description": {
+              "content": "Updates an existing webhook.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "hookUrl",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "094ffc15-7994-49ee-95c9-0c11d4415d7c",
+              "name": "Updated webhook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "hookUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"webhooks\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"https://ZpvXV.hhDUUEiUZ-v8kcu1myWRdPlUZEzLcR8OPSfRlijXNj06HSdTh-ApKl\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"disabled\",\n      \"isPermanent\": true,\n      \"secretKey\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"http://iwfeiph.lodep0o7pYeqqypzz77vnkeruEpjl.fCQbOUOLUQZUa9kGVPxrOQiWQibRfL\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"suspended\",\n      \"isPermanent\": false,\n      \"secretKey\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41f6e139-986d-4827-9c3e-e1475702303c",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "hookUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_authorized\",\n  \"errorDescription\": \"The access token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d59b5ba4-151c-492c-82b5-d2cbc2885b9d",
+          "name": "Delete Webhook",
+          "request": {
+            "name": "Delete Webhook",
+            "description": {
+              "content": "Deletes a webhook subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "420d7dcf-f4c8-4b31-94cc-ae6ad4c647a3",
+              "name": "Successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"webhooks\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"https://ZpvXV.hhDUUEiUZ-v8kcu1myWRdPlUZEzLcR8OPSfRlijXNj06HSdTh-ApKl\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"disabled\",\n      \"isPermanent\": true,\n      \"secretKey\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"accountId\": \"string\",\n      \"hookUrl\": \"http://iwfeiph.lodep0o7pYeqqypzz77vnkeruEpjl.fCQbOUOLUQZUa9kGVPxrOQiWQibRfL\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"spaceId\": \"string\",\n      \"folderId\": \"string\",\n      \"externalRequestId\": \"string\",\n      \"status\": \"suspended\",\n      \"isPermanent\": false,\n      \"secretKey\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7814d494-6206-4cf5-98a7-81a3dc121ebc",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_authorized\",\n  \"errorDescription\": \"The access token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.wrike.com/api/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0f41d319-6f15-470b-b304-447f698b65cf",
+    "name": "Wrike Access Roles Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

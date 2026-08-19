@@ -1,0 +1,368 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike Access Roles Tasks API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks",
+            "params": [
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Title filter, exact match"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status filter"
+              },
+              {
+                "name": "importance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date filter range (ISO 8601)"
+              },
+              {
+                "name": "dueDate",
+                "value": "",
+                "type": "query",
+                "description": "Due date filter range (ISO 8601)"
+              },
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updatedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "completedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "authors",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated author IDs"
+              },
+              {
+                "name": "responsibles",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated responsible user IDs"
+              },
+              {
+                "name": "permalink",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subTasks",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextPageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches among all tasks in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Get Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated list of task IDs (up to 100)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns complete information about one or more tasks."
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                },
+                {
+                  "name": "importance",
+                  "value": ""
+                },
+                {
+                  "name": "dates",
+                  "value": ""
+                },
+                {
+                  "name": "responsibles",
+                  "value": ""
+                },
+                {
+                  "name": "addResponsibles",
+                  "value": ""
+                },
+                {
+                  "name": "removeResponsibles",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                },
+                {
+                  "name": "customStatus",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a task's properties."
+        },
+        {
+          "info": {
+            "name": "Delete Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a task, moving it to the Recycle Bin."
+        },
+        {
+          "info": {
+            "name": "List Folder Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/tasks",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "importance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all tasks within the specified folder or project."
+        },
+        {
+          "info": {
+            "name": "Create Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/tasks",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                },
+                {
+                  "name": "importance",
+                  "value": ""
+                },
+                {
+                  "name": "dates",
+                  "value": ""
+                },
+                {
+                  "name": "responsibles",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                },
+                {
+                  "name": "customStatus",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new task in the specified folder or project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

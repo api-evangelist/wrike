@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike Access Roles Folders And Projects API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folders And Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders",
+            "params": [
+              {
+                "name": "permalink",
+                "value": "",
+                "type": "query",
+                "description": "Folder permalink, exact match"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query",
+                "description": "Adds all descendant folders to search scope"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customField",
+                "value": "",
+                "type": "query",
+                "description": "Custom field filter (id/value) as JSON object"
+              },
+              {
+                "name": "updatedDate",
+                "value": "",
+                "type": "query",
+                "description": "Updated date filter range"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Get only projects (true) or only folders (false)"
+              },
+              {
+                "name": "deleted",
+                "value": "",
+                "type": "query",
+                "description": "Get folders from Root (false) or Recycle Bin (true)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns list of entries required to build a folder tree for all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "Get Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path",
+                "description": "The folder ID"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific folder or project."
+        },
+        {
+          "info": {
+            "name": "Update Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                },
+                {
+                  "name": "addShareds",
+                  "value": ""
+                },
+                {
+                  "name": "removeShareds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a folder or project."
+        },
+        {
+          "info": {
+            "name": "Delete Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a folder or project, moving it to the Recycle Bin."
+        },
+        {
+          "info": {
+            "name": "List Folder Subfolders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/folders",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns folder tree entries for the subtree of this folder."
+        },
+        {
+          "info": {
+            "name": "Create Folder In Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/folders",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "title",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "shareds",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "value": ""
+                },
+                {
+                  "name": "customFields",
+                  "value": ""
+                },
+                {
+                  "name": "project",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Creates a new folder inside the specified parent folder."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

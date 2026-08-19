@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike Access Roles Comments API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/comments",
+            "params": [
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "plainText",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all comments in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "List Task Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId/comments",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "plainText",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all comments on a specific task."
+        },
+        {
+          "info": {
+            "name": "Create Task Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId/comments",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "text",
+                  "value": ""
+                },
+                {
+                  "name": "plainText",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a comment to a task."
+        },
+        {
+          "info": {
+            "name": "Update Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/comments/:commentId",
+            "params": [
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "text",
+                  "value": ""
+                },
+                {
+                  "name": "plainText",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates an existing comment."
+        },
+        {
+          "info": {
+            "name": "Delete Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/comments/:commentId",
+            "params": [
+              {
+                "name": "commentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a comment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

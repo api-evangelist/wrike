@@ -1,0 +1,194 @@
+{
+  "item": [
+    {
+      "id": "0fab6523-315c-448d-aaad-4b6475b46cf0",
+      "name": "Access Roles",
+      "description": {
+        "content": "Access role and permission management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f753867-2b1f-4362-810d-f1751c12af84",
+          "name": "List Access Roles",
+          "request": {
+            "name": "List Access Roles",
+            "description": {
+              "content": "Returns all access roles available in accessible accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "access_roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.wrike.com/oauth2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.wrike.com/oauth2/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f20a46d9-bc91-4f32-a938-d5058ce8f379",
+              "name": "List of access roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access_roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"access_roles\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"isDefault\": false,\n      \"sharedItemPermissions\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"isDefault\": true,\n      \"sharedItemPermissions\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace8d41d-5e38-4eb2-84c2-e85afb8096d6",
+              "name": "Authentication required or token invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "access_roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_authorized\",\n  \"errorDescription\": \"The access token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.wrike.com/api/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "Default amReadOnlyWorkflow amReadWriteWorkflow wsReadOnly wsReadWrite amReadOnlyAccessRole"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.wrike.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.wrike.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "134156a6-6e44-465b-bf81-c27a0927ed5b",
+    "name": "Wrike Access Roles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.\n\nContact Support:\n Name: Wrike Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

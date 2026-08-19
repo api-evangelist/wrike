@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wrike Access Roles Time Logs API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wrike.com/oauth2/authorize",
+      "accessTokenUrl": "https://www.wrike.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Time Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/timelogs",
+            "params": [
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "me",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "descendants",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subTasks",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "plainText",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records in all accessible accounts."
+        },
+        {
+          "info": {
+            "name": "List Contact Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/contacts/:contactId/timelogs",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "createdDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "me",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records created by a specific user."
+        },
+        {
+          "info": {
+            "name": "List Folder Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/folders/:folderId/timelogs",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records for a folder."
+        },
+        {
+          "info": {
+            "name": "List Task Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/tasks/:taskId/timelogs",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records for a task."
+        },
+        {
+          "info": {
+            "name": "List Account Time Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/accounts/:accountId/timelogs",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackedDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all timelog records in a specific account."
+        },
+        {
+          "info": {
+            "name": "Get Time Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wrike.com/api/v4/timelogs/:timelogId",
+            "params": [
+              {
+                "name": "timelogId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a specific timelog record."
+        },
+        {
+          "info": {
+            "name": "Update Time Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.wrike.com/api/v4/timelogs/:timelogId",
+            "params": [
+              {
+                "name": "timelogId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "comment",
+                  "value": ""
+                },
+                {
+                  "name": "hours",
+                  "value": ""
+                },
+                {
+                  "name": "trackedDate",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Updates a timelog record."
+        },
+        {
+          "info": {
+            "name": "Delete Time Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wrike.com/api/v4/timelogs/:timelogId",
+            "params": [
+              {
+                "name": "timelogId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a timelog record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

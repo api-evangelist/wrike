@@ -1,0 +1,284 @@
+# Wrike Developer Documentation Documentation
+
+> Create your integration with the most versatile work management platform and seamlessly connect your existing tools and Wrike with our well-documented, easy-to-use APIs. Join other developers and create enterprise-grade productivity solutions to accelerate your business.
+
+## Guides
+- [Build with Wrike](https://developers.wrike.com/docs/introduction.md)
+- [Overview](https://developers.wrike.com/docs/overview.md)
+- [Oauth 2.0 Authorization](https://developers.wrike.com/docs/oauth-20-authorization.md)
+- [Webhooks](https://developers.wrike.com/docs/webhooks.md)
+- [Changes in API IDs internal structure (v4)](https://developers.wrike.com/docs/new-changes-in-api-ids-internal-structure-v4.md)
+- [Special Syntax](https://developers.wrike.com/docs/special-syntax.md)
+- [Errors](https://developers.wrike.com/docs/errors-api-reference-v4.md)
+- [Wrike MCP Server Overview](https://developers.wrike.com/docs/wrike-mcp-server-overview.md)
+- [Setup Claude with Wrike MCP](https://developers.wrike.com/docs/setup-claude-with-wrike-mcp.md)
+- [Setup Claude Code with Wrike MCP](https://developers.wrike.com/docs/setup-claude-code-with-wrike-mcp.md)
+- [Setup ChatGPT with Wrike MCP](https://developers.wrike.com/docs/setup-chatgpt-with-wrike-mcp.md): Set up Wrike MCP for ChatGPT Enterprise or a personal ChatGPT account, connect Wrike, and start using Wrike from ChatGPT.
+- [Setup Microsoft Copilot Studio with Wrike MCP](https://developers.wrike.com/docs/setup-microsoft-copilot-studio-with-wrike-mcp.md)
+- [Setup Gemini Enterprise with Wrike MCP](https://developers.wrike.com/docs/setup-gemini-enterprise-with-wrike-mcp.md)
+- [Legacy Authentication: Permanent Access Token](https://developers.wrike.com/docs/mcp-legacy-authentication-pat.md)
+- [Setup other MCP clients](https://developers.wrike.com/docs/setup-other-mcp-clients-with-wrike-mcp.md)
+- [Available tools on Wrike MCP](https://developers.wrike.com/docs/available-tools-on-wrike-mcp.md)
+- [Typical Use Cases of Wrike MCP](https://developers.wrike.com/docs/typical-use-cases-of-wrike-mcp.md)
+- [Overview](https://developers.wrike.com/docs/datahub-overview.md)
+- [Errors](https://developers.wrike.com/docs/errors-datahub-public-api.md)
+- [Overview](https://developers.wrike.com/docs/export-data.md)
+- [BI Export API Reference](https://developers.wrike.com/docs/schema-reference-bi-export.md)
+- [Overview](https://developers.wrike.com/docs/overview-cloud-content-connector.md)
+- [Errors](https://developers.wrike.com/docs/errors-cloud-content-connector.md)
+- [FAQ](https://developers.wrike.com/docs/faq.md)
+
+## API Reference
+- [Get Access Roles](https://developers.wrike.com/reference/getaccess_rolesempty.md): Access roles.  <b>Scopes:</b> amReadOnlyAccessRole
+- [Query Accounts](https://developers.wrike.com/reference/getaccountempty.md): Returns current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Modify Account](https://developers.wrike.com/reference/putaccountempty.md): Update current account.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Approvals (Account)](https://developers.wrike.com/reference/getapprovalsempty.md): Reads approvals by filter. When no filter parameters passed returns all approvals shared with a user.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Approvals (Folder)](https://developers.wrike.com/reference/getfolderssingleapprovals.md): Reads all approvals on folder/project.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Approvals (Folder)](https://developers.wrike.com/reference/postfolderssingleapprovals.md): Create an approval for folder/project. Creates approval in draft status when no approvers assigned. Otherwise creates in pending status. Approvals created via API will not be affected by workflow automation, e.g. task status will not be automatically transitioned when approval finishes.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Approvals (Task)](https://developers.wrike.com/reference/gettaskssingleapprovals.md): Reads all approvals on task.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Approvals (Task)](https://developers.wrike.com/reference/posttaskssingleapprovals.md): Create an approval for task. Creates approval in draft status when no approvers assigned. Otherwise creates in pending status. Approvals created via API will not be affected by workflow automation, e.g. task status will not be automatically transitioned when approval finishes.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Approvals By ID](https://developers.wrike.com/reference/getapprovalsmulti.md): Reads approvals by ids.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update approval](https://developers.wrike.com/reference/putapprovalssingle.md): Update approval.  <b>Scopes:</b> Default, wsReadWrite
+- [Cancel approval](https://developers.wrike.com/reference/deleteapprovalssingle.md): Cancel approval.  <b>Scopes:</b> Default, wsReadWrite
+- [Create Equipment](https://developers.wrike.com/reference/postassetsempty.md): Create asset in account.  <b>Scopes:</b> amReadWriteUser
+- [Update Equipment](https://developers.wrike.com/reference/putassetssingle.md): Update asset.  <b>Scopes:</b> amReadWriteUser
+- [Delete Equipment](https://developers.wrike.com/reference/deleteassetssingle.md): Delete asset.  <b>Scopes:</b> amReadWriteUser
+- [Get async job](https://developers.wrike.com/reference/getasync_jobsingle.md): Get Async job specified by id.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Attachments (Account)](https://developers.wrike.com/reference/getattachmentsempty.md): Return all Attachments of account tasks and folders.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Attachments (Folder)](https://developers.wrike.com/reference/getfolderssingleattachments.md): Returns all Attachments of a folder.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Attachment (Folder)](https://developers.wrike.com/reference/postfolderssingleattachments.md): Add an attachment to a folder.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Attachments (Task)](https://developers.wrike.com/reference/gettaskssingleattachments.md): Returns all Attachments of a task.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Attachment (Task)](https://developers.wrike.com/reference/posttaskssingleattachments.md): Add an attachment to a task.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Attachments By ID](https://developers.wrike.com/reference/getattachmentsmulti.md): Returns complete information about multiple attachments.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Download Attachment](https://developers.wrike.com/reference/getattachmentssingledownload.md): Returns attachment content. It can be accessed via /attachments/id/download/name.ext URL. In this case, 'name.ext' will be returned as the file name.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Preview Attachment](https://developers.wrike.com/reference/getattachmentssinglepreview.md): Returns Preview for the attachment. The preview can be accessed via /attachments/id/preview/name.ext URL. In this case, 'name.ext' will be returned as the file name.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Attachment URL](https://developers.wrike.com/reference/getattachmentssingleurl.md): Public URL to an attachment from Wrike or an external service. The link for attachment from Wrike is valid for 24 hours from when you make the request.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Attachment](https://developers.wrike.com/reference/putattachmentssingle.md): Update previously uploaded Attachment with new version.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Attachment](https://developers.wrike.com/reference/deleteattachmentssingle.md): Delete Attachment by ID.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Audit Log](https://developers.wrike.com/reference/getaudit_logempty.md): Get <a href="https://help.wrike.com/hc/en-us/articles/209606309-Audit-Log-Reports">Audit Log Reports</a>, that contains audit trail for actions in the account. Available to Enterprise admins with "Create user activity reports" right.  <b>Scopes:</b> amReadOnlyAuditLog
+- [Create Batch Operation](https://developers.wrike.com/reference/postbatchempty.md): <h3>Overview</h3><p>The Batch API lets you execute multiple operations asynchronously in a single request to reduce API calls and rate-limit pressure.</p><ul><li>Supports <b>up to 100 operations per batch</b></li><li>Operations are executed <b>asynchronously</b> and <b>independently</b> (not transactional)</li><li>A batch may contain <b>heterogeneous operation types</b></li></ul><h3>Execution &amp; Results</h3><p><code>POST /batch</code> schedules an asynchronous job and returns an <code>asyncJobId</code></p><ul><li>Use the <a href="api/v4/async-job/#get-async-job">Async Job API</a> to track progress and retrieve per-operation results</li><li>Partial success is possible; each operation returns its own status</li></ul><h3>Quota</h3><ul><li>Batch operations consume a per-account operation quota that replenishes as operations complete</li><li>Requests may be rejected if insufficient quota is available</li></ul>.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Bookings By ID](https://developers.wrike.com/reference/getbookingsmulti.md): Get bookings list.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Bookings (Account)](https://developers.wrike.com/reference/getbookingsempty.md): Returns list of all bookings in account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Bookings (Folder)](https://developers.wrike.com/reference/getfolderssinglebookings.md): Get bookings from folder.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Booking](https://developers.wrike.com/reference/postfolderssinglebookings.md): Create Booking.  <b>Scopes:</b> Default, wsReadWrite
+- [Update Booking](https://developers.wrike.com/reference/putbookingssingle.md): Update Booking.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Booking](https://developers.wrike.com/reference/deletebookingssingle.md): Delete booking by Id.  <b>Scopes:</b> Default, wsReadWrite
+- [Trigger field cascading](https://developers.wrike.com/reference/postfolderssinglecascading_field_settings.md): Trigger field cascading (Folders).  <b>Scopes:</b> Default, wsReadWrite
+- [Delete active cascading field settings](https://developers.wrike.com/reference/deletefolderssinglecascading_field_settings.md): Delete active cascading field settings (Folders).  <b>Scopes:</b> Default, wsReadWrite
+- [Trigger field cascading](https://developers.wrike.com/reference/posttaskssinglecascading_field_settings.md): Trigger field cascading (Tasks).  <b>Scopes:</b> Default, wsReadWrite
+- [Delete active cascading field settings](https://developers.wrike.com/reference/deletetaskssinglecascading_field_settings.md): Delete active cascading field settings (Tasks).  <b>Scopes:</b> Default, wsReadWrite
+- [Query Colors](https://developers.wrike.com/reference/getcolorsempty.md): Get color name - code mapping.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Comments (Account)](https://developers.wrike.com/reference/getcommentsempty.md): Get all comments in current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Comments (Folder)](https://developers.wrike.com/reference/getfolderssinglecomments.md): Get folder comments.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Comment (Folder)](https://developers.wrike.com/reference/postfolderssinglecomments.md): Create a comment in the folder. The virtual Root and Recycle Bin folders cannot have comments.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Comments (Task)](https://developers.wrike.com/reference/gettaskssinglecomments.md): Get task comments.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Comment (Task)](https://developers.wrike.com/reference/posttaskssinglecomments.md): Create comment in task.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Comments By ID](https://developers.wrike.com/reference/getcommentsmulti.md): Get single or multiple comments by their IDs.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Comment](https://developers.wrike.com/reference/putcommentssingle.md): Update Comment by ID. A comment is available for updates only during the 5 minutes after creation.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Comment](https://developers.wrike.com/reference/deletecommentssingle.md): Delete comment by ID.  <b>Scopes:</b> Default, wsReadWrite
+- [Query Contacts](https://developers.wrike.com/reference/getcontactsempty.md): List contacts of all users and user groups in current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query Contacts](https://developers.wrike.com/reference/getcontactsmulti.md): List contacts of specified users and user groups.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query Contacts fields history](https://developers.wrike.com/reference/getcontactsmulticontacts_history.md): Query Contacts fields history.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Modify Contact](https://developers.wrike.com/reference/putcontactssingle.md): Update contact of requesting user by ID (use 'Modify User' method to update other users). Account Admins may use this method to update group info by group ID. .  <b>Scopes:</b> Default, wsReadWrite
+- [Copy Work Schedule](https://developers.wrike.com/reference/postworkschedulessingleduplicate.md): Duplicate work schedule in account.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Get Custom Fields (Account)](https://developers.wrike.com/reference/getcustomfieldsempty.md): Returns a list of custom fields in current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Custom Field (Account)](https://developers.wrike.com/reference/postcustomfieldsempty.md): Create custom field in specified account.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Custom Fields By ID](https://developers.wrike.com/reference/getcustomfieldsmulti.md): Returns complete information about specified custom fields.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Custom Fields (Space)](https://developers.wrike.com/reference/getspacessinglecustomfields.md): Returns a list of custom fields for a specific space in the current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Modify Custom Field](https://developers.wrike.com/reference/putcustomfieldssingle.md): Modify custom field.  <b>Scopes:</b> Default, wsReadWrite
+- [Query All Custom Item Types](https://developers.wrike.com/reference/getcustom_item_typesempty.md): Returns all custom item types that belong to the whole account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query All Custom Item Types](https://developers.wrike.com/reference/getspacessinglecustom_item_types.md): Returns all custom item types that belong to the specific space.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query Specific Custom Item Type by ID](https://developers.wrike.com/reference/getcustom_item_typesmulti.md): Returns custom item type(s) for specified type ID(s).  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Work from Custom Item Type](https://developers.wrike.com/reference/postcustom_item_typessingleinstantiate.md): Create work using the specific custom item type.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Data Export](https://developers.wrike.com/reference/getdata_exportempty.md): Get last completed Data Export.  <b>Scopes:</b> dataExportFull
+- [Refresh Data Export](https://developers.wrike.com/reference/postdata_exportempty.md): Forces new data export generation (if it is not in progress already). 202 code is returned in case new export generation is started. Data export can be requested no sooner than 1 hour after last successful data export. If there is fresh data export already, 200 code and latest export in format similar to [GET] /data_export is returned.  <b>Scopes:</b> dataExportFull
+- [Get Data Export](https://developers.wrike.com/reference/getdata_exportsingle.md): Get Data Export specified by id.  <b>Scopes:</b> dataExportFull
+- [Get Data Export Schema](https://developers.wrike.com/reference/getdata_export_schemaempty.md): Get data export schema specified by version.  <b>Scopes:</b> dataExportFull
+- [Get Dependencies (Task)](https://developers.wrike.com/reference/gettaskssingledependencies.md): Get task dependencies.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Dependency](https://developers.wrike.com/reference/posttaskssingledependencies.md): Add dependency between tasks. If a dependency already exists, attempting to recreate will result in an error.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Dependencies By ID](https://developers.wrike.com/reference/getdependenciesmulti.md): Returns complete information about single or multiple dependencies.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Modify Dependency](https://developers.wrike.com/reference/putdependenciessingle.md): Change relationType of task dependency.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Dependency](https://developers.wrike.com/reference/deletedependenciessingle.md): Delete dependency between tasks.  <b>Scopes:</b> Default, wsReadWrite
+- [eDiscovery Search](https://developers.wrike.com/reference/postediscovery_searchempty.md): Search entities for eDiscovery report.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Folder Blueprints (Account)](https://developers.wrike.com/reference/getfolder_blueprintsempty.md): Account-level Folder Blueprints tree.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Folder Blueprints (Space)](https://developers.wrike.com/reference/getspacessinglefolder_blueprints.md): Space-level Folder Blueprints tree.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Async Work Creation](https://developers.wrike.com/reference/postfolder_blueprintssinglelaunch_async.md): Folder Blueprint Launch, returns async job.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Folders (Account)](https://developers.wrike.com/reference/getfoldersempty.md): Returns a list of folders for the current account.<br> The method operates in two modes:<br> <ul> <li><b>Folder Tree Mode</b>: Activated if no filter parameters are provided. This mode returns the account's folders (spaces), their descendant folders, the root folder, and the recycle bin folder (note that "deleted" parameter can affect the result, see below). Filtering can be requested in this mode using the descendants=true parameter along with filter parameters.  <li><b>Folders Mode</b>: Activated if the parameter descendant=false is specified or if there is at least one filter parameter, e.g., project=true. This mode returns only the account's folders filtered by the specified parameters. </ul>  The chosen mode can be identified by the "kind" key in the result JSON body, with "kind": "folderTree" for Folder Tree Mode and "kind": "folders" for Folders Mode.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Folders (Folder)](https://developers.wrike.com/reference/getfolderssinglefolders.md): Returns the list of folders from a specific folder in the current account. If the root or recycle bin folder id is specified, the method returns the list of folders of the root and recycle bin respectively.<br> The method operates in two modes: <ul> <li><b>Folder Tree Mode</b>: Activated if no filter parameters are provided. This mode returns the requested folders (spaces), their descendant folders, the root folder, and the recycle bin folder.  <li><b>Folders Mode</b>: Activated if the parameter descendant=false is specified or if there is at least one filter parameter, e.g., project=true. This mode returns only the account's folders filtered by the specified parameters. </ul>  The chosen mode can be identified by the "kind" key in the result JSON body, with "kind": "folderTree" for Folder Tree Mode and "kind": "folders" for Folders Mode.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Folder](https://developers.wrike.com/reference/postfolderssinglefolders.md): Create a folder within a folder. Specify virtual rootFolderId in order to create a folder in the account root.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Folders (Space)](https://developers.wrike.com/reference/getspacessinglefolders.md): Returns the list of folders from a specific space in the current account.<br> The method operates in two modes:<br> <ul> <li><b>Folder Tree Mode</b>: Activated if no filter parameters are provided. This mode returns the required space, it's descendant folders, the root folder, and the recycle bin folder (note that "deleted" parameter can affect the result, see below). Filtering can be requested in this mode using the descendants=true parameter along with filter parameters.  <li><b>Folders Mode</b>: Activated if the parameter descendant=false is specified or if there is at least one filter parameter, e.g., project=true. This mode returns only required space's folders filtered by the specified parameters. </ul> The chosen mode can be identified by the "kind" key in the result JSON body, with "kind": "folderTree" for Folder Tree Mode and "kind": "folders" for Folders Mode.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query Folders fields history](https://developers.wrike.com/reference/getfoldersmultifolders_history.md): Query Folders fields history.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Folder By ID](https://developers.wrike.com/reference/getfoldersmulti.md): Returns complete information about specified folders.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Folders (Bulk)](https://developers.wrike.com/reference/putfoldersmulti.md): Update folders.  <b>Scopes:</b> Default, wsReadWrite
+- [Copy Folder](https://developers.wrike.com/reference/postcopy_foldersingle.md): Copy folder subtree, returns parent folder subtree.  <b>Scopes:</b> Default, wsReadWrite
+- [Copy Folder async](https://developers.wrike.com/reference/postcopy_folder_asyncsingle.md): Copy folder subtree, returns async job.  <b>Scopes:</b> Default, wsReadWrite
+- [Update Folder](https://developers.wrike.com/reference/putfolderssingle.md): Update folder.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Folder](https://developers.wrike.com/reference/deletefolderssingle.md): Move folder and all descendant folders and tasks to Recycle Bin unless they have parents outside of deletion scope.  <b>Scopes:</b> Default, wsReadWrite
+- [Query Groups](https://developers.wrike.com/reference/getgroupssingle.md): Returns complete information about single group.  <b>Scopes:</b> amReadOnlyGroup, amReadWriteGroup
+- [Modify Groups](https://developers.wrike.com/reference/putgroupssingle.md): Update group by id.  <b>Scopes:</b> amReadWriteGroup
+- [Delete Groups](https://developers.wrike.com/reference/deletegroupssingle.md): Delete group by Id.  <b>Scopes:</b> amReadWriteGroup
+- [Query Groups](https://developers.wrike.com/reference/getgroupsempty.md): Returns all groups in the account.  <b>Scopes:</b> amReadOnlyGroup, amReadWriteGroup
+- [Create Groups](https://developers.wrike.com/reference/postgroupsempty.md): Create group in account.  <b>Scopes:</b> amReadWriteGroup
+- [Bulk modify groups](https://developers.wrike.com/reference/putgroups_bulkempty.md): Update groups.  <b>Scopes:</b> amReadWriteGroup
+- [Get Budget Rates (Contacts)](https://developers.wrike.com/reference/getcontactsmultihourly_rates.md): Load budget rates for specified contacts.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Budget Rates (Folder)](https://developers.wrike.com/reference/getfolderssinglehourly_rates.md): Return project hourly rates.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Budget Rates (Folder)](https://developers.wrike.com/reference/putfolderssinglehourly_rates.md): Provision hourly rates to subject (user, placeholder) in specific project. Max 100 items per request.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Budget Rates (Placeholders)](https://developers.wrike.com/reference/getplaceholdersmultihourly_rates.md): Load budget rates for specified placeholders.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Budget Rates (Account)](https://developers.wrike.com/reference/puthourly_ratesempty.md): Provision hourly rates to users and placeholders. Max 100 items per request.  <b>Scopes:</b> Default, wsReadWrite
+- [Exclude team members](https://developers.wrike.com/reference/deletefolderssingleproject_team_members.md): Exclude team member from the project. Max 100 items per request.  <b>Scopes:</b> Default, wsReadWrite
+- [Provision](https://developers.wrike.com/reference/putcontactsmultihourly_rates_provision.md): Provision hourly rates to users. Max 100 users per request.  <b>Scopes:</b> Default, wsReadWrite
+- [Legacy API v2 IDs converter](https://developers.wrike.com/reference/getidsempty.md): Convert APIv2 legacy IDs to APIv4 format for specific entity type.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query Invitations](https://developers.wrike.com/reference/getinvitationsempty.md): Get all invitations for current account.  <b>Scopes:</b> amReadOnlyInvitation, amReadWriteInvitation
+- [Create Invitation](https://developers.wrike.com/reference/postinvitationsempty.md): Create an invitation into the current account.  <b>Scopes:</b> amReadWriteInvitation
+- [Update Invitation](https://developers.wrike.com/reference/putinvitationssingle.md): Update invitation by ID and/or resend invitation.  <b>Scopes:</b> amReadWriteInvitation
+- [Delete Invitation](https://developers.wrike.com/reference/deleteinvitationssingle.md): Delete invitation by ID.  <b>Scopes:</b> amReadWriteInvitation
+- [Get Job Roles (Account)](https://developers.wrike.com/reference/getjobrolesempty.md): Returns list of all job roles in account.  <b>Scopes:</b> amReadOnlyUser, amReadWriteUser
+- [Create Job Role](https://developers.wrike.com/reference/postjobrolesempty.md): Create Job Role.  <b>Scopes:</b> amReadWriteUser
+- [Get Job Roles By ID](https://developers.wrike.com/reference/getjobrolesmulti.md): Get job roles list.  <b>Scopes:</b> amReadOnlyUser, amReadWriteUser
+- [Update Job Role](https://developers.wrike.com/reference/putjobrolessingle.md): Create Job Role.  <b>Scopes:</b> amReadWriteUser
+- [Delete Job Role](https://developers.wrike.com/reference/deletejobrolessingle.md): Delete job role by Id.  <b>Scopes:</b> amReadWriteUser
+- [Get Placeholders (Account)](https://developers.wrike.com/reference/getplaceholdersempty.md): Returns list of all placeholders in account.  <b>Scopes:</b> amReadOnlyUser, amReadWriteUser
+- [Get Placeholders By ID](https://developers.wrike.com/reference/getplaceholdersmulti.md): Get placeholders list.  <b>Scopes:</b> amReadOnlyUser, amReadWriteUser
+- [Generate prefilled Request Form URL](https://developers.wrike.com/reference/postrequest_formssingleprefill_url.md): Generate prefilled request form URL.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Submit Request Form](https://developers.wrike.com/reference/postrequest_formssinglesubmit.md): Submit request form.  <b>Scopes:</b> Default, wsReadWrite
+- [Query Request Forms](https://developers.wrike.com/reference/getrequest_formsempty.md): Query request forms in account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Query Request Forms](https://developers.wrike.com/reference/getspacessinglerequest_forms.md): Query request forms in space.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Request Form by ID](https://developers.wrike.com/reference/getrequest_formssingle.md): Get request form by ID.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Rollup Settings (Folder)](https://developers.wrike.com/reference/getfolderssinglerollups.md): Get rollup settings for folders. Use descendants=false (default) to query only the specified folders, or descendants=true to include descendant folders.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Rollup Settings (Folder)](https://developers.wrike.com/reference/putfolderssinglerollups.md): Update folder rollup state.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Rollup Settings (Task)](https://developers.wrike.com/reference/gettaskssinglerollups.md): Get rollup settings for tasks.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Rollup Settings (Task)](https://developers.wrike.com/reference/puttaskssinglerollups.md): Update task rollup state.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Spaces (Account)](https://developers.wrike.com/reference/getspacesempty.md): Returns a list of spaces.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Space](https://developers.wrike.com/reference/postspacesempty.md): Create a space. Available for all plans except Team.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Space By ID](https://developers.wrike.com/reference/getspacessingle.md): Returns info about a space.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Space](https://developers.wrike.com/reference/putspacessingle.md): Update a space.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Space](https://developers.wrike.com/reference/deletespacessingle.md): Delete a space.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Task Blueprints (Account)](https://developers.wrike.com/reference/gettask_blueprintsempty.md): Account-level Task Blueprints.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Task Blueprints (Space)](https://developers.wrike.com/reference/getspacessingletask_blueprints.md): Space-level Task Blueprints.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Async Work Creation](https://developers.wrike.com/reference/posttask_blueprintssinglelaunch_async.md): Task Blueprint Launch, returns async job.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Tasks (Account)](https://developers.wrike.com/reference/gettasksempty.md): Search among all tasks in current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Tasks (Folder)](https://developers.wrike.com/reference/getfolderssingletasks.md): Search among tasks in the folder.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Task (Folder)](https://developers.wrike.com/reference/postfolderssingletasks.md): Create a task in a folder. The folder specified by {folderId} will become the 'parent' folder for the new task. To create a task in the account root, use the Root Folder API ID. When creating a subtask, use the Root API ID as {folderId} and specify the parent task in the 'superTasks' parameter.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Tasks (Space)](https://developers.wrike.com/reference/getspacessingletasks.md): Search among tasks in space.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Tasks By IDs](https://developers.wrike.com/reference/gettasksmulti.md): Returns complete information about single or multiple tasks.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Tasks (Bulk)](https://developers.wrike.com/reference/puttasksmulti.md): Update tasks.  <b>Scopes:</b> Default, wsReadWrite
+- [Query Tasks fields history](https://developers.wrike.com/reference/gettasksmultitasks_history.md): Query Tasks fields history.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Task](https://developers.wrike.com/reference/puttaskssingle.md): Update task.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Tasks By ID](https://developers.wrike.com/reference/deletetaskssingle.md): Delete task by Id.  <b>Scopes:</b> Default, wsReadWrite
+- [Query Timelog categories](https://developers.wrike.com/reference/gettimelog_categoriesempty.md): Get timelog categories in account.  <b>Scopes:</b> Default, amReadOnlyTimelogCategory, amReadWriteTimelogCategory, wsReadOnly, wsReadWrite
+- [Get Timelog Locks (Folder)](https://developers.wrike.com/reference/getfolderssingletimelog_lock_periods.md): Get all timelog lock periods for a folder.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Timelog Lock (Folder)](https://developers.wrike.com/reference/postfolderssingletimelog_lock_periods.md): Create timelog lock periods for a folder/project. Important Note: In Response all the active timelog lock periods (within the requested date range) for the corresponding folder/project are returned.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Timelog Lock (Folder)](https://developers.wrike.com/reference/deletefolderssingletimelog_lock_periods.md): Delete timelog lock periods for a folder/project. Important Note: In Response all the remaining timelog lock periods (within the requested date range) for the corresponding folder/project are returned. If no other timelog lock periods (within the requested date range) exist response will be empty.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Timelog Locks (Task)](https://developers.wrike.com/reference/gettaskssingletimelog_lock_periods.md): Get all timelog lock periods  for a task.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Timelog Locks (Space)](https://developers.wrike.com/reference/getspacessingletimelog_lock_periods.md): Get all timelog lock periods for a space.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Timelog Lock (Space)](https://developers.wrike.com/reference/postspacessingletimelog_lock_periods.md): Create timelog lock periods for a space. Important Note: In Response all the active timelog lock periods (within the requested date range) for the corresponding space are returned.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Timelog Lock (Space)](https://developers.wrike.com/reference/deletespacessingletimelog_lock_periods.md): Delete timelog lock periods for a space. Important Note: In Response all the remaining timelog lock periods (within the requested date range) for the corresponding space are returned. If no other timelog lock periods (within the requested date range) exist response will be empty.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Timelogs (Account)](https://developers.wrike.com/reference/gettimelogsempty.md): Get all timelog records in current account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Timelogs (User)](https://developers.wrike.com/reference/getcontactssingletimelogs.md): Get all timelog records that were created by the user.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Timelogs (Folder)](https://developers.wrike.com/reference/getfolderssingletimelogs.md): Get all timelog records for a folder.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Timelogs (Task)](https://developers.wrike.com/reference/gettaskssingletimelogs.md): Get all timelog records for a task.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Timelog](https://developers.wrike.com/reference/posttaskssingletimelogs.md): Create timelog record for task.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Timelogs (Category)](https://developers.wrike.com/reference/gettimelog_categoriessingletimelogs.md): Get all timelog records with specific timelog category.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Timelogs By ID](https://developers.wrike.com/reference/gettimelogsmulti.md): Get timelog record by IDs.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Modify Timelog](https://developers.wrike.com/reference/puttimelogssingle.md): Update timelog by Id.  <b>Scopes:</b> Default, wsReadWrite
+- [Delete Timelog](https://developers.wrike.com/reference/deletetimelogssingle.md): Delete Timelog record by ID.  <b>Scopes:</b> Default, wsReadWrite
+- [Update Timesheet Row](https://developers.wrike.com/reference/puttimesheet_rowssingle.md): Update timesheet row by Id.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Timesheet Submission Rules (Account)](https://developers.wrike.com/reference/gettimesheet_submission_rulesempty.md): List all timesheet submission rules in account.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Get Timesheet Submission Rules (Work Schedule)](https://developers.wrike.com/reference/getworkschedulessingletimesheet_submission_rules.md): Get timesheet submission rule.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Update Timesheet Submission Rules](https://developers.wrike.com/reference/putworkschedulessingletimesheet_submission_rules.md): Update timesheet submission rule.  <b>Scopes:</b> Default, wsReadWrite
+- [Query Timesheets](https://developers.wrike.com/reference/gettimesheetsempty.md): Retrieves user timesheets.Note: Only timesheets that have been explicitly created—either via the UI or API—will be returned. Unsubmitted timesheets that have never been accessed do not exist in the database and cannot be retrieved. There is no endpoint to query for timesheets that have not yet been created.  <b>Scopes:</b> Default, wsReadOnly, wsReadWrite
+- [Create Timesheet](https://developers.wrike.com/reference/posttimesheetsempty.md): Create Timesheet.  <b>Scopes:</b> Default, wsReadWrite
+- [Update Timesheet](https://developers.wrike.com/reference/puttimesheetssingle.md): Update Timesheet by ID.  <b>Scopes:</b> Default, wsReadWrite
+- [Get Work Schedule Capacity Changes (User)](https://developers.wrike.com/reference/getuser_schedule_capacity_changeempty.md): Get all capacity changes for given users.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Get User Work Schedule Capacity Change by ID](https://developers.wrike.com/reference/getuser_schedule_capacity_changemulti.md): Get user schedule capacity changes by Ids.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Create User Schedule Capacity change](https://developers.wrike.com/reference/postuserssingleuser_schedule_capacity_change.md): Create schedule capacity change for given user.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Update User Schedule Capacity change](https://developers.wrike.com/reference/putuser_schedule_capacity_changesingle.md): Update user schedule capacity change.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Delete User Schedule Capacity change](https://developers.wrike.com/reference/deleteuser_schedule_capacity_changesingle.md): Delete user schedule capacity change.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query User Schedule exception](https://developers.wrike.com/reference/getuser_schedule_exclusionsempty.md): Get exceptions for given users and date range.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Create User Schedule exception](https://developers.wrike.com/reference/postuser_schedule_exclusionsempty.md): Create new exception for given user.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query User Schedule exception](https://developers.wrike.com/reference/getuser_schedule_exclusionssingle.md): Get exception by Id.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Update User Schedule exception](https://developers.wrike.com/reference/putuser_schedule_exclusionssingle.md): Update exception for given user.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Delete User Schedule exception](https://developers.wrike.com/reference/deleteuser_schedule_exclusionssingle.md): Delete exception.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query User Schedule partial exceptions](https://developers.wrike.com/reference/getuser_schedule_partial_exclusionempty.md): Get all schedule partial day exceptions for given users.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Create User Schedule partial exception](https://developers.wrike.com/reference/postuser_schedule_partial_exclusionempty.md): Create user schedule partial day exclusion.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query User Schedule partial exceptions](https://developers.wrike.com/reference/getuser_schedule_partial_exclusionmulti.md): Get user schedule partial day exceptions by Ids.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Update User Schedule partial exception](https://developers.wrike.com/reference/putuser_schedule_partial_exclusionsingle.md): Update user schedule partial day exclusion.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Delete User Schedule partial exception](https://developers.wrike.com/reference/deleteuser_schedule_partial_exclusionsingle.md): Delete user schedule partial day exception.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Get User Types](https://developers.wrike.com/reference/getuser_typesempty.md): User types.  <b>Scopes:</b> amReadOnlyAccessRole
+- [Query User](https://developers.wrike.com/reference/getuserssingle.md): Returns information about single user.  <b>Scopes:</b> amReadOnlyUser, amReadWriteUser
+- [Modify User](https://developers.wrike.com/reference/putuserssingle.md): Update users by ID (accessible to Admins only).  <b>Scopes:</b> amReadWriteUser
+- [Modify User](https://developers.wrike.com/reference/putusersmulti.md): Activate/deactivate users in account by ID (accessible to Admins only).  <b>Scopes:</b> amReadWriteUser
+- [API Version](https://developers.wrike.com/reference/getversionempty.md): Returns current API version info.
+- [Get Work Schedule Capacity Changes by Change ID](https://developers.wrike.com/reference/getworkschedule_capacity_changemulti.md): Get capacity changes by Ids.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Get Work Schedule Capacity Changes (Work Schedule)](https://developers.wrike.com/reference/getworkschedulessingleworkschedule_capacity_change.md): Get all capacity changes for given schedule.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Create Work Schedule capacity change](https://developers.wrike.com/reference/postworkschedulessingleworkschedule_capacity_change.md): Create capacity change for given schedule.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Update Work Schedule capacity change](https://developers.wrike.com/reference/putworkschedule_capacity_changesingle.md): Update capacity change.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Delete Work Schedule capacity change](https://developers.wrike.com/reference/deleteworkschedule_capacity_changesingle.md): Delete capacity change.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Get Work Schedule Exception by ID](https://developers.wrike.com/reference/getworkschedule_exclusionssingle.md): Get exception by Id.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Update Work Schedule exception](https://developers.wrike.com/reference/putworkschedule_exclusionssingle.md): Update exception by Id.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Delete Work Schedule exception](https://developers.wrike.com/reference/deleteworkschedule_exclusionssingle.md): Delete exception by id.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Get Work Schedule Exceptions (Work Schedule)](https://developers.wrike.com/reference/getworkschedulessingleworkschedule_exclusions.md): Get all exceptions for given schedule.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Create Work Schedule exception](https://developers.wrike.com/reference/postworkschedulessingleworkschedule_exclusions.md): Create exception for given schedule.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query Work Schedules](https://developers.wrike.com/reference/getworkschedulesempty.md): Returns list of all work schedules in account.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Create Work Schedule](https://developers.wrike.com/reference/postworkschedulesempty.md): Create schedule in account.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query Work Schedules](https://developers.wrike.com/reference/getworkschedulessingle.md): Get work schedule by Id.  <b>Scopes:</b> amReadOnlyWorkSchedule, amReadWriteWorkSchedule
+- [Update Work Schedule](https://developers.wrike.com/reference/putworkschedulessingle.md): Create work schedule in account.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Delete Work Schedule](https://developers.wrike.com/reference/deleteworkschedulessingle.md): Delete work schedule from account.  <b>Scopes:</b> amReadWriteWorkSchedule
+- [Query Workflows](https://developers.wrike.com/reference/getworkflowsempty.md): Returns list of workflows with custom statuses. Only account-wide workflows are returned.  <b>Scopes:</b> Default, amReadOnlyWorkflow, amReadWriteWorkflow, wsReadOnly, wsReadWrite
+- [Create Workflow](https://developers.wrike.com/reference/postworkflowsempty.md): Create workflow in account.  <b>Scopes:</b> amReadWriteWorkflow
+- [Query Workflows](https://developers.wrike.com/reference/getspacessingleworkflows.md): Returns list of workflows with custom statuses for a specific space.  <b>Scopes:</b> Default, amReadOnlyWorkflow, amReadWriteWorkflow, wsReadOnly, wsReadWrite
+- [Modify Workflow](https://developers.wrike.com/reference/putworkflowssingle.md): Update workflow or custom statuses.  <b>Scopes:</b> amReadWriteWorkflow
+- [Get databases](https://developers.wrike.com/reference/finddatabases.md): this resource is used to to get the list of databases. If no ids specified, all available databases will be returned
+- [Create a new database within a given folder](https://developers.wrike.com/reference/databasepost.md)
+- [Get one specific database](https://developers.wrike.com/reference/finddatabase.md)
+- [Delete an existing database](https://developers.wrike.com/reference/deletedatabase.md)
+- [Update a given database](https://developers.wrike.com/reference/updatedatabase.md)
+- [Get the folder's databases](https://developers.wrike.com/reference/findfolderdatabases.md)
+- [Get the database columns (properties)](https://developers.wrike.com/reference/findfields.md)
+- [Create a new database field (property)](https://developers.wrike.com/reference/createfield.md)
+- [Get a given database field (property)](https://developers.wrike.com/reference/findfield.md)
+- [Delete an existing database field (property)](https://developers.wrike.com/reference/deletefield.md)
+- [Update an existing database field (property)](https://developers.wrike.com/reference/updatefield.md)
+- [Get folders by ids](https://developers.wrike.com/reference/findfolders.md): this resource is used to to get the list of folder with known IDs. It also allows to load the whole folders subtree in one query
+- [Create a new folder within a given folder](https://developers.wrike.com/reference/folderspost.md)
+- [Get one specific folder](https://developers.wrike.com/reference/findfolder.md)
+- [Delete an existing folder](https://developers.wrike.com/reference/deletefolder.md)
+- [Update a given folder](https://developers.wrike.com/reference/updatefolder.md)
+- [Get the folder's subfolders](https://developers.wrike.com/reference/findsubfolders.md)
+- [Get the database records along with requested fields values](https://developers.wrike.com/reference/findrecords.md)
+- [Create some new records](https://developers.wrike.com/reference/createrecords.md)
+- [Delete several existing database records](https://developers.wrike.com/reference/deleterecords.md)
+- [Update some database records](https://developers.wrike.com/reference/updaterecords.md)
+- [Get a given list item along with requested column values](https://developers.wrike.com/reference/findrecord.md)
+- [Update a given database record](https://developers.wrike.com/reference/updaterecord.md)
+- [Get root folder for a space](https://developers.wrike.com/reference/getrootfolder.md)
+- [Search tags](https://developers.wrike.com/reference/findtags.md)
+- [Get all attributes](https://developers.wrike.com/reference/getallattributes.md)
+- [Get attribute values for asset](https://developers.wrike.com/reference/getassetattributevalues.md)
+- [Get attributes allowed for upload](https://developers.wrike.com/reference/getattributesforupload.md)
+- [Get DAM features](https://developers.wrike.com/reference/getdamfeatures.md)
+- [Get current user](https://developers.wrike.com/reference/getcurrentuser.md)
+- [Get integration metadata](https://developers.wrike.com/reference/getmeta.md)
+- [Create upload](https://developers.wrike.com/reference/createupload.md)
+- [Create version upload](https://developers.wrike.com/reference/createversionupload.md)
+- [Complete upload](https://developers.wrike.com/reference/completeupload.md)
+- [Search assets by a text query](https://developers.wrike.com/reference/findassets.md)
+- [Get asset metadata](https://developers.wrike.com/reference/getasset.md)
+- [Get download URL for asset](https://developers.wrike.com/reference/getdownloadurl.md)
+- [Get thumbnail URL for asset](https://developers.wrike.com/reference/getthumbnailurl.md)
+- [Get view URL for asset](https://developers.wrike.com/reference/getviewurl.md)
+- [Get folder metadata](https://developers.wrike.com/reference/getfolder.md)
+- [Get folder items](https://developers.wrike.com/reference/getfolderitems.md)
+- [Get root folders](https://developers.wrike.com/reference/getfolderroots.md)
+
+## Changelog
+- [Updates to Flexible Effort Parameters in Tasks API](https://developers.wrike.com/changelog/updates-to-flexible-effort-parameters-in-tasks-api.md)
+- [Introducing Cascading Fields API](https://developers.wrike.com/changelog/introducing-cascading-fields-api.md)
+- [Introducing Async Batch API + Expanded Bulk Updates](https://developers.wrike.com/changelog/tuesday-december-30-2025.md)
+- [Support timelog lock periods POST GET DELETE](https://developers.wrike.com/changelog/friday-october-31-2025.md)
+- [Update timesheet row category in API](https://developers.wrike.com/changelog/thursday-october-30-2025.md)
+- [Enhanced Webhooks: Event Filtering & Customizable Payloads](https://developers.wrike.com/changelog/monday-october-27-2025.md)
+- [Add Update timesheets endpoint](https://developers.wrike.com/changelog/friday-october-10-2025.md)
+- [Introduce timesheets API](https://developers.wrike.com/changelog/monday-september-29-2025.md)
+- [New space-scoped APIs for Workflows & Custom Fields](https://developers.wrike.com/changelog/monday-september-01-2025.md)
+- [Improved filtering on Audit log, Spaces & Folders related endpoints](https://developers.wrike.com/changelog/friday-july-25-2025.md)
