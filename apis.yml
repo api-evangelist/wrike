@@ -31,6 +31,13 @@ tags:
 - Project Management
 - Collaboration
 - Productivity
+- Workflow-Automation
+- Task Management
+tags_raw:
+- Work Management
+- Project Management
+- Collaboration
+- Productivity
 - Workflow Automation
 - Task Management
 created: '2025-01-08'
@@ -45,6 +52,10 @@ apis:
     custom reporting and integration with downstream analytics platforms.
   humanURL: https://developers.wrike.com/datahub-public-api/
   tags:
+  - Analytics
+  - Reporting
+  - Data Hub
+  tags_raw:
   - Analytics
   - Reporting
   - DataHub
@@ -85,6 +96,9 @@ apis:
   humanURL: https://developers.wrike.com/mcp-server/
   tags:
   - MCP
+  - Artificial Intelligence
+  tags_raw:
+  - MCP
   - AI
   - Model Context Protocol
   properties:
@@ -118,6 +132,8 @@ apis:
   humanURL: https://developers.wrike.com/api/v4/
   baseURL: https://www.wrike.com/api/v4
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -250,6 +266,8 @@ apis:
   humanURL: https://developers.wrike.com/api/v4/
   baseURL: https://www.wrike.com/api/v4
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -272,6 +290,8 @@ apis:
   humanURL: https://developers.wrike.com/api/v4/
   baseURL: https://www.wrike.com/api/v4
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -316,6 +336,8 @@ apis:
   humanURL: https://developers.wrike.com/api/v4/
   baseURL: https://www.wrike.com/api/v4
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -338,6 +360,8 @@ apis:
   humanURL: https://developers.wrike.com/api/v4/
   baseURL: https://www.wrike.com/api/v4
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
