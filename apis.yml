@@ -413,6 +413,8 @@ apis:
   - type: GraphQL
     url: graphql/wrike-graphql.md
 common:
+- type: Website
+  url: https://www.wrike.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/wrike/overview
 - type: AgenticAccess

@@ -1,28 +1,29 @@
-# Kin Score artifact — wrike — 2026-08-10T111628
+# Kin Score artifact — wrike — 2026-09-12T080032
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: wrike
-  schema_version: 0.9.1
-  scored_at: '2026-08-10'
-  run_ts: 2026-08-10T111628
-  composite: 61.7
-  band: strong
+  schema_version: 0.21.0
+  scored_at: '2026-09-12'
+  run_ts: 2026-09-12T080032
+  composite: 45.6
+  band: developing
   facets:
-    discoverability: 64.8
-    contract_quality: 68.2
-    governance: 58.3
-    operational_transparency: 57.9
-    developer_ergonomics: 39.1
-    commercial_clarity: 78.9
+    discoverability: 66.7
+    contract_quality: 64.3
+    contract_governance: 9.8
+    operational_transparency: 31.6
+    developer_ergonomics: 33.3
+    access_clarity: 57.9
   agent_readiness:
-    score: 41.4
-    band: agent-ready
+    score: 28.3
+    band: agent-aware
     dimensions:
       spec_presence: true
       agentic_access: derived
-      mcp_server: true
-      auth_clarity: true
+      reversibility_documented: false
+      mcp_server: documented
+      auth_clarity: negotiable
       idempotency: false
       error_semantics: false
       openapi_examples: false
@@ -33,6 +34,10 @@ kin_score:
       consent_identity: false
       agent_card: false
       dry_run_mode: false
+      delegated_identity: documented
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   provenance:
     agentic_access: derived
     contracts:
