@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Wrike Access Roles Users API
+  title: Wrike Users API
   description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
   version: '4.0'
   termsOfService: https://www.wrike.com/developer-terms/
@@ -80,7 +80,63 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    UserResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: users
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Profile:
+      type: object
+      properties:
+        accountId:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum:
+          - User
+          - Collaborator
+        external:
+          type: boolean
+        admin:
+          type: boolean
+        owner:
+          type: boolean
     User:
       type: object
       properties:
@@ -107,62 +163,6 @@ components:
           type: boolean
         me:
           type: boolean
-    Profile:
-      type: object
-      properties:
-        accountId:
-          type: string
-        email:
-          type: string
-          format: email
-        role:
-          type: string
-          enum:
-          - User
-          - Collaborator
-        external:
-          type: boolean
-        admin:
-          type: boolean
-        owner:
-          type: boolean
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
-    UserResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: users
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

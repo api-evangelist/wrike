@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Wrike Access Roles API
   description: The Wrike REST API v4 enables developers to build integrations and automations for Wrike, a collaborative work management platform used by 20,000+ organizations. The API provides access to tasks, folders, projects, contacts, workflows, time tracking, webhooks, and more. Authentication uses OAuth 2.0 or permanent access tokens. Additional platforms include a DataHub Public API for analytics, BI Export, Cloud Content Connector, and an MCP Server for AI assistant integration.
@@ -41,6 +41,13 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     AccessRole:
       type: object
@@ -55,6 +62,16 @@ components:
           type: array
           items:
             type: string
+    AccessRoleListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: access_roles
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessRole'
     Error:
       type: object
       required:
@@ -69,23 +86,6 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
-    AccessRoleListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: access_roles
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccessRole'
-  responses:
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

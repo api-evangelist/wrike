@@ -1,19 +1,7 @@
 {
   "provider": "wrike",
   "sources": [
-    "wrike-access-roles-api-openapi.yml",
-    "wrike-accounts-api-openapi.yml",
-    "wrike-colors-api-openapi.yml",
-    "wrike-comments-api-openapi.yml",
-    "wrike-contacts-api-openapi.yml",
-    "wrike-custom-fields-api-openapi.yml",
-    "wrike-folders-and-projects-api-openapi.yml",
-    "wrike-groups-api-openapi.yml",
-    "wrike-tasks-api-openapi.yml",
-    "wrike-time-logs-api-openapi.yml",
-    "wrike-users-api-openapi.yml",
-    "wrike-webhooks-api-openapi.yml",
-    "wrike-workflows-api-openapi.yml"
+    "_original/wrike-openapi.yml"
   ],
   "outputs": [
     "wrike-access-roles-api-openapi.yml",
@@ -33,6 +21,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wrike-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "wrike-access-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-colors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-custom-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-folders-and-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-time-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wrike-workflows-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
