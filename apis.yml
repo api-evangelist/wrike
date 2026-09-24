@@ -43,7 +43,7 @@ tags:
 - Project Management
 - Collaboration
 - Productivity
-- Workflow-Automation
+- Workflow Automation
 - Task Management
 tags_raw:
 - Work Management
@@ -52,6 +52,7 @@ tags_raw:
 - Productivity
 - Workflow Automation
 - Task Management
+- Workflow-Automation
 created: '2025-01-08'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/wrike/refs/heads/main/apis.yml
@@ -136,8 +137,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-accounts-api
   name: Wrike Accounts API
   description: Account settings and configuration
@@ -160,8 +159,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-colors-api
   name: Wrike Colors API
   description: Available color palette
@@ -182,8 +179,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-comments-api
   name: Wrike Comments API
   description: Task and folder comment management
@@ -204,8 +199,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-contacts-api
   name: Wrike Contacts API
   description: Users and user groups in Wrike accounts
@@ -226,8 +219,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-custom-fields-api
   name: Wrike Custom Fields API
   description: Custom field definitions and management
@@ -248,8 +239,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-folders-and-projects-api
   name: Wrike Folders And Projects API
   description: Folder and project hierarchy management
@@ -270,8 +259,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-groups-api
   name: Wrike Groups API
   description: User group management
@@ -294,8 +281,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-tasks-api
   name: Wrike Tasks API
   description: Task creation, retrieval, updates, and deletion
@@ -318,8 +303,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-time-logs-api
   name: Wrike Time Logs API
   description: Time tracking and timelog records
@@ -340,8 +323,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-users-api
   name: Wrike Users API
   description: User management and profile operations
@@ -364,8 +345,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-webhooks-api
   name: Wrike Webhooks API
   description: Event-driven webhook subscriptions
@@ -388,8 +367,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 - aid: wrike:wrike-workflows-api
   name: Wrike Workflows API
   description: Workflow and status management
@@ -410,8 +387,6 @@ apis:
     url: https://developers.wrike.com/getting-started/
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
-  - type: GraphQL
-    url: graphql/wrike-graphql.md
 common:
 - type: Website
   url: https://www.wrike.com/
