@@ -116,6 +116,19 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     WorkflowListResponse:
       type: object
@@ -127,26 +140,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Workflow'
-    WorkflowStatus:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        standardName:
-          type: boolean
-        color:
-          type: string
-        hidden:
-          type: boolean
-        group:
-          type: string
-          enum:
-          - Active
-          - Completed
-          - Deferred
-          - Cancelled
     Workflow:
       type: object
       properties:
@@ -176,19 +169,26 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    WorkflowStatus:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        standardName:
+          type: boolean
+        color:
+          type: string
+        hidden:
+          type: boolean
+        group:
+          type: string
+          enum:
+          - Active
+          - Completed
+          - Deferred
+          - Cancelled
   securitySchemes:
     oauth2:
       type: oauth2

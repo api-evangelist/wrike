@@ -41,14 +41,21 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
     AccessRole:
       type: object
       properties:
@@ -72,20 +79,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AccessRole'
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

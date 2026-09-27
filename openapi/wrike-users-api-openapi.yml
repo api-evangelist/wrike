@@ -80,19 +80,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -108,16 +95,6 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
-    UserResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: users
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
     Profile:
       type: object
       properties:
@@ -137,6 +114,16 @@ components:
           type: boolean
         owner:
           type: boolean
+    UserResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: users
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -163,6 +150,19 @@ components:
           type: boolean
         me:
           type: boolean
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

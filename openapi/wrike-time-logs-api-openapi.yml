@@ -265,16 +265,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    TimelogListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: timelogs
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Timelog'
     Error:
       type: object
       required:
@@ -311,15 +301,25 @@ components:
           description: Date the time was tracked
         comment:
           type: string
+    TimelogListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: timelogs
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Timelog'
   responses:
-    Unauthorized:
-      description: Authentication required or token invalid
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication required or token invalid
       content:
         application/json:
           schema:

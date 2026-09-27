@@ -94,20 +94,16 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
+    CustomFieldListResponse:
       type: object
-      required:
-      - error
-      - errorDescription
       properties:
-        error:
+        kind:
           type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
+          example: customfields
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
     CustomField:
       type: object
       properties:
@@ -137,16 +133,20 @@ components:
             type: string
         settings:
           type: object
-    CustomFieldListResponse:
+    Error:
       type: object
+      required:
+      - error
+      - errorDescription
       properties:
-        kind:
+        error:
           type: string
-          example: customfields
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomField'
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
   responses:
     BadRequest:
       description: Bad request - invalid parameters

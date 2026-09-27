@@ -125,27 +125,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
     Contact:
       type: object
       properties:
@@ -189,6 +168,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Metadata'
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
     Profile:
       type: object
       properties:
@@ -219,14 +219,14 @@ components:
           items:
             $ref: '#/components/schemas/Contact'
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid parameters
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request - invalid parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
