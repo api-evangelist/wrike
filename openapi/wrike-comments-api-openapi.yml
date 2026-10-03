@@ -170,14 +170,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Bad request - invalid parameters
+    Unauthorized:
+      description: Authentication required or token invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
+    BadRequest:
+      description: Bad request - invalid parameters
       content:
         application/json:
           schema:
@@ -197,16 +197,6 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
-    CommentListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: comments
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
     Comment:
       type: object
       properties:
@@ -226,6 +216,16 @@ components:
           type: string
         folderId:
           type: string
+    CommentListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: comments
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
   securitySchemes:
     oauth2:
       type: oauth2

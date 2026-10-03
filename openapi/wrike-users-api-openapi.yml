@@ -80,50 +80,20 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
-    Profile:
-      type: object
-      properties:
-        accountId:
-          type: string
-        email:
-          type: string
-          format: email
-        role:
-          type: string
-          enum:
-          - User
-          - Collaborator
-        external:
-          type: boolean
-        admin:
-          type: boolean
-        owner:
-          type: boolean
-    UserResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: users
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -150,19 +120,49 @@ components:
           type: boolean
         me:
           type: boolean
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    UserResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: users
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Profile:
+      type: object
+      properties:
+        accountId:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum:
+          - User
+          - Collaborator
+        external:
+          type: boolean
+        admin:
+          type: boolean
+        owner:
+          type: boolean
   securitySchemes:
     oauth2:
       type: oauth2

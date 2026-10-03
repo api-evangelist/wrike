@@ -117,14 +117,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Bad request - invalid parameters
+    Unauthorized:
+      description: Authentication required or token invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
+    BadRequest:
+      description: Bad request - invalid parameters
       content:
         application/json:
           schema:
@@ -140,35 +140,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Workflow'
-    Workflow:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        standard:
-          type: boolean
-        hidden:
-          type: boolean
-        customStatuses:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkflowStatus'
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
     WorkflowStatus:
       type: object
       properties:
@@ -189,6 +160,35 @@ components:
           - Completed
           - Deferred
           - Cancelled
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+    Workflow:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        standard:
+          type: boolean
+        hidden:
+          type: boolean
+        customStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStatus'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -143,14 +143,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Bad request - invalid parameters
+    Unauthorized:
+      description: Authentication required or token invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
+    BadRequest:
+      description: Bad request - invalid parameters
       content:
         application/json:
           schema:

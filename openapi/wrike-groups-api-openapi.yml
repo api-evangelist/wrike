@@ -172,8 +172,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Bad request - invalid parameters
+    Unauthorized:
+      description: Authentication required or token invalid
       content:
         application/json:
           schema:
@@ -184,20 +184,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
+    BadRequest:
+      description: Bad request - invalid parameters
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
     Error:
       type: object
       required:
@@ -212,16 +205,6 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
-    GroupListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: groups
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
     Group:
       type: object
       properties:
@@ -246,6 +229,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Metadata'
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    GroupListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: groups
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
   securitySchemes:
     oauth2:
       type: oauth2
