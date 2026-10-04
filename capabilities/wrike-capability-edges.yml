@@ -1,0 +1,36 @@
+slug: wrike
+provider: Wrike
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Tasks
+  spec_file: wrike-tasks-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.8
+  evidence: 'POST /folders/{folderId}/tasks createTask Create Task; GET /tasks listTasks; schemas: Task,
+    Dates'
+  reason: Task CRUD within folders/projects on a work management platform is project execution planning
+    and tracking, i.e. Project Management.
+- tag: Folders And Projects
+  spec_file: wrike-folders-and-projects-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.7
+  evidence: 'GET /folders listFolders List Folders; schemas: Project, Folder — "collaborative work management
+    platform"'
+  reason: Folders/projects are the work-structure objects of a collaborative work management tool; CRUD
+    on projects/folders is project execution structuring, best fitting Project Management. Not an industry-specific
+    capability.

@@ -388,6 +388,9 @@ apis:
   - type: ChangeLog
     url: https://developers.wrike.com/changelog/
 common:
+- type: CapabilityMap
+  url: capabilities/wrike-capability-edges.yml
+  name: Wrike Business Capability Map
 - type: Website
   url: https://www.wrike.com/
 - type: PostmanWorkspace
