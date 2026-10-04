@@ -79,6 +79,27 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
     Account:
       type: object
       properties:
@@ -124,27 +145,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Account'
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
   responses:
     Unauthorized:
       description: Authentication required or token invalid

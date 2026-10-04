@@ -55,16 +55,6 @@ components:
           type: array
           items:
             type: string
-    AccessRoleListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: access_roles
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccessRole'
     Error:
       type: object
       required:
@@ -79,6 +69,16 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
+    AccessRoleListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: access_roles
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessRole'
   responses:
     Unauthorized:
       description: Authentication required or token invalid

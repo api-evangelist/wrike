@@ -140,6 +140,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Workflow'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
     WorkflowStatus:
       type: object
       properties:
@@ -160,20 +174,6 @@ components:
           - Completed
           - Deferred
           - Cancelled
-    Error:
-      type: object
-      required:
-      - error
-      - errorDescription
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
     Workflow:
       type: object
       properties:

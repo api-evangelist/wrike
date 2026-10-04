@@ -46,16 +46,6 @@ components:
         hex:
           type: string
           pattern: ^#[0-9A-Fa-f]{6}$
-    ColorListResponse:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: colors
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Color'
     Error:
       type: object
       required:
@@ -70,6 +60,16 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
+    ColorListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: colors
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Color'
   responses:
     Unauthorized:
       description: Authentication required or token invalid

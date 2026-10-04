@@ -264,34 +264,17 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    TimelogListResponse:
       type: object
-      required:
-      - error
-      - errorDescription
       properties:
-        error:
+        kind:
           type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
+          example: timelogs
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Timelog'
     Timelog:
       type: object
       properties:
@@ -314,16 +297,33 @@ components:
           description: Date the time was tracked
         comment:
           type: string
-    TimelogListResponse:
+    Error:
       type: object
+      required:
+      - error
+      - errorDescription
       properties:
-        kind:
+        error:
           type: string
-          example: timelogs
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Timelog'
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2
