@@ -239,3 +239,101 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
     url: https://apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - negotiated
+  - seat
+  plans:
+  - name: Free
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Team
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Pinnacle
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Apex
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Wrike Whiteboard add-on
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Wrike Integrate add-on
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: Wrike Two-Way Sync add-on
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: Wrike Datahub add-on
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: Wrike Lock add-on
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: AI Elite Action Pack add-on
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
