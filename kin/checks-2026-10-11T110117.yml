@@ -2,15 +2,15 @@
 kin_checks:
   slug: wrike
   schema_version: 0.23.0
-  scored_at: '2026-10-03'
-  run_ts: 2026-10-03T024842
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.23.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 153
-    earned: 26
-    partial: 34
+    earned: 24
+    partial: 36
     missed: 66
     na: 27
   checks:
@@ -154,6 +154,9 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
+  - id: mcp_endpoint_discoverable
+    status: partial
+    earned: 2.0
   - id: contract_present
     status: partial
     earned: 18.0
@@ -285,6 +288,10 @@ kin_checks:
     status: partial
     earned: 2.5
     detail: 'authorship: derived'
+  - id: mcp_server
+    status: partial
+    earned: 4.8
+    detail: 'grade: documented'
   - id: auth_clarity
     status: partial
     earned: 7.5
