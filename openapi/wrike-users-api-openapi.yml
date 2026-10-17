@@ -80,17 +80,34 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    UserResponse:
+    Error:
       type: object
+      required:
+      - error
+      - errorDescription
       properties:
-        kind:
+        error:
           type: string
-          example: users
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
     User:
       type: object
       properties:
@@ -136,33 +153,16 @@ components:
           type: boolean
         owner:
           type: boolean
-    Error:
+    UserResponse:
       type: object
-      required:
-      - error
-      - errorDescription
       properties:
-        error:
+        kind:
           type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
-          type: string
-          description: Human-readable error description
-          example: The access token is invalid
-  responses:
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          example: users
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -78,14 +78,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
     Error:
       type: object
       required:
@@ -100,6 +100,16 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
+    AccountListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: accounts
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
     Account:
       type: object
       properties:
@@ -135,23 +145,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Metadata'
-    AccountListResponse:
+    Metadata:
       type: object
       properties:
-        kind:
+        key:
           type: string
-          example: accounts
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-  responses:
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        value:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

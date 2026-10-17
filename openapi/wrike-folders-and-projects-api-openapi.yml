@@ -258,17 +258,53 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    FolderListResponse:
+    Project:
       type: object
       properties:
-        kind:
+        authorId:
           type: string
-          example: folders
-        data:
+        ownerIds:
           type: array
           items:
-            $ref: '#/components/schemas/Folder'
+            type: string
+        status:
+          type: string
+          enum:
+          - Green
+          - Yellow
+          - Red
+          - Completed
+          - OnHold
+          - Cancelled
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        createdDate:
+          type: string
+          format: date-time
     Folder:
       type: object
       properties:
@@ -313,40 +349,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Metadata'
-    Project:
-      type: object
-      properties:
-        authorId:
-          type: string
-        ownerIds:
-          type: array
-          items:
-            type: string
-        status:
-          type: string
-          enum:
-          - Green
-          - Yellow
-          - Red
-          - Completed
-          - OnHold
-          - Cancelled
-        startDate:
-          type: string
-          format: date
-        endDate:
-          type: string
-          format: date
-        createdDate:
-          type: string
-          format: date-time
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
     Error:
       type: object
       required:
@@ -361,25 +363,23 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    FolderListResponse:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: folders
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Folder'
   securitySchemes:
     oauth2:
       type: oauth2

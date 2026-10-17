@@ -38,14 +38,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Color:
-      type: object
-      properties:
-        name:
-          type: string
-        hex:
-          type: string
-          pattern: ^#[0-9A-Fa-f]{6}$
     Error:
       type: object
       required:
@@ -60,6 +52,14 @@ components:
           type: string
           description: Human-readable error description
           example: The access token is invalid
+    Color:
+      type: object
+      properties:
+        name:
+          type: string
+        hex:
+          type: string
+          pattern: ^#[0-9A-Fa-f]{6}$
     ColorListResponse:
       type: object
       properties:

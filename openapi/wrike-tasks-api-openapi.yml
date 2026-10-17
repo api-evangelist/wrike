@@ -397,7 +397,44 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required or token invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Dates:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Backlog
+          - Milestone
+          - Planned
+        duration:
+          type: integer
+          description: Duration in minutes
+        start:
+          type: string
+          format: date-time
+        due:
+          type: string
+          format: date-time
     Task:
       type: object
       properties:
@@ -488,6 +525,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldValue'
+    Error:
+      type: object
+      required:
+      - error
+      - errorDescription
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_authorized
+        errorDescription:
+          type: string
+          description: Human-readable error description
+          example: The access token is invalid
     TaskListResponse:
       type: object
       properties:
@@ -503,31 +554,6 @@ components:
           description: Token to retrieve the next page of results
         responseSize:
           type: integer
-    CustomFieldValue:
-      type: object
-      properties:
-        id:
-          type: string
-        value:
-          type: string
-    Dates:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - Backlog
-          - Milestone
-          - Planned
-        duration:
-          type: integer
-          description: Duration in minutes
-        start:
-          type: string
-          format: date-time
-        due:
-          type: string
-          format: date-time
     Metadata:
       type: object
       properties:
@@ -535,39 +561,13 @@ components:
           type: string
         value:
           type: string
-    Error:
+    CustomFieldValue:
       type: object
-      required:
-      - error
-      - errorDescription
       properties:
-        error:
+        id:
           type: string
-          description: Error code
-          example: not_authorized
-        errorDescription:
+        value:
           type: string
-          description: Human-readable error description
-          example: The access token is invalid
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or token invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2
