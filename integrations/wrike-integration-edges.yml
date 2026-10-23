@@ -173,93 +173,6 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
-- partner_name: Google Workspace (own)
-  partner: google-workspace
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://workspace.google.com/marketplace/app/wrike_for_gmail/931326872457
-  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
-  apps:
-  - Wrike for Gmail™
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Google Workspace app
-- partner_name: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA104381390
-  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-  apps:
-  - Wrike
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Microsoft Teams app
-  publisher_verified:
-  - Microsoft 365 Certified
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A1GQ4MX6G-wrike
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Wrike
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
-- partner_name: Zoom (own)
-  partner: zoom
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.zoom.us/apps/kDQIo1O_RnmlLUUB3TMCrQ
-  mirror_of: zoom/integrations/zoom-integration-edges.yml
-  apps:
-  - Actionable Meetings by Wrike
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Zoom app
-- partner_name: HubSpot (own)
-  partner: hubspot
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://ecosystem.hubspot.com/marketplace/listing/wrike-1037161
-  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
-  apps:
-  - Wrike
-  listing_count: 1
-  detected: '2026-10-21'
-  detected_by: mirror-platform-listings.py
-  category: PROJECT_MANAGEMENT
 - partner_name: Raycast
   partner: raycast
   partner_match: domain
@@ -348,6 +261,187 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-tx-ramp-certified-cloud.py
   first_seen: '2026-10-22'
+- partner_name: IFTTT
+  partner: ifttt
+  partner_match: aggregator
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://ifttt.com/wrike
+  category: null
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Wrike
+    matched_domain: wrike.com
+    matched_by: domain
+    app_slug: wrike
+    ifttt_category: Business tools
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  detected_by: sweep-ifttt-services.py
+  first_seen: '2026-10-23'
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/wrike_for_gmail/931326872457
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Wrike for Gmail™
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA104381390
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - Wrike
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Certified
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A1GQ4MX6G-wrike
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Wrike
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/kDQIo1O_RnmlLUUB3TMCrQ
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - Actionable Meetings by Wrike
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/wrike-1037161
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - Wrike
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: PROJECT_MANAGEMENT
+- partner_name: Adobe Creative Cloud (own)
+  partner: adobe-creative-cloud
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://exchange.adobe.com/apps/cc/404ecd6f/wrike-for-adobe-xd
+  mirror_of: adobe-creative-cloud/integrations/adobe-creative-cloud-integration-edges.yml
+  apps:
+  - Wrike for Adobe XD
+  - Wrike Extension for Adobe Creative Cloud
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Adobe Exchange Creative Cloud listing (Express, Illustrator, InDesign, Photoshop)
+- partner_name: Adobe Illustrator (own)
+  partner: adobe-illustrator
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  mirror_of: adobe-illustrator/integrations/adobe-illustrator-integration-edges.yml
+  apps:
+  - Wrike Extension for Adobe Creative Cloud
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
+- partner_name: Adobe Photoshop (own)
+  partner: adobe-photoshop
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  mirror_of: adobe-photoshop/integrations/adobe-photoshop-integration-edges.yml
+  apps:
+  - Wrike Extension for Adobe Creative Cloud
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
+- partner_name: Adobe Premiere Pro (own)
+  partner: adobe-premiere
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  mirror_of: adobe-premiere/integrations/adobe-premiere-integration-edges.yml
+  apps:
+  - Wrike Extension for Adobe Creative Cloud
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
 method: searched
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
@@ -368,6 +462,13 @@ checked:
 - https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions
 - https://www.raycast.com/api/v1/store_listings
 - https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
+- https://ifttt.com/explore/services
+- https://ifttt.com/sitemap_services.xml
+- https://ifttt.com/wrike
+- adobe-creative-cloud/integrations/adobe-creative-cloud-integration-edges.yml
+- adobe-illustrator/integrations/adobe-illustrator-integration-edges.yml
+- adobe-photoshop/integrations/adobe-photoshop-integration-edges.yml
+- adobe-premiere/integrations/adobe-premiere-integration-edges.yml
 source:
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://zapier.com/api/v4/apps/

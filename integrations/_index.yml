@@ -176,71 +176,6 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
-- slug: wrike-google-workspace-own
-  label: Google Workspace (own)
-  partner: google-workspace
-  partner_name: Google Workspace (own)
-  category: Google Workspace app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://workspace.google.com/marketplace/app/wrike_for_gmail/931326872457
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: wrike-microsoft-teams-own
-  label: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_name: Microsoft Teams (own)
-  category: Microsoft Teams app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA104381390
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: wrike-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/A1GQ4MX6G-wrike
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: wrike-zoom-own
-  label: Zoom (own)
-  partner: zoom
-  partner_name: Zoom (own)
-  category: Zoom app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.zoom.us/apps/kDQIo1O_RnmlLUUB3TMCrQ
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: wrike-hubspot-own
-  label: HubSpot (own)
-  partner: hubspot
-  partner_name: HubSpot (own)
-  category: PROJECT_MANAGEMENT
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://ecosystem.hubspot.com/marketplace/listing/wrike-1037161
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: wrike-raycast
   label: Raycast
   partner: raycast
@@ -323,5 +258,147 @@
       lapsed: false
     detected_by: sweep-tx-ramp-certified-cloud.py
     detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-ifttt
+  label: IFTTT
+  partner: ifttt
+  partner_name: IFTTT
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  evidence: https://ifttt.com/wrike
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Wrike
+    matched_domain: wrike.com
+    matched_by: domain
+    app_slug: wrike
+    ifttt_category: Business tools
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-google-workspace-own
+  label: Google Workspace (own)
+  partner: google-workspace
+  partner_name: Google Workspace (own)
+  category: Google Workspace app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://workspace.google.com/marketplace/app/wrike_for_gmail/931326872457
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-microsoft-teams-own
+  label: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_name: Microsoft Teams (own)
+  category: Microsoft Teams app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA104381390
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A1GQ4MX6G-wrike
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-zoom-own
+  label: Zoom (own)
+  partner: zoom
+  partner_name: Zoom (own)
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/kDQIo1O_RnmlLUUB3TMCrQ
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-hubspot-own
+  label: HubSpot (own)
+  partner: hubspot
+  partner_name: HubSpot (own)
+  category: PROJECT_MANAGEMENT
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/wrike-1037161
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-adobe-creative-cloud-own
+  label: Adobe Creative Cloud (own)
+  partner: adobe-creative-cloud
+  partner_name: Adobe Creative Cloud (own)
+  category: Adobe Exchange Creative Cloud listing (Express, Illustrator, InDesign, Photoshop)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/404ecd6f/wrike-for-adobe-xd
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-adobe-illustrator-own
+  label: Adobe Illustrator (own)
+  partner: adobe-illustrator
+  partner_name: Adobe Illustrator (own)
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-adobe-photoshop-own
+  label: Adobe Photoshop (own)
+  partner: adobe-photoshop
+  partner_name: Adobe Photoshop (own)
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wrike-adobe-premiere-pro-own
+  label: Adobe Premiere Pro (own)
+  partner: adobe-premiere
+  partner_name: Adobe Premiere Pro (own)
+  category: Adobe Exchange Creative Cloud listing (Illustrator, InDesign, Photoshop, Premiere Pro)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/cc/100791/wrike-extension-for-adobe-creative-cloud
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
